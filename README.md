@@ -2,10 +2,10 @@
 
 ## Team members
 
-| Name           | Username  |
-| -------------- | --------- |
-| Erkka Leppänen | merkksgit |
+| Name            | Username       |
+| --------------- | -------------- |
+| Erkka Leppänen  | merkksgit      |
 | Daniel Lyytinen | DanielLyytinen |
-| Irina Gerasina |irina-ge   |
-| Heini Paananen |heinipaananen |
-|                |           |
+| Irina Gerasina  | irina-ge       |
+| Heini Paananen  | heinipaananen  |
+| Ilari Tuimala   | ishijt         |
