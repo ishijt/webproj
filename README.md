@@ -1,7 +1,5 @@
 ﻿# Web-project
 
-testi1
-
 ## Team members
 
 | Name            | Username       |
