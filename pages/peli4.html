@@ -15,7 +15,7 @@
   <body class="d-flex flex-column h-100">
     <div class="container-fluid flex-shrink-0">
       <header class="d-flex justify-content-center align-items-center">
-        <h1>Peli4</h1>
+        <h1>Word association game</h1>
       </header>
       <nav class="navbar navbar-expand-lg bg-body-tertiary">
         <div class="container-fluid">
@@ -81,45 +81,13 @@
       </nav>
       <div class="row">
         <div class="col-md-12 p-3">
-          <div class="container-fluid">
-            <div class="row">
-              <article class="col-md-6">
-                <p>
-                  Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Sed
-                  posuere interdum sem. Quisque ligula eros ullamcorper quis,
-                  lacinia quis facilisis sed sapien. Mauris varius diam vitae
-                  arcu. Sed arcu lectus auctor vitae, consectetuer et venenatis
-                  eget velit. Sed augue orci, lacinia eu tincidunt et eleifend
-                  nec lacus. Donec ultricies nisl ut felis, suspendisse potenti.
-                  Lorem ipsum ligula ut hendrerit mollis, ipsum erat vehicula
-                  risus, eu suscipit sem libero nec erat. Aliquam erat volutpat.
-                  Sed congue augue vitae neque. Nulla consectetuer porttitor
-                  pede. Fusce purus morbi tortor magna condimentum vel, placerat
-                  id blandit sit amet tortor. Mauris sed libero. Suspendisse
-                  facilisis nulla in lacinia laoreet, lorem velit accumsan velit
-                  vel mattis libero nisl et sem. Proin interdum maecenas massa
-                  turpis sagittis in, interdum non lobortis vitae massa. Quisque
-                  purus lectus, posuere eget imperdiet nec sodales id arcu.
-                  Vestibulum elit pede dictum eu, viverra non tincidunt eu
-                  ligula. Nam molestie nec tortor. Donec placerat leo sit amet
-                  velit. Vestibulum id justo ut vitae massa. Proin in dolor
-                  mauris consequat aliquam. Donec ipsum, vestibulum ullamcorper
-                  venenatis augue. Aliquam tempus nisi in auctor vulputate, erat
-                  felis pellentesque augue nec, pellentesque lectus justo nec
-                  erat. Aliquam et nisl. Quisque sit amet dolor in justo pretium
-                  condimentum. Vivamus placerat lacus vel vehicula scelerisque,
-                  dui enim adipiscing lacus sit amet sagittis, libero enim vitae
-                  mi. In neque magna posuere, euismod ac tincidunt tempor est.
-                  Ut suscipit nisi eu purus. Proin ut pede mauris eget ipsum.
-                  Integer vel quam nunc commodo consequat. Integer ac eros eu
-                  tellus dignissim viverra. Maecenas erat aliquam erat volutpat.
-                  Ut venenatis ipsum quis turpis. Integer cursus scelerisque
-                  lorem. Sed nec mauris id quam blandit consequat. Cras nibh mi
-                  hendrerit vitae, dapibus et aliquam et magna. Nulla vitae
-                  elit. Mauris consectetuer odio vitae augue.
-                </p>
-              </article>
-            </div>
+          <div class="game-container">
+            <img id="image" src="">
+            <div id="scrambledWord"></div>
+            <input type="text" id="answer">
+            <button id="submit">Submit</button>
+            <p>Score: <span id="score">0</span></p>
+            <p id="feedback"></p>
           </div>
         </div>
       </div>
@@ -133,6 +101,7 @@
         </div>
       </div>
     </footer>
+    <script src="../js/english.js"></script>
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
