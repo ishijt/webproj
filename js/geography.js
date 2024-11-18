@@ -1,7 +1,17 @@
 const API_URL = 'https://restcountries.com/v3.1/all';
-const flagsContainer = document.getElementById('flags-container');
 
-let correctAnswer = null;
+const countryNameElement = document.getElementById('country-name');
+const flagsContainer = document.getElementById('flags-container');
+const resultContainer = document.getElementById('result-container');
+const resultMessage = document.getElementById('result-message');
+const nextQuestionButton = document.getElementById('next-question');
+const mainContainer = document.querySelector('main');
+
+let correctAnswer = null; 
+let isAnswered = false; 
+let questionCount = 0; 
+let correctAnswers = 0;
+const maxQuestions = 10;
 
 async function fetchCountries() {
   const response = await fetch(API_URL);
