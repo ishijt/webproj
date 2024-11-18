@@ -1,0 +1,49 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: inherit;
+    font-size: 100%;
+    line-height: 1.5;
+  }
+  
+  body {
+    background-color: #f8f9fa;
+    font-size: 2.5rem;
+    font-family: 'Baloo', sans-serif;
+  }
+  
+  header h1 {
+    font-size: 2.5rem;
+    color: #333;
+    font-family: 'Baloo', sans-serif;
+  }
+  
+  .topic-button {
+    font-size: 2.5rem !important;
+    height: 150px;
+    line-height: 150px;
+    border-radius: 20px;
+    width: 100%;
+    max-width: 400px;
+    display: flex !important;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 0 !important;
+    vertical-align: middle;
+    background-color: #007bff;
+    color: white;
+    text-decoration: none;
+  }
+  .topic-button:hover {
+    background-color: #357abd;
+    color: #fff;
+  }
+  
+  
+  .footer {
+    background-color: #343a40;
+    color: #fff;
+  }
+  
