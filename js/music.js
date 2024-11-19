@@ -96,6 +96,7 @@ class MusicGame {
     if (this.currentMode === 'sound') {
       // Sound clip game mode
       soundClipElement.src = `../music_files/sounds/${currentClip.file}`
+      soundClipElement.volume = 0.5
       soundClipElement.classList.remove('d-none')
 
       // Generate 4 answer buttons
