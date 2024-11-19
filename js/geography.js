@@ -131,3 +131,14 @@ function restartQuiz() {
   resultContainer.classList.add('hidden');
   location.reload();
 }
+
+// handles the "Next Question" button click
+nextQuestionButton.addEventListener('click', () => {
+  resultMessage.textContent = '';
+  resultMessage.style.color = '';
+  resultContainer.classList.add('hidden');
+  startQuiz();
+});
+
+// starts the quiz on page load
+startQuiz();
