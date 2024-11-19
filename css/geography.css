@@ -36,14 +36,51 @@
     color: white;
     text-decoration: none;
   }
+
   .topic-button:hover {
     background-color: #357abd;
     color: #fff;
   }
   
+  #flags-container {
+    max-width: 600px; /* Уменьшает ширину контейнера */
+    margin: 0 auto; /* Центрирует контейнер */
+    gap: 10px; /* Уменьшает расстояние между элементами */
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(240, 240, 221);/* Устанавливает белый цвет фона */
+  }
+  
+  #flags-container .flag-button img {
+    width: 90%; /* Уменьшение ширины флагов в 2 раза */
+    margin: 0;
+    height: auto; /* Сохраняет пропорции */
+    border-radius: 5px; /* Уменьшенные радиусы */
+    border: 6px solid transparent;
+    transition: all 0.3s ease-in-out;
+  }
+  
+  #flags-container .flag-button img:hover {
+    border-color: #333;
+    transform: scale(1.1);
+  }
+  
+  #result-container h2 {
+    font-size: 1.8rem;
+  }
+  
+  button {
+    padding: 10px 20px;
+    font-size: 1rem;
+    border: none;
+    border-radius: 5px;
+    background-color: rgb(240, 240, 221);
+    transition: background-color 0.3s ease;
+  }
   
   .footer {
     background-color: #343a40;
-    color: #fff;
+    color: #333;
   }
-  

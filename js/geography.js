@@ -9,9 +9,9 @@ const resultMessage = document.getElementById('result-message');
 const nextQuestionButton = document.getElementById('next-question');
 const mainContainer = document.querySelector('main');
 
-let correctAnswer = null; 
-let isAnswered = false; 
-let questionCount = 0; 
+let correctAnswer = null;
+let isAnswered = false;
+let questionCount = 0;
 let correctAnswers = 0;
 const maxQuestions = 10;
 
@@ -35,7 +35,7 @@ function generateQuestion(countries) {
     return;
   }
 
-  isAnswered = false; 
+  isAnswered = false;
   questionCount++;
   questionNumberElement.textContent=questionCount
 
@@ -66,5 +66,34 @@ function displayFlags(countries) {
     flagButton.innerHTML = `<img src="${country.flags.png}" alt="Flag of ${country.name.common}">`;
     flagButton.addEventListener('click', () => handleFlagClick(country.flags.png, flagButton));
     flagsContainer.appendChild(flagButton);
+  });
+}
+
+// handles the click on a flag option
+function handleFlagClick(selectedFlag, button) {
+  if (isAnswered) {
+    resultMessage.textContent = 'You have already answered. Please click "Next Question" to continue.';
+    resultMessage.style.color = 'orange';
+    return;
+  }
+  isAnswered = true;
+
+  // check if the selected flag is correct
+  if (selectedFlag === correctAnswer) {
+    resultMessage.textContent = 'Correct! Click "Next Question" to continue.';
+    resultMessage.style.color = 'green';
+    correctAnswers++;
+  } else {
+    resultMessage.textContent = 'Wrong! Click "Next Question" to continue.';
+    resultMessage.style.color = 'red';
+    button.style.borderColor = 'red';
+  }
+  
+  resultContainer.classList.remove('hidden');
+
+  // disable all flag buttons after an answer is selected
+  const allButtons = document.querySelectorAll('.flag-button');
+  allButtons.forEach(btn => {
+    btn.disabled = true;
   });
 }
