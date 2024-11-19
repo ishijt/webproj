@@ -1,7 +1,6 @@
 /* Music game styles */
 
 #music-container {
-    width: 1000px;
     background: #ffffff;
     border-radius: 10px;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
@@ -25,8 +24,16 @@
     text-align: center;
 }
 
+#music-screen h2 {
+    margin-bottom: 30px;
+}
+
+#music-screen p {
+    margin: 20px;
+}
+
 #music-screen img {
-    max-width: 400px;
+    max-width: 300px;
     height: auto;
     border-radius: 10px;
     margin-top: 10px;
@@ -38,6 +45,7 @@
     border-radius: 5px;
     font-size: 1em;
     padding: 10px 20px;
+    margin: 15px;
 }
   
 #answer-buttons {
@@ -53,9 +61,8 @@
 
 #answer-input {
     width: 50vh;
-    display: flex;
+    position: relative;
     align-items: center;
-    justify-content: center;
 }
   
 #feedback {

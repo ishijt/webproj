@@ -13,10 +13,11 @@ class MusicGame {
     this.gameTime = 0
     this.gameInterval = null
     this.currentMode = 'sound'
+    this.maxSteps = 5
+    this.defaultVolume = 0.25
   }
 
   startGame = () => {
-
     this.currentStep = 0
     this.score = 0
     this.gameTime = 0
@@ -31,9 +32,8 @@ class MusicGame {
     clearInterval(this.gameInterval)
     alert(`Game over! Your final score is ${this.score} out of ${instruments.length}.`)
 
-    document.getElementById('feedback').innerHTML = `
-      <button class="btn btn-primary mt-3" onclick="game.startGame()">Restart Game</button>
-    `
+    const feedbackElement = document.getElementById('feedback')
+    feedbackElement.textContent = ''
 
     document.getElementById('m-start-screen').classList.remove('d-none')
     document.getElementById('music-play').classList.add('d-none')
@@ -41,7 +41,7 @@ class MusicGame {
 
   handleAnswer = (answer) => {
     const currentClip = this.availableClips[this.currentStep]
-    const isCorrect = answer.toLowerCase() === currentClip.name.toLowerCase()
+    const isCorrect = answer.trim().toLowerCase() === currentClip.name.toLowerCase()
 
     // Feedback report
     const feedbackElement = document.getElementById('feedback')
@@ -96,12 +96,20 @@ class MusicGame {
     if (this.currentMode === 'sound') {
       // Sound clip game mode
       soundClipElement.src = `../music_files/sounds/${currentClip.file}`
-      soundClipElement.volume = 0.5
+      soundClipElement.volume = 0.25
       soundClipElement.classList.remove('d-none')
 
       // Generate 4 answer buttons
-      const answerOptions = [...new Set(shuffleArray([...instruments]).slice(0, 3).concat(currentClip))]
-      shuffleArray(answerOptions).forEach((clip) => {
+      const answerOptions = new Set([currentClip])
+      while (answerOptions.size < 4) {
+        const randomClip = instruments[Math.floor(Math.random() * instruments.length)]
+        answerOptions.add(randomClip)
+      }
+
+      const shuffledOptions = shuffleArray([...answerOptions])
+
+      // Shuffle and display the answer options
+      shuffledOptions.forEach((clip) => {
         const button = document.createElement('button')
         button.className = 'btn btn-secondary'
         button.textContent = clip.name
@@ -109,17 +117,17 @@ class MusicGame {
         answerButtons.appendChild(button)
       })
     } else {
-      // Image game mode
-      imageElement.src = `../music_files/images/${currentClip.image}`
-      imageElement.alt = currentClip.name
-      imageElement.classList.remove('d-none')
+        // Image game mode
+        imageElement.src = `../music_files/images/${currentClip.image}`
+        imageElement.alt = currentClip.name
+        imageElement.classList.remove('d-none')
 
-      // Input box
-      inputElement.classList.remove('d-none')
-      inputElement.focus()
+        // Input box
+        inputElement.classList.remove('d-none')
+        inputElement.focus()
+      }
     }
   }
-}
 
 // Helper to shuffle arrays
 const shuffleArray = (array) => {
@@ -131,17 +139,19 @@ const shuffleArray = (array) => {
   return shuffled;
 }
 
-const game = new MusicGame()
+document.addEventListener('DOMContentLoaded', () => {
+  const game = new MusicGame()
 
-document.getElementById('m-start-game').addEventListener('click', () => {
-  document.getElementById('m-start-screen').classList.add('d-none')
-  document.getElementById('music-play').classList.remove('d-none')
-  game.startGame()
-})
+  document.getElementById('m-start-game').addEventListener('click', () => {
+    document.getElementById('m-start-screen').classList.add('d-none')
+    document.getElementById('music-play').classList.remove('d-none')
+    game.startGame()
+  })
 
-document.getElementById('answer-input').addEventListener('keyup', (event) => {
-  if (event.key === 'Enter') {
-    game.handleAnswer(event.target.value)
-    event.target.value = ''
-  }
+  document.getElementById('answer-input').addEventListener('keyup', (event) => {
+    if (event.key === 'Enter') {
+      game.handleAnswer(event.target.value)
+      event.target.value = ''
+    }
+  })
 })
