@@ -97,3 +97,18 @@ function handleFlagClick(selectedFlag, button) {
     btn.disabled = true;
   });
 }
+
+// displays the final result after all questions
+function showFinalResult() {
+  mainContainer.innerHTML = `
+    <section class="text-center">
+      <h2 class="display-6">Quiz Completed!</h2>
+      <h3>You answered correctly ${correctAnswers} out of ${maxQuestions} questions.</h3>
+      <div class="d-flex justify-content-center gap-3 mt-3">
+        <button id="restart-quiz" class="btn btn-primary">Restart Quiz</button>
+        <button id="view-scores" class="btn btn-primary">View All Scores</button>
+      </div>
+    </section>
+  `;
+
+}
