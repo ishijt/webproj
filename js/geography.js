@@ -119,3 +119,15 @@ function showFinalResult() {
     window.location.href = './scores.html';
   });
 }
+
+// restarts the quiz
+function restartQuiz() {
+  questionCount = 0; 
+  correctAnswers = 0; 
+  isAnswered = false;
+
+  resultMessage.textContent = '';
+  resultMessage.style.color = '';
+  resultContainer.classList.add('hidden');
+  location.reload();
+}
