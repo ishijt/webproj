@@ -111,4 +111,11 @@ function showFinalResult() {
     </section>
   `;
 
+  // add event listener for the "Restart Quiz" button
+  document.getElementById('restart-quiz').addEventListener('click', restartQuiz);
+
+  // add event listener for the "View All Scores" button
+  document.getElementById('view-scores').addEventListener('click', () => {
+    window.location.href = './scores.html';
+  });
 }
