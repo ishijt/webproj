@@ -8,7 +8,6 @@ const instruments = [
 
 class MusicGame {
   constructor() {
-    console.log('MusicGame constructor called');
     this.currentStep = 0
     this.score = 0
     this.gameTime = 0
@@ -17,14 +16,13 @@ class MusicGame {
   }
 
   startGame = () => {
-    console.log('Start game called');
+
     this.currentStep = 0
     this.score = 0
     this.gameTime = 0
     this.gameInterval = setInterval(() => this.updateGameTime(), 1000)
 
     this.availableClips = shuffleArray(instruments).slice(0, 5)
-    console.log('Available clips:', this.availableClips);
 
     this.nextStep()
   }
@@ -135,7 +133,6 @@ const shuffleArray = (array) => {
 const game = new MusicGame()
 
 document.getElementById('m-start-game').addEventListener('click', () => {
-  console.log('Start game button clicked');
   document.getElementById('m-start-screen').classList.add('d-none')
   document.getElementById('music-play').classList.remove('d-none')
   game.startGame()
