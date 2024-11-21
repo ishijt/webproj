@@ -1,0 +1,14 @@
+#welcomeCont {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80vh;
+}
+
+#welcome {
+    padding: 30px;
+}
+
+#game {
+    display: none;
+}
