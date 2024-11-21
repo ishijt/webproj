@@ -19,6 +19,7 @@ const maxQuestions = 10;
 async function startQuiz() {
   const countries = await fetchCountries();
   generateQuestion(countries);
+  localStorage.setItem('geoFlagsQuizScores', correctAnswers);
 }
 
 // fetches all countries data from the REST API
@@ -44,7 +45,7 @@ function generateQuestion(countries) {
   correctAnswer = correctCountry.flags.png;
   countryNameElement.textContent = correctCountry.name.common;
 
-  // select 5 random incorrect options
+   // select 5 random incorrect options
   const incorrectCountries = countries
     .filter(country => country.flags.png !== correctAnswer)
     .sort(() => 0.5 - Math.random())
@@ -76,17 +77,19 @@ function handleFlagClick(selectedFlag, button) {
     resultMessage.style.color = 'orange';
     return;
   }
-  isAnswered = true;
+  isAnswered = true; 
 
   // check if the selected flag is correct
   if (selectedFlag === correctAnswer) {
     resultMessage.textContent = 'Correct! Click "Next Question" to continue.';
     resultMessage.style.color = 'green';
-    correctAnswers++;
+    correctAnswers++; 
+    localStorage.setItem('geoFlagsQuizScores', correctAnswers);
   } else {
     resultMessage.textContent = 'Wrong! Click "Next Question" to continue.';
     resultMessage.style.color = 'red';
-    button.style.borderColor = 'red';
+    button.style.borderColor = 'red'; 
+    localStorage.setItem('geoFlagsQuizScores', correctAnswers);
   }
   
   resultContainer.classList.remove('hidden');
@@ -102,9 +105,9 @@ function handleFlagClick(selectedFlag, button) {
 function showFinalResult() {
   mainContainer.innerHTML = `
     <section class="text-center">
-      <h2 class="display-6">Quiz Completed!</h2>
+      <h2>Quiz Completed!</h2>
       <h3>You answered correctly ${correctAnswers} out of ${maxQuestions} questions.</h3>
-      <div class="d-flex justify-content-center gap-3 mt-3">
+      <div class="d-flex justify-content-center gap-2 mt-3">
         <button id="restart-quiz" class="btn btn-primary">Restart Quiz</button>
         <button id="view-scores" class="btn btn-primary">View All Scores</button>
       </div>
@@ -116,7 +119,7 @@ function showFinalResult() {
 
   // add event listener for the "View All Scores" button
   document.getElementById('view-scores').addEventListener('click', () => {
-    window.location.href = './scores.html';
+    window.location.href = './scores.html'; // Redirect to scores.html
   });
 }
 
@@ -124,7 +127,7 @@ function showFinalResult() {
 function restartQuiz() {
   questionCount = 0; 
   correctAnswers = 0; 
-  isAnswered = false;
+  isAnswered = false; 
 
   resultMessage.textContent = '';
   resultMessage.style.color = '';
