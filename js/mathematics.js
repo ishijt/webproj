@@ -1,9 +1,9 @@
 // Muuttujat
-let problems = [];
+let calculations = [];
 let score = 0;
 let gameRunning = false;
 
-const createProblem = () => {
+const createCalculation = () => {
   const num1 = Math.floor(Math.random() * 10) + 1;
   const num2 = Math.floor(Math.random() * 10) + 1;
 
@@ -11,7 +11,7 @@ const createProblem = () => {
   const x = Math.random() * (gameScreen.offsetWidth - 100);
 
   // Luo laskuobjekti
-  const problem = {
+  const calculation = {
     id: Date.now(),
     num1: num1,
     num2: num2,
@@ -21,32 +21,34 @@ const createProblem = () => {
   };
 
   // Aseta laskuelementin ominaisuudet
-  problem.element.className = "problem";
-  problem.element.textContent = `${num1} × ${num2}`;
-  problem.element.style.left = `${x}px`;
-  problem.element.style.top = "0px";
+  calculation.element.className = "calculation";
+  calculation.element.textContent = `${num1} × ${num2}`;
+  calculation.element.style.left = `${x}px`;
+  calculation.element.style.top = "0px";
 
   // Lisää lasku näytölle ja taulukkoon
-  gameScreen.appendChild(problem.element);
-  problems.push(problem);
+  gameScreen.appendChild(calculation.element);
+  calculations.push(calculation);
 };
 
 const checkAnswer = (answer) => {
-  const correctProblem = problems.find((p) => p.num1 * p.num2 === answer);
+  const correctCalculation = calculations.find(
+    (p) => p.num1 * p.num2 === answer,
+  );
 
-  if (correctProblem) {
+  if (correctCalculation) {
     score += 10;
     document.getElementById("score").textContent = `Score: ${score}`;
-    correctProblem.element.remove();
-    problems = problems.filter((p) => p !== correctProblem);
+    correctCalculation.element.remove();
+    calculations = calculations.filter((p) => p !== correctCalculation);
     return true;
   }
   return false;
 };
 
 const startGame = () => {
-  problems.forEach((p) => p.element.remove());
-  problems = [];
+  calculations.forEach((p) => p.element.remove());
+  calculations = [];
   score = 0;
   gameRunning = true;
   document.getElementById("score").textContent = "Score: 0";
@@ -77,7 +79,7 @@ const startGame = () => {
   gameScreen.appendChild(answerForm);
 
   // Luo ensimmäinen lasku
-  createProblem();
+  createCalculation();
 };
 
 const startButton = document.querySelector("#start-screen button");
