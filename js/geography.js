@@ -38,7 +38,10 @@ function generateQuestion(countries) {
 
   isAnswered = false;
   questionCount++;
-  questionNumberElement.textContent=questionCount
+
+  // update the displayed question number and total questions
+  questionNumberElement.textContent = questionCount;
+  document.getElementById('total-questions').textContent = maxQuestions;
 
   // randomly select a correct country
   const correctCountry = countries[Math.floor(Math.random() * countries.length)];
@@ -86,7 +89,7 @@ function handleFlagClick(selectedFlag, button) {
     correctAnswers++; 
     localStorage.setItem('geoFlagsQuizScores', correctAnswers);
   } else {
-    // Append the correct answer to the result message
+    // append the correct answer to the result message
     resultMessage.innerHTML = `
       Wrong! Click "Next Question" to continue.<br>
       <span style="color: green;">Correct Answer: <img src="${correctAnswer}" alt="Correct Flag" style="width: 50px; height: auto;"></span>
