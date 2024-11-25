@@ -86,9 +86,13 @@ function handleFlagClick(selectedFlag, button) {
     correctAnswers++; 
     localStorage.setItem('geoFlagsQuizScores', correctAnswers);
   } else {
-    resultMessage.textContent = 'Wrong! Click "Next Question" to continue.';
+    // Append the correct answer to the result message
+    resultMessage.innerHTML = `
+      Wrong! Click "Next Question" to continue.<br>
+      <span style="color: green;">Correct Answer: <img src="${correctAnswer}" alt="Correct Flag" style="width: 50px; height: auto;"></span>
+    `;
     resultMessage.style.color = 'red';
-    button.style.borderColor = 'red'; 
+    button.style.borderColor = 'red';
     localStorage.setItem('geoFlagsQuizScores', correctAnswers);
   }
   
