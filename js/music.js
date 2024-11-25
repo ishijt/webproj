@@ -65,7 +65,7 @@ class MusicGame {
 
     const gameTypes = ['sound', 'image']
     this.currentMode = gameTypes[Math.floor(Math.random() * gameTypes.length)]
-    this.updateGameUI()
+    this.updateGame()
   }
 
   updateGameTime = () => {
@@ -75,7 +75,7 @@ class MusicGame {
     document.getElementById('m-time').textContent = `Time: ${mins}:${secs < 10 ? '0' : ''}${secs}`
   }
 
-  updateGameUI = () => {
+  updateGame = () => {
     const currentClip = this.availableClips[this.currentStep]
 
     document.getElementById('m-time').textContent = `Time: ${this.gameTime}s`
