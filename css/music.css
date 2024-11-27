@@ -1,0 +1,107 @@
+/* Music game styles */
+
+#music-container {
+    background: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.4);
+    padding: 15px;
+    max-width: 1400px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#active-game-area {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    text-align: center;
+}
+
+#music-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding: 4px;
+}
+
+#music-header div {
+    font-size: 1.3em;
+    font-weight: bold;
+}
+
+#music-screen {
+    text-align: center;
+}
+
+#music-screen h2 {
+    margin-bottom: 30px;
+}
+
+#music-screen p {
+    margin: 20px;
+}
+
+#music-screen img {
+    max-width: 400px;
+    height: auto;
+    border-radius: 10px;
+    margin-top: 10px;
+}
+
+/* Buttons and inputs */
+
+.btn {
+    border-radius: 8px;
+    font-size: 1.25em;
+    padding: 10px 20px;
+    margin: 15px;
+}
+  
+#answer-buttons {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    justify-content: center;
+    width: 100%;
+}
+
+#choice-buttons {
+    flex-direction: column;
+    align-items: center;
+}
+
+#choice-buttons .question {
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+#choice-buttons .button-group {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+#choice-buttons .button-group button {
+    flex: 0 0 auto;
+}
+  
+#answer-buttons .btn {
+    margin: 5px;
+}
+
+#answer-input {
+    width: 50vh;
+    position: relative;
+    align-items: center;
+}
+
+#feedback {
+    position: absolute;
+    height: 20px;
+    max-width: 100%;
+    font-size: 1.35em;
+    font-weight: bold;
+}

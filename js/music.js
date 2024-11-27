@@ -3,7 +3,27 @@ const instruments = [
   { id: 2, name: 'Guitar', file: 'guitar.mp3', image: 'guitar.jpg' },
   { id: 3, name: 'Drums', file: 'drums.mp3', image: 'drums.jpg' },
   { id: 4, name: 'Violin', file: 'violin.mp3', image: 'violin.jpg' },
-  { id: 5, name: 'Trumpet', file: 'trumpet.mp3', image: 'trumpet.jpg' }
+  { id: 5, name: 'Trumpet', file: 'trumpet.mp3', image: 'trumpet.jpg' },
+  { id: 6, name: 'Flute', file: 'flute.mp3', image: 'flute.jpg' },
+  { id: 7, name: 'Saxophone', file: 'saxophone.mp3', image: 'saxophone.jpg' },
+  { id: 8, name: 'Cello', file: 'cello.mp3', image: 'cello.jpg' },
+  { id: 9, name: 'Harp', file: 'harp.mp3', image: 'harp.jpg' },
+  { id: 10, name: 'Banjo', file: 'banjo.mp3', image: 'banjo.jpg' },
+  { id: 11, name: 'Bass', file: 'bassguitar.mp3', image: 'bassguitar.jpg'}
+]
+
+const triviaQuestions = [
+  { question: "The piano is considered a percussion instrument.", answer: true },
+  { question: "The guitar usually has six strings.", answer: true },
+  { question: "A violin is larger than a viola.", answer: false },
+  { question: "The trumpet is a woodwind instrument.", answer: false },
+  { question: "Drums are pitched instruments.", answer: false },
+  { question: "Beethoven was deaf.", answer: true },
+  { question: "The treble clef is also called the G clef.", answer: true },
+  { question: "A standard orchestra has four main sections.", answer: true },
+  { question: "The 'Happy Birthday' song is copyrighted.", answer: false },
+  { question: "Beethoven composed 'Fur Elise.'", answer: true },
+  { question: "Rock music is a well known music genre.", answer: true}
 ]
 
 class MusicGame {
@@ -13,8 +33,6 @@ class MusicGame {
     this.gameTime = 0
     this.gameInterval = null
     this.currentMode = 'sound'
-    this.maxSteps = 5
-    this.defaultVolume = 0.25
   }
 
   startGame = () => {
@@ -23,14 +41,14 @@ class MusicGame {
     this.gameTime = 0
     this.gameInterval = setInterval(() => this.updateGameTime(), 1000)
 
-    this.availableClips = shuffleArray(instruments).slice(0, 5)
+    this.availableClips = shuffleArray(instruments).slice(0, 6)
 
     this.nextStep()
   }
 
   stopGame = () => {
     clearInterval(this.gameInterval)
-    alert(`Game over! Your final score is ${this.score} out of ${instruments.length}.`)
+    alert(`Game over! Your final score is ${this.score} out of ${this.currentStep}.`)
 
     const feedbackElement = document.getElementById('feedback')
     feedbackElement.textContent = ''
@@ -40,10 +58,17 @@ class MusicGame {
   }
 
   handleAnswer = (answer) => {
-    const currentClip = this.availableClips[this.currentStep]
-    const isCorrect = answer.trim().toLowerCase() === currentClip.name.toLowerCase()
+    console.log("Answer received:", answer)
+    let isCorrect
 
-    // Feedback report
+    if (this.currentMode === 'trivia') {
+      const currentQuestion = triviaQuestions[this.currentStep]
+      isCorrect = answer === currentQuestion.answer    
+    } else {
+      const currentClip = this.availableClips[this.currentStep]
+      isCorrect = answer.trim().toLowerCase() === currentClip.name.toLowerCase()
+    }
+
     const feedbackElement = document.getElementById('feedback')
     feedbackElement.textContent = isCorrect ? 'Correct!' : 'Incorrect!'
     feedbackElement.className = isCorrect ? 'text-success' : 'text-danger'
@@ -51,8 +76,10 @@ class MusicGame {
     if (isCorrect) this.score++
     this.currentStep++
 
-    if (this.currentStep < 5) {
-      setTimeout(() => this.nextStep(), 1000)
+    if (this.currentStep < 6) {
+      setTimeout(() => {
+        this.nextStep()
+       }, 1500)
     } else {
       this.stopGame()
     }
@@ -63,7 +90,7 @@ class MusicGame {
     feedbackReset.textContent = ''
     feedbackReset.className = ''
 
-    const gameTypes = ['sound', 'image']
+    const gameTypes = ['sound', 'image', 'trivia']
     this.currentMode = gameTypes[Math.floor(Math.random() * gameTypes.length)]
     this.updateGame()
   }
@@ -76,7 +103,9 @@ class MusicGame {
   }
 
   updateGame = () => {
-    const currentClip = this.availableClips[this.currentStep]
+    const feedbackElement = document.getElementById('feedback')
+    feedbackElement.textContent = ''
+    feedbackElement.className = ''
 
     document.getElementById('m-time').textContent = `Time: ${this.gameTime}s`
     document.getElementById('m-score').textContent = `Score: ${this.score}`
@@ -85,49 +114,104 @@ class MusicGame {
     const answerButtons = document.getElementById('answer-buttons')
     const inputElement = document.getElementById('answer-input')
     const imageElement = document.getElementById('instrument-image')
+    const choiceButtons = document.getElementById('choice-buttons')
 
     // Clear elements
     answerButtons.innerHTML = ''
+    choiceButtons.innerHTML = ''
     inputElement.value = ''
     inputElement.classList.add('d-none')
     imageElement.classList.add('d-none')
     soundClipElement.classList.add('d-none')
 
     if (this.currentMode === 'sound') {
-      // Sound clip game mode
-      soundClipElement.src = `../music_files/sounds/${currentClip.file}`
-      soundClipElement.volume = 0.25
-      soundClipElement.classList.remove('d-none')
-
-      // Generate 4 answer buttons
-      const answerOptions = new Set([currentClip])
-      while (answerOptions.size < 4) {
-        const randomClip = instruments[Math.floor(Math.random() * instruments.length)]
-        answerOptions.add(randomClip)
-      }
-
-      const shuffledOptions = shuffleArray([...answerOptions])
-
-      // Shuffle and display the answer options
-      shuffledOptions.forEach((clip) => {
-        const button = document.createElement('button')
-        button.className = 'btn btn-secondary'
-        button.textContent = clip.name
-        button.addEventListener('click', () => this.handleAnswer(clip.name))
-        answerButtons.appendChild(button)
-      })
+      this.runSoundGame(this.availableClips[this.currentStep])
+      console.log("Sound game activated.")
+    } else if (this.currentMode === 'image') {
+      this.runImageGame(this.availableClips[this.currentStep])
+      console.log("Image game activated.")
     } else {
-        // Image game mode
-        imageElement.src = `../music_files/images/${currentClip.image}`
-        imageElement.alt = currentClip.name
-        imageElement.classList.remove('d-none')
-
-        // Input box
-        inputElement.classList.remove('d-none')
-        inputElement.focus()
-      }
+      this.runTriviaGame()
+      console.log("Trivia game activated.")
     }
   }
+
+  runSoundGame = (currentClip) => {
+    const soundClipElement = document.getElementById('sound-clip')
+    const answerButtons = document.getElementById('answer-buttons')
+    
+    soundClipElement.src = `../music_files/sounds/${currentClip.file}`
+    soundClipElement.volume = 0.25
+    soundClipElement.classList.remove('d-none')
+
+    // Generate 4 answer buttons
+    const answerOptions = new Set([currentClip])
+
+    while (answerOptions.size < 4) {
+      const randomClip = instruments[Math.floor(Math.random() * instruments.length)]
+      answerOptions.add(randomClip)
+    }
+
+    // Shuffle and display the answer options
+    const shuffledOptions = shuffleArray([...answerOptions])
+    shuffledOptions.forEach((clip) => {
+      const button = document.createElement('button')
+      button.className = 'btn btn-secondary'
+      button.textContent = clip.name
+      button.addEventListener('click', () => this.handleAnswer(clip.name))
+      answerButtons.appendChild(button)
+    })
+  }
+
+  runImageGame = (currentClip) => {
+    const imageElement = document.getElementById('instrument-image')
+    const inputElement = document.getElementById('answer-input')
+
+    imageElement.src = `../music_files/images/${currentClip.image}`
+    imageElement.alt = currentClip.name
+    imageElement.classList.remove('d-none')
+
+    // Input box
+    inputElement.classList.remove('d-none')
+    inputElement.focus()
+  }
+
+  runTriviaGame = () => {
+    if (this.currentStep >= triviaQuestions.length) {
+      console.error('No more trivia questions available.')
+      return this.stopGame()
+    }
+
+    const currentQuestion = triviaQuestions[this.currentStep]
+    if (!currentQuestion || !currentQuestion.question) {
+      console.error('Invalid trivia question format:', currentQuestion)
+      return this.stopGame()
+    }
+
+    const answerButtons = document.getElementById('choice-buttons')
+    answerButtons.innerHTML = ''
+
+    const questionElement = document.createElement('div')
+    questionElement.textContent = currentQuestion.question
+    questionElement.className = 'mb-3'
+    answerButtons.appendChild(questionElement)
+
+    const triviaChoices = [
+      { text: 'True', value: true },
+      { text: 'False', value: false }
+    ]
+
+    triviaChoices.forEach((option) => {
+      const button = document.createElement('button')
+      button.className = 'btn btn-secondary'
+      button.textContent = option.text
+
+      button.addEventListener('click', () => {
+        this.handleAnswer(option.value)
+      })
+      answerButtons.appendChild(button)
+  })
+}}
 
 // Helper to shuffle arrays
 const shuffleArray = (array) => {
