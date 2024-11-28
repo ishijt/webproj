@@ -62,3 +62,15 @@ function generateQuestion(countries) {
 
   displayOptions(options);
 }
+
+// displays the capital options
+function displayOptions(options) {
+  optionsContainer.innerHTML = '';
+  options.forEach(option => {
+    const button = document.createElement('button');
+    button.classList.add('btn', 'btn-outline-primary', 'col');
+    button.textContent = option;
+    button.addEventListener('click', () => handleOptionClick(option, button));
+    optionsContainer.appendChild(button);
+  });
+}
