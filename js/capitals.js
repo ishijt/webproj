@@ -104,3 +104,22 @@ function handleOptionClick(selectedOption, button) {
   const allButtons = document.querySelectorAll('#options-container .btn');
   allButtons.forEach(btn => btn.disabled = true);
 }
+
+// displays the final result after all questions
+function showFinalResult() {
+  mainContainer.innerHTML = `
+    <section class="text-center">
+      <h2>Quiz Completed!</h2>
+      <h3>You answered correctly ${correctAnswers} out of ${maxQuestions} questions.</h3>
+      <div class="d-flex justify-content-center gap-2 mt-3">
+        <button id="restart-quiz" class="btn btn-primary">Restart Quiz</button>
+        <button id="view-scores" class="btn btn-primary">View All Scores</button>
+      </div>
+    </section>
+  `;
+
+  document.getElementById('restart-quiz').addEventListener('click', restartQuiz);
+  document.getElementById('view-scores').addEventListener('click', () => {
+    window.location.href = './scores.html';
+  });
+}
