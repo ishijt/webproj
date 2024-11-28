@@ -123,3 +123,20 @@ function showFinalResult() {
     window.location.href = './scores.html';
   });
 }
+
+// restarts the quiz
+function restartQuiz() {
+  location.reload(); // Reload the page to reset
+}
+
+// handles the "Next Question" button click
+nextQuestionButton.addEventListener('click', async () => {
+  resultMessage.textContent = '';
+  resultMessage.style.color = '';
+  resultContainer.classList.add('hidden');
+  const countries = await fetchCountries(); // Re-fetch countries for new question
+  generateQuestion(countries);
+});
+
+// starts the quiz on page load
+startQuiz();
