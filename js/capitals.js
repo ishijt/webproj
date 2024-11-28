@@ -30,3 +30,35 @@ async function fetchCountries() {
   const data = await response.json();
   return data.filter(country => country.capital); // Filter only countries with capitals
 }
+
+// generates a new question
+function generateQuestion(countries) {
+  if (questionCount >= maxQuestions) {
+    showFinalResult();
+    return;
+  }
+
+  isAnswered = false;
+  questionCount++;
+
+  // Update the displayed question number and total questions
+  questionNumberElement.textContent = questionCount;
+  document.getElementById('total-questions').textContent = maxQuestions;
+
+  // Randomly select a correct country
+  const correctCountry = countries[Math.floor(Math.random() * countries.length)];
+  correctAnswer = correctCountry.capital[0];
+  countryNameElement.textContent = correctCountry.name.common;
+
+  // Select 5 random incorrect options
+  const incorrectCountries = countries
+    .filter(country => country.capital && country.capital[0] !== correctAnswer)
+    .sort(() => 0.5 - Math.random())
+    .slice(0, 5);
+
+  // Combine correct and incorrect options and shuffle
+  const options = [...incorrectCountries.map(c => c.capital[0]), correctAnswer]
+    .sort(() => 0.5 - Math.random());
+
+  displayOptions(options);
+}
