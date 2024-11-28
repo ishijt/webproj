@@ -15,6 +15,15 @@ let questionCount = 0;
 let correctAnswers = 0;
 const maxQuestions = 10;
 
+// start the quiz
+async function startQuiz() {
+  const countries = await fetchCountries();
+  questionCount = 0;
+  correctAnswers = 0; 
+  generateQuestion(countries);
+  localStorage.setItem('geoCapitalsQuizScores', correctAnswers);
+}
+
 // fetches all countries data from the REST API
 async function fetchCountries() {
   const response = await fetch(API_URL);
