@@ -74,3 +74,33 @@ function displayOptions(options) {
     optionsContainer.appendChild(button);
   });
 }
+
+// handles the click on a capital option
+function handleOptionClick(selectedOption, button) {
+  if (isAnswered) {
+    resultMessage.textContent = 'You have already answered. Please click "Next Question" to continue.';
+    resultMessage.style.color = 'orange';
+    return;
+  }
+  isAnswered = true;
+
+  if (selectedOption === correctAnswer) {
+    resultMessage.textContent = 'Correct! Click "Next Question" to continue.';
+    resultMessage.style.color = 'green';
+    correctAnswers++;
+    localStorage.setItem('geoCapitalsQuizScores', correctAnswers);
+  } else {
+    // Append the correct answer to the result message
+    resultMessage.innerHTML = `
+      Wrong! Click "Next Question" to continue.<br>
+      <span style="color: green;">Correct Answer: ${correctAnswer}</span>
+    `;
+    resultMessage.style.color = 'red';
+    button.style.borderColor = 'red';
+    localStorage.setItem('geoCapitalsQuizScores', correctAnswers);
+  }
+
+  resultContainer.classList.remove('hidden');
+  const allButtons = document.querySelectorAll('#options-container .btn');
+  allButtons.forEach(btn => btn.disabled = true);
+}
