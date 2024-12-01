@@ -5,10 +5,33 @@
     height: 80vh;
 }
 
-#welcome {
-    padding: 30px;
+.welcome {
+    padding: 20px;
 }
 
 #game {
     display: none;
+}
+
+.game-item {
+    padding: 30px;
+}
+
+#inputArea {
+    margin-top: 70px;
+}
+
+#infoText {
+    padding: 20px;
+}
+
+
+
+
+
+
+
+#nextPicture {
+    display: none;
+    margin-top: 30px;
 }

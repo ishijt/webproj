@@ -6,6 +6,7 @@
     <title>Web-projekti | Peli1</title>
     <link href="../css/style.css" rel="stylesheet" />
     <link href="../css/biology.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.1/font/bootstrap-icons.min.css" rel="stylesheet" />
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
       rel="stylesheet"
@@ -71,21 +72,55 @@
       <!--welcome to the game-->
       <div id="welcomeCont" class="container">
         <div class="row justify-content-center">
-            <div id="welcome" class="col-12 text-center">
-                <h1>Biology - Name the animal</h1>
+            <div class="col-12 text-center welcome">
+                <h1>Biology</h1>
             </div>
-            <div id="welcome" class="col-md-4 text-center">
+            <div class="col-12 text-center welcome">
+                <h2>Name the animal</h2>
+            </div>
+            <div class="col-md-4 text-center welcome">
                 <p>Info text about game. Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum expedita similique minus? Error iure aut earum vel officia totam. Quis mollitia commodi libero rem debitis ipsum, consequuntur distinctio corporis deserunt!</p>
             </div>
-            <div id="welcome" class="col-12 text-center">
-                <button id="startGameButton">Start game</button>
+            <div class="col-12 text-center welcome">
+                <button class="btn btn-primary" id="startGameButton">Start game</button>
             </div>
         </div>
       </div>
+
         
       <!--game-->
       <div id="game" class="container">
-        <p>peli</p>
+        <div class="row justify-content-center">
+            <div class="col-12 text-center game-item">
+                <h1>Name the animal</h1>
+            </div>
+            <div class="col-md-2 game-item">
+            </div>
+            <!--image + hint-->
+            <div class="col-md-4 game-item">
+                <p>Guess the animal</p>
+                <img id="animalImage" src="" alt="Animal Image" width="400" height="400" class="img-fluid">
+                <i class="bi-question-circle"> Hint</i>
+            </div>
+            <!--input area + info text-->
+            <div id="inputArea" class="col-md-4 game-item">
+                <input type="text" id="guessInput" class="form-control" placeholder="Write your answer here">
+                <button class="btn btn-primary mt-3 w-100" id="checkAnswerButton">Answer</button>
+                <p id="infoText">Vastaus oikein/väärin (puuttuu toiminnallisuus). Infotekstiä eläimestä.</p>
+                <button class="btn btn-primary mt-3 w-100" id="nextPicture">Next picture</button>
+
+                <!--<button onclick="fetchAnimalImage()">Fetch New Image</button>
+                <button onclick="showAnimalName()">Show Animal Name</button>
+                <p id="animalName" style="display: none;"></p>
+               <button onclick="checkanswer()" class="btn btn-primary mt-3 w-100" id="checkAnswer">Answer</button>
+                <p id="infoText">Vastaus oikein/väärin (puuttuu toiminnallisuus). Infotekstiä eläimestä.</p>
+            </div>
+            <div id="resultMessage" class="result"></div>
+            <button onclick="loadNextAnimal()">Seuraava Eläin</button>--> 
+
+            <div class="col-md-2 game-item">
+            </div>
+        </div>
       </div>
       
 
