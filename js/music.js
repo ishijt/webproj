@@ -93,23 +93,6 @@ class MusicGame {
     }
   }
 
-  addViewScoresText = () => {
-    const viewScoresElement = document.getElementById('view-scores')
-    const bestScore = localStorage.getItem('musicGameScore')
-
-    if (bestScore) {
-      viewScoresElement.style.display = 'block'
-      viewScoresElement.textContent = 'View Scores'
-
-      if (!viewScoresElement.hasAttribute('data-listener')) {
-        viewScoresElement.addEventListener('click', () => {
-          window.location.href = '../pages/scores.html'
-        })
-        viewScoresElement.setAttribute('data-listener', 'true')
-      }
-    }
-  }
-
   handleAnswer = (answer) => {
     console.log("Answer received:", answer)
     let isCorrect
@@ -129,7 +112,7 @@ class MusicGame {
     if (isCorrect) this.score++
     this.currentStep++
 
-    if (this.currentStep <= 10) {
+    if (this.currentStep < 10) {
       setTimeout(() => {
         this.nextStep()
        }, 2000)
