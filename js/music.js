@@ -9,7 +9,9 @@ const instruments = [
   { id: 8, name: 'Cello', file: 'cello.mp3', image: 'cello.jpg' },
   { id: 9, name: 'Harp', file: 'harp.mp3', image: 'harp.jpg' },
   { id: 10, name: 'Banjo', file: 'banjo.mp3', image: 'banjo.jpg' },
-  { id: 11, name: 'Bass', file: 'bassguitar.mp3', image: 'bassguitar.jpg'}
+  { id: 11, name: 'Bass', file: 'bass.mp3', image: 'bass.jpg'},
+  { id: 12, name: 'Harmonica', file: 'harmonica.mp3', image: 'harmonica.jpg'},
+  { id: 13, name: 'Ukulele', file: 'ukulele.mp3', image: 'ukulele.jpg'},
 ]
 
 const triviaQuestions = [
@@ -19,11 +21,16 @@ const triviaQuestions = [
   { question: "The trumpet is a woodwind instrument.", answer: false },
   { question: "Drums are pitched instruments.", answer: false },
   { question: "Beethoven was deaf.", answer: true },
-  { question: "The treble clef is also called the G clef.", answer: true },
-  { question: "A standard orchestra has four main sections.", answer: true },
   { question: "The 'Happy Birthday' song is copyrighted.", answer: false },
   { question: "Beethoven composed 'Fur Elise.'", answer: true },
-  { question: "Rock music is a well known music genre.", answer: true}
+  { question: "Rock music is a well known music genre.", answer: true},
+  { question: "Mozart was born in Austria.", answer: true},
+  { question: "A kazoo is a type of wind instrument.", answer: true},
+  { question: "The violin usually has five strings.", answer: false},
+  { question: "Jazz music originated in Europe.", answer: false},
+  { question: "Blues music often focuses on themes of happiness and celebration.", answer: false},
+  { question: "Folk music is often about telling stories.", answer: true},
+  { question: "One of the most popular bands of all time is called 'The Beetles'", answer: false},
 ]
 
 class MusicGame {
@@ -33,21 +40,32 @@ class MusicGame {
     this.gameTime = 0
     this.gameInterval = null
     this.currentMode = 'sound'
+    this.usedTriviaQuestions = new Set()
+    this.displayBestScore()
   }
 
   startGame = () => {
     this.currentStep = 0
     this.score = 0
     this.gameTime = 0
+
+    this.usedTriviaQuestions.clear()
     this.gameInterval = setInterval(() => this.updateGameTime(), 1000)
 
-    this.availableClips = shuffleArray(instruments).slice(0, 6)
+    document.getElementById('view-scores').classList.add('hidden')
+
+    this.availableClips = shuffleArray(instruments).slice(0, 10)
+
+    this.displayBestScore()
 
     this.nextStep()
   }
 
   stopGame = () => {
     clearInterval(this.gameInterval)
+    
+    document.getElementById('m-score').textContent = `Score: ${this.score}`
+
     alert(`Game over! Your final score is ${this.score} out of ${this.currentStep}.`)
 
     const feedbackElement = document.getElementById('feedback')
@@ -55,6 +73,41 @@ class MusicGame {
 
     document.getElementById('m-start-screen').classList.remove('d-none')
     document.getElementById('music-play').classList.add('d-none')
+    document.getElementById('view-scores').classList.remove('hidden')
+
+    this.displayBestScore()
+    this.saveScore(this.score)
+  }
+
+  saveScore(score) {
+    const bestScore = localStorage.getItem('musicGameScore')
+    if (!bestScore || score > bestScore) {
+      localStorage.setItem('musicGameScore', score)
+    }
+  }
+
+  displayBestScore = () => {
+    const bestScore = localStorage.getItem('musicGameScore')
+    if (bestScore) {
+      document.getElementById('best-score').textContent = `Best Score: ${bestScore}`
+    }
+  }
+
+  addViewScoresText = () => {
+    const viewScoresElement = document.getElementById('view-scores')
+    const bestScore = localStorage.getItem('musicGameScore')
+
+    if (bestScore) {
+      viewScoresElement.style.display = 'block'
+      viewScoresElement.textContent = 'View Scores'
+
+      if (!viewScoresElement.hasAttribute('data-listener')) {
+        viewScoresElement.addEventListener('click', () => {
+          window.location.href = '../pages/scores.html'
+        })
+        viewScoresElement.setAttribute('data-listener', 'true')
+      }
+    }
   }
 
   handleAnswer = (answer) => {
@@ -62,8 +115,8 @@ class MusicGame {
     let isCorrect
 
     if (this.currentMode === 'trivia') {
-      const currentQuestion = triviaQuestions[this.currentStep]
-      isCorrect = answer === currentQuestion.answer    
+      const currentQuestion = triviaQuestions[this.currentTriviaIndex]
+      isCorrect = answer === currentQuestion.answer
     } else {
       const currentClip = this.availableClips[this.currentStep]
       isCorrect = answer.trim().toLowerCase() === currentClip.name.toLowerCase()
@@ -76,10 +129,10 @@ class MusicGame {
     if (isCorrect) this.score++
     this.currentStep++
 
-    if (this.currentStep < 6) {
+    if (this.currentStep <= 10) {
       setTimeout(() => {
         this.nextStep()
-       }, 1500)
+       }, 2000)
     } else {
       this.stopGame()
     }
@@ -90,7 +143,18 @@ class MusicGame {
     feedbackReset.textContent = ''
     feedbackReset.className = ''
 
-    const gameTypes = ['sound', 'image', 'trivia']
+    const gameTypes = ['sound', 'image', 'trivia'].filter(mode => {
+      if (mode === 'sound' && this.currentStep < this.availableClips.length) return true
+      if (mode === 'image' && this.currentStep < this.availableClips.length) return true
+      if (mode === 'trivia' && this.usedTriviaQuestions.size < triviaQuestions.length) return true
+      return false
+    })
+
+    // Backup game stopper (if no questions left for some reason, stop game)
+    if (gameTypes.length === 0) {
+      return this.stopGame()
+    }
+
     this.currentMode = gameTypes[Math.floor(Math.random() * gameTypes.length)]
     this.updateGame()
   }
@@ -107,7 +171,7 @@ class MusicGame {
     feedbackElement.textContent = ''
     feedbackElement.className = ''
 
-    document.getElementById('m-time').textContent = `Time: ${this.gameTime}s`
+    document.getElementById('m-time').textContent = `Time: 0:${this.gameTime}`
     document.getElementById('m-score').textContent = `Score: ${this.score}`
 
     const soundClipElement = document.getElementById('sound-clip')
@@ -116,7 +180,7 @@ class MusicGame {
     const imageElement = document.getElementById('instrument-image')
     const choiceButtons = document.getElementById('choice-buttons')
 
-    // Clear elements
+    // Clearing elements
     answerButtons.innerHTML = ''
     choiceButtons.innerHTML = ''
     inputElement.value = ''
@@ -126,13 +190,10 @@ class MusicGame {
 
     if (this.currentMode === 'sound') {
       this.runSoundGame(this.availableClips[this.currentStep])
-      console.log("Sound game activated.")
     } else if (this.currentMode === 'image') {
       this.runImageGame(this.availableClips[this.currentStep])
-      console.log("Image game activated.")
     } else {
       this.runTriviaGame()
-      console.log("Trivia game activated.")
     }
   }
 
@@ -177,16 +238,22 @@ class MusicGame {
   }
 
   runTriviaGame = () => {
-    if (this.currentStep >= triviaQuestions.length) {
-      console.error('No more trivia questions available.')
-      return this.stopGame()
+    const availableQuestions = triviaQuestions.filter((_, index) => {
+      !this.usedTriviaQuestions.has(index)
+    })
+
+    // Uses another game mode if questions from one are out
+    if (availableQuestions.length === 0) {
+      this.nextStep()
+      return
     }
 
-    const currentQuestion = triviaQuestions[this.currentStep]
-    if (!currentQuestion || !currentQuestion.question) {
-      console.error('Invalid trivia question format:', currentQuestion)
-      return this.stopGame()
-    }
+    const randomIndex = Math.floor(Math.random() * availableQuestions.length)
+    const currentQuestion = availableQuestions[randomIndex]
+
+    this.currentTriviaIndex = triviaQuestions.indexOf(currentQuestion)
+
+    this.usedTriviaQuestions.add(this.currentTriviaIndex)
 
     const answerButtons = document.getElementById('choice-buttons')
     answerButtons.innerHTML = ''

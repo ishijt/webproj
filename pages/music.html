@@ -16,7 +16,7 @@
   <body class="d-flex flex-column h-100">
     <div class="container-fluid flex-shrink-0">
       <header class="d-flex justify-content-center align-items-center">
-        <h1>Peli2</h1>
+        <h1>Music Game</h1>
       </header>
       <nav class="navbar navbar-expand-lg bg-body-tertiary">
         <div class="container-fluid">
@@ -43,10 +43,10 @@
                 >
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">Jotain</a>
+                <a class="nav-link" href="../pages/info.html">Info</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">Info</a>
+                <a class="nav-link" href="../pages/scores.html">Scores</a>
               </li>
               <li class="nav-item dropdown">
                 <a
@@ -86,12 +86,14 @@
           <div id="music-container">
             <div id="music-header">
               <div id="m-score">Score: 0</div>
-              <div id="m-time">Time: 0s</div>
+              <div id="best-score"></div>
+              <div id="m-time">Time: 0:00</div>
             </div>
             <div id="music-screen">
               <div id="m-start-screen">
                 <h2>Music Game</h2>
-                <p>Try to identify the instruments from the sound clips or images!</p>
+                <p>Identify instruments from  sound clips or images, 
+                  and answer trivia questions correctly!</p>
                 <p>Click "Start Game" to begin.</p>
                 <button id="m-start-game" class="btn btn-primary">Start Game</button>
               </div>
@@ -112,8 +114,11 @@
                     </div>
                   </div>
                 </div>
-                <div id="feedback" class="mt-3"></div>
+                <div id="feedback" class="feedback-box d-none"></div>
               </div>
+            </div>
+            <div id="music-footer">
+              <p id="view-scores" style="display: none; cursor: pointer; text-decoration: none;"></p>
             </div>
           </div>
         </div>
