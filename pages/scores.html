@@ -24,65 +24,53 @@
         class="d-flex justify-content-center align-items-center header-image"
       ></header>
 
-      <!-- Navigation -->
-      <nav class="navbar navbar-expand-lg bg-body-tertiary">
-        <div class="container-fluid">
-          <button
-            class="navbar-toggler"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#navbarNavDropdown"
-            aria-controls="navbarNavDropdown"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-          >
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarNavDropdown">
-            <ul class="navbar-nav">
-              <li class="nav-item">
-                <a class="nav-link" href="../index.html">Homepage</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="./info.html">Info</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link active" href="./scores.html">Scores</a>
-              </li>
-              <li class="nav-item dropdown">
-                <a
-                  class="nav-link dropdown-toggle"
-                  href="../games.html"
-                  role="button"
-                  data-bs-toggle="dropdown"
-                  aria-expanded="true"
-                >
-                  Games
-                </a>
-                <ul class="dropdown-menu">
-                  <li>
-                    <a class="dropdown-item" href="./geography.html"
-                      >Geography</a
-                    >
-                  </li>
-                  <li>
-                    <a class="dropdown-item" href="./music.html">Music</a>
-                  </li>
-                  <li>
-                    <a class="dropdown-item" href="./peli3.html">English</a>
-                  </li>
-                  <li>
-                    <a class="dropdown-item" href="./peli4.html">Biology</a>
-                  </li>
-                  <li>
-                    <a class="dropdown-item" href="./peli5.html">Mathematics</a>
-                  </li>
-                </ul>
-              </li>
-            </ul>
-          </div>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+      <div class="container-fluid">
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNavDropdown"
+          aria-controls="navbarNavDropdown"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link" href="../index.html">Homepage</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="./info.html">Info</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="./scores.html">Scores</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="true"
+              >
+                Games
+              </a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="./geography.html">Geography</a></li>
+                <li><a class="dropdown-item" href="./peli2.html">Music</a></li>
+                <li><a class="dropdown-item" href="./peli3.html">English</a></li>
+                <li><a class="dropdown-item" href="./peli4.html">Biology</a></li>
+                <li><a class="dropdown-item" href="./peli5.html">Mathematics</a></li>
+              </ul>
+            </li>
+          </ul>
         </div>
-      </nav>
+      </div>
+    </nav>
 
       <!-- Scores Content -->
       <main class="container-fluid my-4">
@@ -93,9 +81,9 @@
         <div class="row justify-content-center gy-4">
           <h2 id="total-scores" class="mt-5 mb-4 text-center text-dark"></h2>
 
-          <!-- Geography Section -->
-          <section class="col-md-2">
-            <h3>Geography</h3>
+      <!-- Geography Section -->
+      <section class="col-12 col-sm-6 col-md-4 col-lg-2">
+        <h3>Geography</h3>
             <ul id="geography-scores" class="list-group w-auto">
               <li class="list-group-item d-flex align-items-center gap-1">
                 <span class="text-label">Flags:</span>
@@ -111,19 +99,12 @@
                   <span>/ 10</span>
                 </div>
               </li>
-              <li class="list-group-item d-flex align-items-center gap-1">
-                <span class="text-label">Landmarks:</span>
-                <div>
-                  <span id="geo-landmarks">-</span>
-                  <span>/ 10</span>
-                </div>
-              </li>
             </ul>
-          </section>
-
-          <!-- Music Section -->
-          <section class="col-md-2">
-            <h3>Music</h3>
+      </section>
+      
+      <!-- Music Section -->
+      <section class="col-12 col-sm-6 col-md-4 col-lg-2">
+        <h3>Music</h3>
             <ul id="music-scores" class="list-group w-auto">
               <li class="list-group-item d-flex align-items-center gap-1">
                 <span class="text-label">Music Game:</span>
@@ -133,11 +114,11 @@
                 </div>
               </li>
             </ul>
-          </section>
-
-          <!-- English Section -->
-          <section class="col-md-2">
-            <h3>English</h3>
+      </section>
+      
+      <!-- English Section -->
+      <section class="col-12 col-sm-6 col-md-4 col-lg-2">
+        <h3>English</h3>
             <ul id="english-scores" class="list-group w-auto">
               <li class="list-group-item d-flex align-items-center gap-1">
                 <span class="text-label">Game 1:</span>
@@ -163,9 +144,9 @@
             </ul>
           </section>
 
-          <!-- Biology Section -->
-          <section class="col-md-2">
-            <h3>Biology</h3>
+      <!-- Biology Section -->
+      <section class="col-12 col-sm-6 col-md-4 col-lg-2">
+        <h3>Biology</h3>
             <ul id="biology-scores" class="list-group w-auto">
               <li class="list-group-item d-flex align-items-center gap-1">
                 <span class="text-label">Game 1:</span>
@@ -191,9 +172,9 @@
             </ul>
           </section>
 
-          <!-- Mathematics Section -->
-          <section class="col-md-2">
-            <h3>Mathematics</h3>
+      <!-- Mathematics Section -->
+      <section class="col-12 col-sm-6 col-md-4 col-lg-2">
+        <h3>Mathematics</h3>
             <ul id="mathematics-scores" class="list-group w-auto">
               <li class="list-group-item d-flex align-items-center gap-1">
                 <span class="text-label">Multiplication:</span>
