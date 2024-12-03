@@ -1,7 +1,7 @@
 /* Math game styles */
-
 #game-container {
-  width: 900px;
+  width: 100%;
+  max-width: 900px;
   background-color: #5c809a;
   padding: 10px;
   margin: 0 auto;
@@ -21,21 +21,22 @@
 
 #game-screen {
   width: 100%;
-  height: 500px;
+  height: 550px;
   position: relative;
   background: #ffffff;
   overflow: hidden;
-  border-bottom-left-radius: 10px;
-  border-bottom-right-radius: 10px;
+  border: transparent;
+  border-radius: 10px;
+  /* border-bottom-left-radius: 10px; */
+  /* border-bottom-right-radius: 10px; */
 }
 
 .calculation {
   position: absolute;
-  background: white;
+  background-color: #f47f7b;
   padding: 5px 20px;
   font-size: 24px;
   font-family: Baloo;
-  background-color: #f47f7b;
   border-radius: 5%;
 }
 
@@ -52,9 +53,8 @@
 }
 
 #answer-input {
-  padding: 8px;
-  text-align: center;
   padding: 8px 20px;
+  text-align: center;
   font-size: 1.4rem !important;
   background: #ffffff !important;
   font-family: Baloo !important;
@@ -62,23 +62,7 @@
   border: none !important;
   border-radius: 10px !important;
   height: 50px;
-  width: 15%;
-}
-
-#answer-input:focus {
-  outline: none;
-}
-
-#answer-input::-webkit-inner-spin-button,
-#answer-input::-webkit-outer-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
-}
-
-#answer-input {
-  -webkit-appearance: textfield;
-  -moz-appearance: textfield;
-  appearance: textfield;
+  width: 120px;
 }
 
 #start-button {
@@ -91,7 +75,8 @@
   border: none !important;
   border-radius: 20px !important;
   height: 70px;
-  width: 20%;
+  width: auto;
+  min-width: 150px;
 }
 
 #start-button:hover {
@@ -109,7 +94,7 @@
   border: none !important;
   border-radius: 10px !important;
   height: 50px;
-  width: 15%;
+  width: 120px;
 }
 
 #answer-button:hover {
@@ -129,11 +114,13 @@
   justify-content: center;
   gap: 20px;
   background-color: #ffffff;
+  padding: 20px;
 }
 
 #start-screen p {
   font-size: 18px;
   color: #333333;
+  text-align: center;
 }
 
 #score {
@@ -142,7 +129,6 @@
 }
 
 /* Game Over modal */
-
 .modal {
   display: none;
   position: fixed;
@@ -161,8 +147,9 @@
   padding: 2rem;
   border-radius: 0.5rem;
   text-align: center;
-  max-width: 20%;
-  width: 400px;
+  width: 90%;
+  max-width: 400px;
+  margin: 0 auto;
 }
 
 .modal-title {
@@ -185,10 +172,105 @@
   border-radius: 1rem;
   border: none;
   cursor: pointer;
+  width: auto;
+  min-width: 120px;
 }
 
 .modal-button:hover {
   background-color: #f47f7b !important;
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+  #game-screen {
+    height: 450px;
+  }
+
+  .calculation {
+    font-size: 20px;
+    padding: 4px 16px;
+  }
+
+  #answer-input,
+  #answer-button {
+    width: 100px;
+    font-size: 1.2rem !important;
+    padding: 8px 12px;
+  }
+
+  #start-button {
+    font-size: 1.3rem !important;
+    height: 60px;
+    min-width: 130px;
+  }
+
+  #start-screen p {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  #game-screen {
+    height: 500px;
+  }
+
+  #game-container {
+    padding: 5px;
+  }
+
+  .calculation {
+    font-size: 18px;
+    padding: 3px 12px;
+  }
+
+  #answer-form {
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+    gap: 8px;
+  }
+
+  #answer-input,
+  #answer-button {
+    width: 80%;
+    max-width: 200px;
+    font-size: 1.1rem !important;
+  }
+
+  #start-button {
+    width: 80%;
+    font-size: 1.2rem !important;
+    height: 50px;
+  }
+
+  #start-screen p {
+    font-size: 14px;
+  }
+
+  .modal-content {
+    padding: 1.5rem;
+  }
+
+  .modal-button {
+    font-size: 1.2em;
+    padding: 0.4rem 0.8rem;
+  }
+}
+
+#answer-input:focus {
+  outline: none;
+}
+
+#answer-input::-webkit-inner-spin-button,
+#answer-input::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+#answer-input {
+  -webkit-appearance: textfield;
+  -moz-appearance: textfield;
+  appearance: textfield;
 }
 
 /* Common styles for common pages */
