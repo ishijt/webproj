@@ -36,8 +36,6 @@
   font-size: 24px;
   font-family: Baloo;
   background-color: #f47f7b;
-  border: solid;
-  border-color: #5c809a;
   border-radius: 5%;
 }
 
@@ -191,7 +189,7 @@
 }
 
 .modal-button:hover {
-  background-color: #2563eb;
+  background-color: #f47f7b !important;
 }
 
 /* Common styles for common pages */

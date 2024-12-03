@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>SchoolQuizZone | Mathematics</title>
+    <title>Mathematics</title>
     <link
       href="https://fonts.googleapis.com/css2?family=Baloo&display=swap"
       rel="stylesheet"
@@ -21,9 +21,9 @@
       <!-- Header -->
       <header
         class="d-flex justify-content-center align-items-center header-image"
-      ></header>
-
-      <!-- Navigation -->
+      >
+        <h1>Mathematics</h1>
+      </header>
       <nav class="navbar navbar-expand-lg bg-body-tertiary">
         <div class="container-fluid">
           <button
@@ -43,7 +43,7 @@
                 <a class="nav-link" href="../index.html">Homepage</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="./info.html">Info</a>
+                <a class="nav-link" href="#">Info</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="./scores.html">Scores</a>
@@ -51,30 +51,24 @@
               <li class="nav-item dropdown">
                 <a
                   class="nav-link dropdown-toggle active"
-                  href="../games.html"
+                  href="#"
                   role="button"
                   data-bs-toggle="dropdown"
-                  aria-expanded="true"
+                  aria-expanded="false"
                 >
                   Games
                 </a>
                 <ul class="dropdown-menu">
                   <li>
-                    <a class="dropdown-item" href="./geography.html"
-                      >Geography</a
-                    >
+                    <a class="dropdown-item" href="./geography.html">Irina</a>
                   </li>
                   <li>
-                    <a class="dropdown-item" href="./music.html">Music</a>
+                    <a class="dropdown-item" href="./music.html">Ilari</a>
                   </li>
+                  <li><a class="dropdown-item" href="peli3.html">Heini</a></li>
+                  <li><a class="dropdown-item" href="peli4.html">Daniel</a></li>
                   <li>
-                    <a class="dropdown-item" href="./peli3.html">Biology</a>
-                  </li>
-                  <li>
-                    <a class="dropdown-item" href="./peli4.html">English</a>
-                  </li>
-                  <li>
-                    <a class="dropdown-item active" href="./mathematics.html"
+                    <a class="dropdown-item" href="./mathematics.html"
                       >Mathematics</a
                     >
                   </li>
@@ -84,28 +78,27 @@
           </div>
         </div>
       </nav>
-      <!-- Content -->
-      <main class="container my-4">
-        <section class="text-center my-5">
-          <h1 class="mb-4 text-center">Geography</h1>
-        </section>
-
-        <div class="row text-center">
-          <div class="col-md-4">
-            <a href="./multiplication.html" class="btn btn-primary topic-button"
-              >Multiplication</a
-            >
-          </div>
-          <div class="col-md-4">
-            <a href="#" class="btn btn-primary topic-button">Addition</a>
-          </div>
-          <div class="col-md-4">
-            <a href="#" class="btn btn-primary topic-button">Subtraction</a>
+      <!-- Game -->
+      <div class="row mt-4 justify-content-center">
+        <div class="col-md-12">
+          <div id="game-container">
+            <div id="game-header">
+              <div id="score">Score: 0</div>
+            </div>
+            <div id="game-screen">
+              <div id="start-screen">
+                <h2>Header</h2>
+                <p>Info text</p>
+                <p>Another info text</p>
+                <button class="btn btn-primary" id="start-button">
+                  Start Game
+                </button>
+              </div>
+            </div>
           </div>
         </div>
-      </main>
+      </div>
     </div>
-
     <!-- Footer -->
     <footer class="footer mt-auto py-3 text-center custom-footer">
       <div class="container">
@@ -113,6 +106,7 @@
       </div>
     </footer>
 
+    <script src="../js/mathematics.js"></script>
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"

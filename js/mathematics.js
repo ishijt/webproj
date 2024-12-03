@@ -4,7 +4,17 @@ let gameRunning = false;
 let animationId;
 let lastTime = 0;
 let totalCalculations = 0;
-const CALCULATION_LIMIT = 5;
+const CALCULATION_LIMIT = 1;
+
+const saveScore = (score) => {
+  // Save score directly as it's already out of 20
+  localStorage.setItem("mathGame1Scores", score);
+};
+
+const getHighScores = () => {
+  const score = localStorage.getItem("mathGame1Scores");
+  return score === null ? "No Data" : score;
+};
 
 const createCalculation = () => {
   if (totalCalculations >= CALCULATION_LIMIT) {
@@ -35,7 +45,6 @@ const createCalculation = () => {
   calculations.push(calculation);
 };
 
-// Enter to refresh
 const handleModalKeydown = (event) => {
   if (event.key === "Enter") {
     location.reload();
@@ -45,10 +54,9 @@ const handleModalKeydown = (event) => {
 const showGameOverModal = () => {
   const modal = document.getElementById("game-over-modal");
   const finalScore = modal.querySelector(".modal-score-value");
-  finalScore.textContent = score;
+  finalScore.textContent = `${score}/20`;
   modal.style.display = "flex";
 
-  // Enter to refresh
   document.addEventListener("keydown", handleModalKeydown);
 };
 
@@ -62,6 +70,8 @@ const endGame = () => {
   calculations.forEach((c) => c.element.remove());
   calculations = [];
 
+  // Save score before showing modal
+  saveScore(score);
   showGameOverModal();
 };
 
@@ -151,7 +161,6 @@ const startGame = () => {
     }
   }, 3000);
 
-  // Enter to refresh
   document.removeEventListener("keydown", handleModalKeydown);
 };
 
@@ -162,7 +171,7 @@ document.addEventListener("DOMContentLoaded", () => {
     <div id="game-over-modal" class="modal">
       <div class="modal-content">
         <h2 class="modal-title">Game Over!</h2>
-        <p class="modal-score">Final Score: <span class="modal-score-value">0</span>/20</p>
+        <p class="modal-score">Final Score: <span class="modal-score-value">0/20</span></p>
         <button onclick="location.reload()" class="modal-button">Return</button>
       </div>
     </div>
