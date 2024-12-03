@@ -180,7 +180,7 @@
   background-color: #f47f7b !important;
 }
 
-/* Media Queries for Game */
+/* Media Queries */
 @media (max-width: 768px) {
   #game-screen {
     height: 450px;
