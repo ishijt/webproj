@@ -24,8 +24,8 @@ body {
 }
 
 h1 {
-  font-family: 'Baloo', sans-serif;
-  color: #5C809A !important;
+  font-family: "Baloo", sans-serif;
+  color: #5c809a !important;
 }
 
 h2, h3 {
@@ -44,7 +44,9 @@ h2, h3 {
   font-family: 'Baloo', sans-serif;
   text-transform: uppercase;
   text-align: center;
-  transition: color 0.3s ease, background-color 0.3s ease;
+  transition:
+    color 0.3s ease,
+    background-color 0.3s ease;
   padding: 0.5rem 1rem;
 }
 
@@ -75,7 +77,7 @@ h2, h3 {
 /* Topic buttons */
 .topic-button {
   font-size: 2.5rem !important;
-  font-family: 'Baloo', sans-serif !important;
+  font-family: "Baloo", sans-serif !important;
   height: 150px;
   line-height: 150px;
   border-radius: 30px !important;
@@ -146,7 +148,7 @@ button {
 
 #next-question {
   font-size: 1.5rem !important;
-  font-family: 'Baloo', sans-serif !important;
+  font-family: "Baloo", sans-serif !important;
   height: 50px;
   line-height: 50px;
   border-radius: 15px !important;
@@ -164,14 +166,14 @@ button {
   vertical-align: middle;
   background-color: #f7d371 !important;
   color: #ffffff;
-  text-decoration: none; 
+  text-decoration: none;
   transition: background-color 0.3s ease;
 }
 
 #restart-quiz,
 #view-scores {
   font-size: 1.5rem !important;
-  font-family: 'Baloo', sans-serif !important;
+  font-family: "Baloo", sans-serif !important;
   height: 50px;
   line-height: 50px;
   border-radius: 15px !important;
@@ -193,15 +195,17 @@ button {
   transition: background-color 0.3s ease;
 }
 
-#next-question:hover, #restart-quiz:hover,
+#next-question:hover,
+#restart-quiz:hover,
 #view-scores:hover {
   background-color: #f47f7b !important;
 }
 
 /* Footer */
 .custom-footer {
-  background-color: #5C809A;
+  background-color: #5c809a;
   color: #ffffff;
-  font-family: 'Baloo', sans-serif;
+  font-family: "Baloo", sans-serif;
   text-transform: uppercase;
 }
+

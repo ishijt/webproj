@@ -24,10 +24,8 @@ function loadScores() {
     document.getElementById('geo-flags').textContent = getVarFromLocalStorage('geoFlagsQuizScores');
     document.getElementById('geo-capitals').textContent = getVarFromLocalStorage('geoCapitalsQuizScores');
   
-    // populate data for Music
-    document.getElementById('music-game1').textContent = getVarFromLocalStorage('musicGame1Scores');
-    document.getElementById('music-game2').textContent = getVarFromLocalStorage('musicGame2Scores');
-    document.getElementById('music-game3').textContent = getVarFromLocalStorage('musicGame3Scores');
+    // // populate data for Music
+    document.getElementById('music-game').textContent = getVarFromLocalStorage('musicGameScore');
   
     // populate data for English
     document.getElementById('english-game1').textContent = getVarFromLocalStorage('englishGame1Scores');
@@ -47,9 +45,7 @@ function loadScores() {
     let totalScores = 
     +getScoresFromGame('geoFlagsQuizScores') + 
     +getScoresFromGame('geoCapitalsQuizScores') + 
-    +getScoresFromGame('musicGame1Scores') + 
-    +getScoresFromGame('musicGame2Scores') + 
-    +getScoresFromGame('musicGame3Scores') + 
+    +getScoresFromGame('musicGameScore') + 
     +getScoresFromGame('englishGame1Scores') + 
     +getScoresFromGame('englishGame2Scores') + 
     +getScoresFromGame('englishGame3Scores') + 
