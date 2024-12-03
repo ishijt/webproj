@@ -4,7 +4,7 @@ let gameRunning = false;
 let animationId;
 let lastTime = 0;
 let totalCalculations = 0;
-const CALCULATION_LIMIT = 1;
+const CALCULATION_LIMIT = 20;
 
 const saveScore = (score) => {
   // Save score directly as it's already out of 20
