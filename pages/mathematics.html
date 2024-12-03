@@ -3,7 +3,11 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Mathematics</title>
+    <title>School Quiz | Mathematics</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Baloo&display=swap"
+      rel="stylesheet"
+    />
     <link href="../css/mathematics.css" rel="stylesheet" />
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
@@ -15,12 +19,13 @@
   <body class="d-flex flex-column h-100">
     <div class="container-fluid flex-shrink-0">
       <!-- Header -->
-      <header class="d-flex justify-content-center align-items-center">
+      <header
+        class="d-flex justify-content-center align-items-center header-image"
+      >
         <h1>Mathematics</h1>
       </header>
       <nav class="navbar navbar-expand-lg bg-body-tertiary">
         <div class="container-fluid">
-          <a class="navbar-brand" href="#">Navbar</a>
           <button
             class="navbar-toggler"
             type="button"
@@ -35,13 +40,13 @@
           <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav">
               <li class="nav-item">
-                <a class="nav-link" href="../index.html">Etusivu</a>
+                <a class="nav-link" href="./index.html">Homepage</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">Jotain</a>
+                <a class="nav-link" href="./info.html">Info</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">Info</a>
+                <a class="nav-link" href="./scores.html">Scores</a>
               </li>
               <li class="nav-item dropdown">
                 <a
@@ -54,12 +59,27 @@
                   Pelit
                 </a>
                 <ul class="dropdown-menu">
-                  <li><a class="dropdown-item" href="peli1.html">Irina</a></li>
-                  <li><a class="dropdown-item" href="peli2.html">Ilari</a></li>
-                  <li><a class="dropdown-item" href="peli3.html">Heini</a></li>
-                  <li><a class="dropdown-item" href="peli4.html">Daniel</a></li>
                   <li>
-                    <a class="dropdown-item" href="peli5.html">Mathematics</a>
+                    <a class="dropdown-item" href="./geography.html"
+                      >Geography</a
+                    >
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="./music.html">Music</a>
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="./peli3.html">Biology</a>
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="./peli4.html">English</a>
+                  </li>
+                  <li>
+                    <a
+                      class="dropdown-item active"
+                      href="./mathematics.html"
+                      aria-current="page"
+                      >Mathematics</a
+                    >
                   </li>
                 </ul>
               </li>
@@ -76,10 +96,12 @@
             </div>
             <div id="game-screen">
               <div id="start-screen">
-                <h2>Header</h2>
+                <h2>Mathematics</h2>
                 <p>Info text</p>
                 <p>Another info text</p>
-                <button class="btn btn-primary">Start Game</button>
+                <button class="btn btn-primary" id="start-button">
+                  Start Game
+                </button>
               </div>
             </div>
           </div>
@@ -87,13 +109,9 @@
       </div>
     </div>
     <!-- Footer -->
-    <footer class="footer mt-auto py-3">
-      <div class="container-fluid">
-        <div class="row">
-          <p class="col-md-4">Footer area 1</p>
-          <p class="col-md-4">Footer area 2</p>
-          <p class="col-md-4">Footer area 3</p>
-        </div>
+    <footer class="footer mt-auto py-3 text-center custom-footer">
+      <div class="container">
+        <span>TIK24KM Web-projekti | Ryhmä 20</span>
       </div>
     </footer>
     <script src="../js/mathematics.js"></script>
