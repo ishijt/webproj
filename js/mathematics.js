@@ -4,10 +4,10 @@ let gameRunning = false;
 let animationId;
 let lastTime = 0;
 let totalCalculations = 0;
+let answeredOrMissedCalculations = 0;
 const CALCULATION_LIMIT = 20;
 
 const saveScore = (score) => {
-  // Save score directly as it's already out of 20
   localStorage.setItem("mathGame1Scores", score);
 };
 
@@ -18,7 +18,6 @@ const getHighScores = () => {
 
 const createCalculation = () => {
   if (totalCalculations >= CALCULATION_LIMIT) {
-    endGame();
     return;
   }
 
@@ -36,6 +35,7 @@ const createCalculation = () => {
     y: 0,
     element: document.createElement("div"),
     missed: false,
+    answered: false,
   };
   calculation.element.className = "calculation";
   calculation.element.textContent = `${num1} × ${num2}`;
@@ -60,6 +60,12 @@ const showGameOverModal = () => {
   document.addEventListener("keydown", handleModalKeydown);
 };
 
+const checkGameEnd = () => {
+  if (answeredOrMissedCalculations >= CALCULATION_LIMIT) {
+    endGame();
+  }
+};
+
 const endGame = () => {
   gameRunning = false;
   cancelAnimationFrame(animationId);
@@ -70,7 +76,6 @@ const endGame = () => {
   calculations.forEach((c) => c.element.remove());
   calculations = [];
 
-  // Save score before showing modal
   saveScore(score);
   showGameOverModal();
 };
@@ -81,13 +86,16 @@ const updateGame = (timestamp) => {
 
   if (deltaTime >= 20) {
     calculations.forEach((calculation, index) => {
+      if (calculation.answered) return;
+
       calculation.y += 0.9;
       calculation.element.style.top = `${calculation.y}px`;
+
       if (calculation.y > gameScreen.offsetHeight - 135) {
-        if (!calculation.missed) {
+        if (!calculation.missed && !calculation.answered) {
           calculation.missed = true;
-          score -= 1;
-          document.getElementById("score").textContent = `Score: ${score}`;
+          answeredOrMissedCalculations++;
+          checkGameEnd();
         }
         calculation.element.remove();
         calculations.splice(index, 1);
@@ -103,13 +111,17 @@ const updateGame = (timestamp) => {
 
 const checkAnswer = (answer) => {
   const correctCalculation = calculations.find(
-    (c) => c.num1 * c.num2 === answer,
+    (c) => c.num1 * c.num2 === answer && !c.answered && !c.missed,
   );
+
   if (correctCalculation) {
     score += 1;
     document.getElementById("score").textContent = `Score: ${score}`;
     correctCalculation.element.remove();
+    correctCalculation.answered = true;
+    answeredOrMissedCalculations++;
     calculations = calculations.filter((c) => c !== correctCalculation);
+    checkGameEnd();
     return true;
   }
   return false;
@@ -120,6 +132,7 @@ const startGame = () => {
   calculations = [];
   score = 0;
   totalCalculations = 0;
+  answeredOrMissedCalculations = 0;
   gameRunning = true;
 
   document.getElementById("score").textContent = "Score: 0";
