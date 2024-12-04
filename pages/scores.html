@@ -1,25 +1,28 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en" class="h-100">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Scores</title>
-  <link href="https://fonts.googleapis.com/css2?family=Baloo&display=swap" rel="stylesheet">
-  <link href="../css/style.css" rel="stylesheet" />
-  <link
-    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
-    rel="stylesheet"
-    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
-    crossorigin="anonymous"
-  />
-</head>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Scores</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Baloo&display=swap"
+      rel="stylesheet"
+    />
+    <link href="../css/style.css" rel="stylesheet" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous"
+    />
+  </head>
 
-<body class="d-flex flex-column h-100">
-  <div class="container-fluid flex-shrink-0">
-    <!-- Header -->
-    <header 
-      class="d-flex justify-content-center align-items-center header-image">
-    </header>
+  <body class="d-flex flex-column h-100">
+    <div class="container-fluid flex-shrink-0">
+      <!-- Header -->
+      <header
+        class="d-flex justify-content-center align-items-center header-image"
+      ></header>
 
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
@@ -47,7 +50,13 @@
               <a class="nav-link active" href="./scores.html">Scores</a>
             </li>
             <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="../games.html" role="button" data-bs-toggle="dropdown" aria-expanded="true">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="true"
+              >
                 Games
               </a>
               <ul class="dropdown-menu">
@@ -63,37 +72,30 @@
       </div>
     </nav>
 
-    <!-- Scores Content -->
-    <main class="container-fluid my-4">
-      <section class="text-center my-5">
-        <h1 class="mb-5 text-center">Quiz results overview</h1>
-      </section>
+      <!-- Scores Content -->
+      <main class="container-fluid my-4">
+        <section class="text-center my-5">
+          <h1 class="mb-5 text-center">Quiz results overview</h1>
+        </section>
 
-      <div class="row justify-content-center gy-4">
-      <h2 id="total-scores" class="mt-5 mb-4 text-center text-dark"></h1>
+        <div class="row justify-content-center gy-4">
+          <h2 id="total-scores" class="mt-5 mb-4 text-center text-dark"></h2>
 
       <!-- Geography Section -->
-      <section class="col-md-2">
+      <section class="col-12 col-sm-6 col-md-4 col-lg-2">
         <h3>Geography</h3>
             <ul id="geography-scores" class="list-group w-auto">
               <li class="list-group-item d-flex align-items-center gap-1">
-                <span class="text-label">Flags:</span> 
+                <span class="text-label">Flags:</span>
                 <div>
                   <span id="geo-flags">-</span>
                   <span>/ 10</span>
                 </div>
               </li>
               <li class="list-group-item d-flex align-items-center gap-1">
-                <span class="text-label">Capitals:</span> 
+                <span class="text-label">Capitals:</span>
                 <div>
                   <span id="geo-capitals">-</span>
-                  <span>/ 10</span>
-                </div>
-              </li>
-              <li class="list-group-item d-flex align-items-center gap-1">
-                <span class="text-label">Landmarks:</span> 
-                <div>
-                  <span id="geo-landmarks">-</span>
                   <span>/ 10</span>
                 </div>
               </li>
@@ -101,27 +103,13 @@
       </section>
       
       <!-- Music Section -->
-      <section class="col-md-2">
+      <section class="col-12 col-sm-6 col-md-4 col-lg-2">
         <h3>Music</h3>
             <ul id="music-scores" class="list-group w-auto">
               <li class="list-group-item d-flex align-items-center gap-1">
-                <span class="text-label">Game 1:</span>  
+                <span class="text-label">Music Game:</span>
                 <div>
-                  <span id="music-game1">-</span>
-                  <span>/ 10</span>
-                </div>
-              </li>
-              <li class="list-group-item d-flex align-items-center gap-1">
-                <span class="text-label">Game 2:</span>  
-                <div>
-                  <span id="music-game2">-</span>
-                  <span>/ 10</span>
-                </div>
-              </li>
-              <li class="list-group-item d-flex align-items-center gap-1">
-                <span class="text-label">Game 3:</span> 
-                <div>
-                  <span id="music-game3">-</span>
+                  <span id="music-game">-</span>
                   <span>/ 10</span>
                 </div>
               </li>
@@ -129,104 +117,105 @@
       </section>
       
       <!-- English Section -->
-      <section class="col-md-2">
+      <section class="col-12 col-sm-6 col-md-4 col-lg-2">
         <h3>English</h3>
             <ul id="english-scores" class="list-group w-auto">
               <li class="list-group-item d-flex align-items-center gap-1">
-                <span class="text-label">Game 1:</span>  
+                <span class="text-label">Game 1:</span>
                 <div>
                   <span id="english-game1">-</span>
                   <span>/ 10</span>
                 </div>
               </li>
               <li class="list-group-item d-flex align-items-center gap-1">
-                <span class="text-label">Game 2:</span>  
+                <span class="text-label">Game 2:</span>
                 <div>
                   <span id="english-game2">-</span>
                   <span>/ 10</span>
                 </div>
               </li>
               <li class="list-group-item d-flex align-items-center gap-1">
-                <span class="text-label">Game 3:</span> 
+                <span class="text-label">Game 3:</span>
                 <div>
                   <span id="english-game3">-</span>
                   <span>/ 10</span>
                 </div>
               </li>
             </ul>
-      </section>
+          </section>
 
       <!-- Biology Section -->
-      <section class="col-md-2">
+      <section class="col-12 col-sm-6 col-md-4 col-lg-2">
         <h3>Biology</h3>
             <ul id="biology-scores" class="list-group w-auto">
               <li class="list-group-item d-flex align-items-center gap-1">
-                <span class="text-label">Game 1:</span>  
+                <span class="text-label">Game 1:</span>
                 <div>
                   <span id="biology-game1">-</span>
                   <span>/ 10</span>
                 </div>
               </li>
               <li class="list-group-item d-flex align-items-center gap-1">
-                <span class="text-label">Game 2:</span>  
+                <span class="text-label">Game 2:</span>
                 <div>
                   <span id="biology-game2">-</span>
                   <span>/ 10</span>
                 </div>
               </li>
               <li class="list-group-item d-flex align-items-center gap-1">
-                <span class="text-label">Game 3:</span> 
+                <span class="text-label">Game 3:</span>
                 <div>
                   <span id="biology-game3">-</span>
                   <span>/ 10</span>
                 </div>
               </li>
             </ul>
-      </section>
+          </section>
 
       <!-- Mathematics Section -->
-      <section class="col-md-2">
+      <section class="col-12 col-sm-6 col-md-4 col-lg-2">
         <h3>Mathematics</h3>
             <ul id="mathematics-scores" class="list-group w-auto">
               <li class="list-group-item d-flex align-items-center gap-1">
-                <span class="text-label">Game 1:</span>  
+                <span class="text-label">Multiplication:</span>
                 <div>
                   <span id="math-game1">-</span>
-                  <span>/ 10</span>
+                  <span>/ 20</span>
                 </div>
               </li>
               <li class="list-group-item d-flex align-items-center gap-1">
-                <span class="text-label">Game 2:</span>  
+                <span class="text-label">Game 2:</span>
                 <div>
                   <span id="math-game2">-</span>
                   <span>/ 10</span>
                 </div>
               </li>
               <li class="list-group-item d-flex align-items-center gap-1">
-                <span class="text-label">Game 3:</span> 
+                <span class="text-label">Game 3:</span>
                 <div>
                   <span id="math-game3">-</span>
                   <span>/ 10</span>
                 </div>
               </li>
             </ul>
-      </section>
-      </div>
-    </main>
-  </div>
-
-  <!-- Footer -->
-  <footer class="footer mt-auto py-3 text-center custom-footer">
-    <div class="container">
-      <span>TIK24KM Web-projekti | Ryhmä 20</span>
+          </section>
+        </div>
+      </main>
     </div>
-  </footer>
 
-  <script
-    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-    crossorigin="anonymous"
-  ></script>
-  <script src="../js/scores.js" defer></script>
-</body>
+    <!-- Footer -->
+    <footer class="footer mt-auto py-3 text-center custom-footer">
+      <div class="container">
+        <span>TIK24KM Web-projekti | Ryhmä 20</span>
+      </div>
+    </footer>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+      crossorigin="anonymous"
+    ></script>
+    <script src="../js/scores.js" defer></script>
+  </body>
 </html>
+

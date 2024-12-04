@@ -1,0 +1,187 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: inherit;
+    font-size: 100%;
+    line-height: 1.5;
+  }
+  
+  body {
+    font-family: 'Baloo', sans-serif;
+    background-color: #f2f9fc;
+    color: #333333;
+  }
+  
+  /* Header */
+.header-image {
+  background: url('../images/banner.jpeg') no-repeat top center,
+  #5C809A;
+  background-size: contain; 
+  background-position: center;
+  height: 175px;
+  margin-bottom: 0;
+}
+
+h1 {
+  font-family: 'Baloo', sans-serif;
+  color: #5C809A !important;
+}
+
+h2, h3 {
+  font-family: 'Baloo', sans-serif;
+  color: #333333 !important;
+}
+  
+  /*Navigation */
+  .navbar {
+    font-size: 1.5rem;
+    padding: 0% !important;
+  }
+
+  .nav-link {
+    color: #333333;
+    font-family: 'Baloo', sans-serif;
+    text-transform: uppercase;
+    text-align: center;
+    transition: color 0.3s ease, background-color 0.3s ease;
+    padding: 0.5rem 1rem;
+  }
+
+  .nav-link:hover {
+    color: #ffffff;
+    background-color: #f47f7b;
+  }
+  
+  .nav-link.active {
+    color: #ffffff;
+    background-color: #5C809A;
+  }
+  
+  .dropdown-menu {
+    font-family: 'Baloo', sans-serif;
+  }
+  
+  .dropdown-item.active {
+    color: #ffffff;
+    background-color: #5C809A !important;
+  }
+  
+  .dropdown-item:hover {
+    color: #ffffff;
+    background-color: #f47f7b !important;
+  }
+  
+  /* Quiz question styles */
+  #question {
+    font-size: 1.25rem;
+    color: #333333;
+    margin-bottom: 20px;
+  }
+  
+  #options-container {
+    max-width: 800px;
+    margin: 0 auto; 
+    row-gap: 10px;
+    column-gap: 15px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 30px;
+    background-color: #ffffff;
+  }
+  
+  #options-container .btn {
+    margin: 0;
+    font-size: 1.5rem !important;
+    font-family: 'Baloo', sans-serif !important;
+    height: 80px;
+    line-height: 30px;
+    border-radius: 15px !important;
+    border: none !important;
+    max-width: 300px;
+    width: 100%;
+    background-color: #f7d371 !important;
+    color: #ffffff;
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background-color 0.3s ease;
+  }
+  
+  #options-container .btn:hover {
+    background-color: #f47f7b !important;
+  }
+  
+
+/* Result section */
+  #result-message {
+    font-family: 'Baloo', sans-serif;
+    margin: 2rem;
+    font-size: 1.5rem;
+  }
+  
+  #next-question {
+    font-size: 1.5rem !important;
+    font-family: 'Baloo', sans-serif !important;
+    height: 50px;
+    line-height: 50px;
+    border-radius: 15px !important;
+    border: none;
+    width: 100%;
+    max-width: 200px;
+    display: flex !important;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 0 !important;
+    margin-top: 50px !important;
+    margin-bottom: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    vertical-align: middle;
+    background-color: #5C809A !important;
+    color: #ffffff;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+  }
+  
+  #restart-quiz,
+  #view-scores {
+    font-size: 1.5rem !important;
+    font-family: 'Baloo', sans-serif !important;
+    height: 50px;
+    line-height: 50px;
+    border-radius: 15px !important;
+    border: none !important;
+    width: 100%;
+    max-width: 200px;
+    display: flex !important;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 0 !important;
+    margin-bottom: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+    vertical-align: middle;
+    background-color: #f7d371 !important;
+    color: #ffffff;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+  }
+  
+  #next-question:hover, #restart-quiz:hover,
+  #view-scores:hover {
+    background-color: #f47f7b !important;
+  }
+  
+  /* Footer */
+  .custom-footer {
+    background-color: #5C809A;
+    color: #ffffff;
+    font-family: 'Baloo', sans-serif;
+    text-transform: uppercase;
+  }
