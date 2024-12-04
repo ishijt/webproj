@@ -41,6 +41,7 @@ class MusicGame {
     this.gameInterval = null
     this.currentMode = 'sound'
     this.usedTriviaQuestions = new Set()
+    this.feedbackActive = false
     this.displayBestScore()
   }
 
@@ -94,7 +95,8 @@ class MusicGame {
   }
 
   handleAnswer = (answer) => {
-    console.log("Answer received:", answer)
+    if (this.feedbackActive) return
+    this.feedbackActive = true
     let isCorrect
 
     if (this.currentMode === 'trivia') {
@@ -112,13 +114,14 @@ class MusicGame {
     if (isCorrect) this.score++
     this.currentStep++
 
-    if (this.currentStep < 10) {
-      setTimeout(() => {
+    setTimeout(() => {
+      this.feedbackActive = false
+      if (this.currentStep < 10) {
         this.nextStep()
-       }, 2000)
-    } else {
-      this.stopGame()
-    }
+      } else {
+        this.stopGame()
+      }
+    }, 2000)
   }
 
   nextStep = () => {
