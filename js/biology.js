@@ -3,7 +3,6 @@ let startButton = document.getElementById('startGameButton')
 let game = document.getElementById('game')
 let welcome = document.getElementById('welcomeCont')
 
-
 startButton.addEventListener('click', startGame)
 
 function startGame() {
@@ -11,8 +10,8 @@ function startGame() {
     welcome.style.display = 'none'
 }
 
-///API
 
+///API
 const animalNames = [
     'Lion', 'Tiger', 'Elephant', 'Giraffe', 'Zebra', 'Kangaroo', 'Koala', 'Panda', 
     'Bear', 'Wolf', 'Fox', 'Rabbit', 'Squirrel', 'Mouse', 'Rat', 'Leopard', 'Jaguar', 
@@ -40,11 +39,18 @@ const animalNames = [
 
 
 const APIkey = 'S6glRYH0Gxv2xoZ1XkEYzV8nErIwcJd1niGGsyaon0g'
-const randomAnimal = Math.floor(Math.random() * animalNames.length)
-const animalName = animalNames[randomAnimal]
-const url = `https://api.unsplash.com/photos/random?query=${animalName}&client_id=${APIkey}`
+let animalName = ''
+
+
+function getRandomAnimal() {
+    let randomAnimal = Math.floor(Math.random() * animalNames.length)
+    return animalNames[randomAnimal]
+}
 
 function fetchAnimalImage() {
+    const url = `https://api.unsplash.com/photos/random?query=${animalName}&client_id=${APIkey}`
+    
+
     fetch(url)
         .then(response => {
             if (!response.ok) {
@@ -64,21 +70,23 @@ function fetchAnimalImage() {
 
 
 // Lataa ensimmäinen kuva, kun sivu avataan
-window.onload = fetchAnimalImage;
+window.onload = () => {
+    animalName = getRandomAnimal()
+    fetchAnimalImage()
+}
 
 
 //Nappi oikein
-
-let checkAnswerButton = document.getElementById('checkAnswerButton')
-
-
 checkAnswerButton.addEventListener('click', checkAnswer)
 
 function checkAnswer() {
+
+    let checkAnswerButton = document.getElementById('checkAnswerButton')
     let answer = document.getElementById('guessInput').value
+    let inputArea = document.getElementById('guessInput')
     let userAnswer = answer.toLowerCase()
     let correctAnswer = animalName.toLowerCase()
-    let textArea = document.getElementById('infoText')
+    let infoText = document.getElementById('infoText')
     let nextButton = document.getElementById('nextPicture')
 
     if (answer.trim() === "") {
@@ -89,14 +97,31 @@ function checkAnswer() {
 
     else if (userAnswer === correctAnswer) {
         guessInput.style.border = "2px solid green"
-        textArea.textContent = "Correct answer!"
+        infoText.style.display = "block"
+        infoText.textContent = "Correct answer!"
         nextButton.style.display = "block"
+        
     } else {
         guessInput.style.border = "2px solid red"
-        textArea.textContent = `Your answer is wrong, correct answer is ${correctAnswer}.`
+        infoText.style.display = "block"
+        infoText.textContent = `Your answer is wrong, correct answer is ${correctAnswer}.`
         nextButton.style.display = "block"
-
     }
+
+    document.getElementById('guessInput').value = ''
+}
+
+
+
+
+//next picture
+
+let nextButton = document.getElementById('nextPicture')
+nextButton.addEventListener('click', nextPicture)
+
+function nextPicture() {
+    animalName = getRandomAnimal()
+    fetchAnimalImage()
 }
 
 

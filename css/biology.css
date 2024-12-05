@@ -19,19 +19,13 @@
 
 #inputArea {
     margin-top: 70px;
+    display: block;
 }
 
 #infoText {
     padding: 20px;
 }
 
-
-
-
-
-
-
 #nextPicture {
-    display: none;
-    margin-top: 30px;
+    margin-top: 60px;
 }
