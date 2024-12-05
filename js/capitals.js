@@ -3,7 +3,7 @@ const API_URL = 'https://restcountries.com/v3.1/all';
 // get DOM elements
 const countryNameElement = document.getElementById('country-name');
 const questionNumberElement = document.getElementById('question-number');
-const flagsContainer = document.getElementById('flags-container');
+const optionsContainer = document.getElementById('options-container');
 const resultContainer = document.getElementById('result-container');
 const resultMessage = document.getElementById('result-message');
 const nextQuestionButton = document.getElementById('next-question');
@@ -18,15 +18,17 @@ const maxQuestions = 10;
 // start the quiz
 async function startQuiz() {
   const countries = await fetchCountries();
+  questionCount = 0;
+  correctAnswers = 0; 
   generateQuestion(countries);
-  localStorage.setItem('geoFlagsQuizScores', correctAnswers);
+  localStorage.setItem('geoCapitalsQuizScores', correctAnswers);
 }
 
 // fetches all countries data from the REST API
 async function fetchCountries() {
   const response = await fetch(API_URL);
   const data = await response.json();
-  return data;
+  return data.filter(country => country.capital); // Filter only countries with capitals
 }
 
 // generates a new question
@@ -39,73 +41,68 @@ function generateQuestion(countries) {
   isAnswered = false;
   questionCount++;
 
-  // update the displayed question number and total questions
+  // Update the displayed question number and total questions
   questionNumberElement.textContent = questionCount;
   document.getElementById('total-questions').textContent = maxQuestions;
 
-  // randomly select a correct country
+  // Randomly select a correct country
   const correctCountry = countries[Math.floor(Math.random() * countries.length)];
-  correctAnswer = correctCountry.flags.png;
+  correctAnswer = correctCountry.capital[0];
   countryNameElement.textContent = correctCountry.name.common;
 
-   // select 5 random incorrect options
+  // Select 5 random incorrect options
   const incorrectCountries = countries
-    .filter(country => country.flags.png !== correctAnswer)
+    .filter(country => country.capital && country.capital[0] !== correctAnswer)
     .sort(() => 0.5 - Math.random())
     .slice(0, 5);
 
-  // combine correct and incorrect options and shuffle
-  const options = [...incorrectCountries, correctCountry]
+  // Combine correct and incorrect options and shuffle
+  const options = [...incorrectCountries.map(c => c.capital[0]), correctAnswer]
     .sort(() => 0.5 - Math.random());
 
-  displayFlags(options);
+  displayOptions(options);
 }
 
-// displays the flags as answer options
-function displayFlags(countries) {
-  flagsContainer.innerHTML = '';
-  countries.forEach(country => {
-    const flagButton = document.createElement('button');
-    flagButton.classList.add('flag-button');
-    flagButton.innerHTML = `<img src="${country.flags.png}" alt="Flag of ${country.name.common}">`;
-    flagButton.addEventListener('click', () => handleFlagClick(country.flags.png, flagButton));
-    flagsContainer.appendChild(flagButton);
+// displays the capital options
+function displayOptions(options) {
+  optionsContainer.innerHTML = '';
+  options.forEach(option => {
+    const button = document.createElement('button');
+    button.classList.add('btn', 'btn-outline-primary', 'col');
+    button.textContent = option;
+    button.addEventListener('click', () => handleOptionClick(option, button));
+    optionsContainer.appendChild(button);
   });
 }
 
-// handles the click on a flag option
-function handleFlagClick(selectedFlag, button) {
+// handles the click on a capital option
+function handleOptionClick(selectedOption, button) {
   if (isAnswered) {
     resultMessage.textContent = 'You have already answered. Please click "Next Question" to continue.';
     resultMessage.style.color = 'orange';
     return;
   }
-  isAnswered = true; 
+  isAnswered = true;
 
-  // check if the selected flag is correct
-  if (selectedFlag === correctAnswer) {
+  if (selectedOption === correctAnswer) {
     resultMessage.textContent = 'Correct! Click "Next Question" to continue.';
     resultMessage.style.color = 'green';
-    correctAnswers++; 
-    localStorage.setItem('geoFlagsQuizScores', correctAnswers);
+    correctAnswers++;
+    localStorage.setItem('geoCapitalsQuizScores', correctAnswers);
   } else {
-    // append the correct answer to the result message
+    // Append the correct answer to the result message
     resultMessage.innerHTML = `
       Wrong! Click "Next Question" to continue.<br>
-      <span style="color: green;">Correct Answer: <img src="${correctAnswer}" alt="Correct Flag" style="width: 50px; height: auto;"></span>
+      <span style="color: green;">Correct Answer: ${correctAnswer}</span>
     `;
     resultMessage.style.color = 'red';
     button.style.borderColor = 'red';
-    localStorage.setItem('geoFlagsQuizScores', correctAnswers);
+    localStorage.setItem('geoCapitalsQuizScores', correctAnswers);
   }
-  
-  resultContainer.classList.remove('hidden');
 
-  // disable all flag buttons after an answer is selected
-  const allButtons = document.querySelectorAll('.flag-button');
-  allButtons.forEach(btn => {
-    btn.disabled = true;
-  });
+  resultContainer.classList.remove('hidden');
+  const allButtons = document.querySelectorAll('#options-container .btn');
+  allButtons.forEach(btn => btn.disabled = true);
 }
 
 // displays the final result after all questions
@@ -121,33 +118,24 @@ function showFinalResult() {
     </section>
   `;
 
-  // add event listener for the "Restart Quiz" button
   document.getElementById('restart-quiz').addEventListener('click', restartQuiz);
-
-  // add event listener for the "View All Scores" button
   document.getElementById('view-scores').addEventListener('click', () => {
-    window.location.href = './scores.html'; // Redirect to scores.html
+    window.location.href = './scores.html';
   });
 }
 
 // restarts the quiz
 function restartQuiz() {
-  questionCount = 0; 
-  correctAnswers = 0; 
-  isAnswered = false; 
-
-  resultMessage.textContent = '';
-  resultMessage.style.color = '';
-  resultContainer.classList.add('hidden');
-  location.reload();
+  location.reload(); // Reload the page to reset
 }
 
 // handles the "Next Question" button click
-nextQuestionButton.addEventListener('click', () => {
+nextQuestionButton.addEventListener('click', async () => {
   resultMessage.textContent = '';
   resultMessage.style.color = '';
   resultContainer.classList.add('hidden');
-  startQuiz();
+  const countries = await fetchCountries(); // Re-fetch countries for new question
+  generateQuestion(countries);
 });
 
 // starts the quiz on page load
