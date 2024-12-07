@@ -15,12 +15,15 @@
   </head>
   <body class="d-flex flex-column h-100">
     <div class="container-fluid flex-shrink-0">
-      <header class="d-flex justify-content-center align-items-center">
-        <h1>Music Game</h1>
+
+      <!-- Header -->
+      <header 
+        class="d-flex justify-content-center align-items-center header-image">
       </header>
+      
+      <!-- Navigation -->
       <nav class="navbar navbar-expand-lg bg-body-tertiary">
         <div class="container-fluid">
-          <a class="navbar-brand" href="#">Navbar</a>
           <button
             class="navbar-toggler"
             type="button"
@@ -35,45 +38,24 @@
           <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav">
               <li class="nav-item">
-                <a
-                  class="nav-link active"
-                  aria-current="page"
-                  href="../index.html"
-                  >Etusivu</a
-                >
+                <a class="nav-link" href="../index.html">Homepage</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="../pages/info.html">Info</a>
+                <a class="nav-link" href="./info.html">Info</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="../pages/scores.html">Scores</a>
+                <a class="nav-link" href="./scores.html">Scores</a>
               </li>
               <li class="nav-item dropdown">
-                <a
-                  class="nav-link dropdown-toggle"
-                  href="#"
-                  role="button"
-                  data-bs-toggle="dropdown"
-                  aria-expanded="false"
-                >
-                  Pelit
+                <a class="nav-link dropdown-toggle active" href="../games.html" role="button" data-bs-toggle="dropdown" aria-expanded="true">
+                  Games
                 </a>
                 <ul class="dropdown-menu">
-                  <li>
-                    <a class="dropdown-item" href="./geography.html">Geography</a>
-                  </li>
-                  <li>
-                    <a class="dropdown-item" href="./music.html">Music</a>
-                  </li>
-                  <li>
-                    <a class="dropdown-item" href="./peli3.html">Biology</a>
-                  </li>
-                  <li>
-                    <a class="dropdown-item" href="./peli4.html">English</a>
-                  </li>
-                  <li>
-                    <a class="dropdown-item" href="./mathematics.html">Mathematics</a>
-                  </li>
+                  <li><a class="dropdown-item active" href="./geography.html" aria-current="page">Geography</a></li>
+                  <li><a class="dropdown-item" href="./music.html">Music</a></li>
+                  <li><a class="dropdown-item" href="./peli3.html">Biology</a></li>
+                  <li><a class="dropdown-item" href="./peli4.html">English</a></li>
+                  <li><a class="dropdown-item" href="./mathematics.html">Mathematics</a></li>
                 </ul>
               </li>
             </ul>
@@ -117,20 +99,13 @@
                 <div id="feedback" class="feedback-box d-none"></div>
               </div>
             </div>
-            <div id="music-footer">
-              <p id="view-scores" style="display: none; cursor: pointer; text-decoration: none;"></p>
-            </div>
           </div>
         </div>
       </div>
     </div>
-    <footer class="footer mt-auto py-3">
-      <div class="container-fluid">
-        <div class="row">
-          <p class="col-md-4">Footer area 1</p>
-          <p class="col-md-4">Footer area 2</p>
-          <p class="col-md-4">Footer area 3</p>
-        </div>
+    <footer class="footer mt-auto py-3 text-center custom-footer">
+      <div class="container">
+        <span>TIK24KM Web-projekti | Ryhmä 20</span>
       </div>
     </footer>
     <script src="../js/music.js"></script>
