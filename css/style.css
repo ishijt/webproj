@@ -8,22 +8,17 @@
   line-height: 1.5;
 }
 
-.container.fluid {
-  font-size: 2.5rem;
-}
-
 body {
   background-color: #f2f9fc;
   color: #333333;
-  font-size: 2.5rem;
-  font-family: "Baloo", sans-serif;
+  font-family: 'Baloo', sans-serif;
 }
 
+/* Header */
 .header-image {
-  background:
-    url("../images/banner.jpeg") no-repeat top center,
-    #5c809a;
-  background-size: contain;
+  background: url('../images/banner.jpeg') no-repeat top center,
+  #5C809A;
+  background-size: contain; 
   background-position: center;
   height: 175px;
   margin-bottom: 0;
@@ -59,36 +54,18 @@ p {
   color: #333333;
 }
 
+/* Navigation */
 .navbar {
   font-size: 1.5rem;
   padding: 0% !important;
 }
 
-.dropdown-menu {
-  font-size: 2.5rem;
-  font-family: "Baloo", sans-serif;
-  color: #5c809a !important;
-}
-
-.dropdown-item.active {
-  color: #ffffff;
-  background-color: #5c809a !important;
-}
-
-.dropdown-item:hover {
-  color: #ffffff;
-  background-color: #f47f7b !important;
-}
-
 .nav-link {
   color: #333333;
-  font-family: "Baloo", sans-serif;
-  font-weight: 500;
+  font-family: 'Baloo', sans-serif;
   text-transform: uppercase;
   text-align: center;
-  transition:
-    color 0.3s ease,
-    background-color 0.3s ease;
+  transition: color 0.3s ease, background-color 0.3s ease;
   padding: 0.5rem 1rem;
 }
 
@@ -99,7 +76,21 @@ p {
 
 .nav-link.active {
   color: #ffffff;
-  background-color: #5c809a;
+  background-color: #5C809A;
+}
+
+.dropdown-menu {
+  font-family: 'Baloo', sans-serif;
+}
+
+.dropdown-item.active {
+  color: #ffffff;
+  background-color: #5C809A !important;
+}
+
+.dropdown-item:hover {
+  color: #ffffff;
+  background-color: #f47f7b !important;
 }
 
 .section-title {

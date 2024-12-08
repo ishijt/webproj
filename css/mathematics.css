@@ -1,0 +1,393 @@
+/* Math game styles */
+#game-container {
+  width: 100%;
+  max-width: 900px;
+  background-color: #5c809a;
+  padding: 10px;
+  margin: 0 auto;
+  border: transparent;
+  border-radius: 10px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.4);
+}
+
+#game-header {
+  font-family: Baloo;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  padding: 10px;
+}
+
+#game-screen {
+  width: 100%;
+  height: 550px;
+  position: relative;
+  background: #ffffff;
+  overflow: hidden;
+  border: transparent;
+  border-radius: 10px;
+  /* border-bottom-left-radius: 10px; */
+  /* border-bottom-right-radius: 10px; */
+}
+
+.calculation {
+  position: absolute;
+  background-color: #f47f7b;
+  padding: 5px 20px;
+  font-size: 24px;
+  font-family: Baloo;
+  border-radius: 5%;
+}
+
+#answer-form {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 15px;
+  background: #5c809a;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+#answer-input {
+  padding: 8px 20px;
+  text-align: center;
+  font-size: 1.4rem !important;
+  background: #ffffff !important;
+  font-family: Baloo !important;
+  color: #333333 !important;
+  border: none !important;
+  border-radius: 10px !important;
+  height: 50px;
+  width: 120px;
+}
+
+#start-button {
+  padding: 8px 20px;
+  font-size: 1.5rem !important;
+  background: #4a90e2;
+  font-family: Baloo !important;
+  color: #ffffff !important;
+  background-color: #f7d371 !important;
+  border: none !important;
+  border-radius: 20px !important;
+  height: 70px;
+  width: auto;
+  min-width: 150px;
+}
+
+#start-button:hover {
+  background-color: #f47f7b !important;
+  color: #ffffff;
+}
+
+#answer-button {
+  padding: 8px 20px;
+  font-size: 1.4rem !important;
+  background: #4a90e2;
+  font-family: Baloo !important;
+  color: #333333 !important;
+  background-color: #f7d371 !important;
+  border: none !important;
+  border-radius: 10px !important;
+  height: 50px;
+  width: 120px;
+}
+
+#answer-button:hover {
+  background-color: #f47f7b !important;
+  color: #ffffff;
+}
+
+#start-screen {
+  position: absolute;
+  top: 0;
+  left: 1em;
+  right: 1em;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  background-color: #ffffff;
+  padding: 20px;
+}
+
+#start-screen p {
+  font-size: 18px;
+  color: #333333;
+  text-align: center;
+}
+
+#score {
+  font-size: 18px;
+  color: #333333;
+}
+
+/* Game Over modal */
+.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background-color: white;
+  padding: 2rem;
+  border-radius: 0.5rem;
+  text-align: center;
+  width: 90%;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.modal-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.modal-score {
+  font-size: 1.2rem;
+  margin-bottom: 1.5rem;
+}
+
+.modal-button {
+  background-color: #f7d371 !important;
+  color: #333333;
+  font-family: Baloo;
+  font-size: 1.4em;
+  padding: 0.5rem 1rem;
+  border-radius: 1rem;
+  border: none;
+  cursor: pointer;
+  width: auto;
+  min-width: 120px;
+}
+
+.modal-button:hover {
+  background-color: #f47f7b !important;
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+  #game-screen {
+    height: 450px;
+  }
+
+  .calculation {
+    font-size: 20px;
+    padding: 4px 16px;
+  }
+
+  #answer-input,
+  #answer-button {
+    width: 100px;
+    font-size: 1.2rem !important;
+    padding: 8px 12px;
+  }
+
+  #start-button {
+    font-size: 1.3rem !important;
+    height: 60px;
+    min-width: 130px;
+  }
+
+  #start-screen p {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  #game-screen {
+    height: 500px;
+  }
+
+  #game-container {
+    padding: 5px;
+  }
+
+  .calculation {
+    font-size: 18px;
+    padding: 3px 12px;
+  }
+
+  #answer-form {
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+    gap: 8px;
+  }
+
+  #answer-input,
+  #answer-button {
+    width: 80%;
+    max-width: 200px;
+    font-size: 1.1rem !important;
+  }
+
+  #start-button {
+    width: 80%;
+    font-size: 1.2rem !important;
+    height: 50px;
+  }
+
+  #start-screen p {
+    font-size: 14px;
+  }
+
+  .modal-content {
+    padding: 1.5rem;
+  }
+
+  .modal-button {
+    font-size: 1.2em;
+    padding: 0.4rem 0.8rem;
+  }
+}
+
+#answer-input:focus {
+  outline: none;
+}
+
+#answer-input::-webkit-inner-spin-button,
+#answer-input::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+#answer-input {
+  -webkit-appearance: textfield;
+  -moz-appearance: textfield;
+  appearance: textfield;
+}
+
+/* Common styles for common pages */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: inherit;
+  font-size: 100%;
+  line-height: 1.5;
+}
+
+.container.fluid {
+  font-size: 2.5rem;
+}
+
+body {
+  background-color: #f2f9fc;
+  color: #333333;
+  font-size: 2.5rem;
+  font-family: "Baloo", sans-serif;
+}
+
+.header-image {
+  background:
+    url("../images/banner.jpeg") no-repeat top center,
+    #5c809a;
+  background-size: contain;
+  background-position: center;
+  height: 175px;
+  margin-bottom: 0;
+}
+
+h1 {
+  font-family: "Baloo", sans-serif;
+  color: #5c809a !important;
+  text-align: center;
+}
+
+h2 {
+  font-family: "Baloo", sans-serif;
+  color: #5c809a !important;
+  text-align: center;
+}
+
+h3 {
+  font-family: "Baloo", sans-serif;
+  color: #5c809a !important;
+  text-align: center;
+}
+
+h4 {
+  font-family: "Baloo", sans-serif;
+  color: #333333 !important;
+  text-align: center;
+}
+
+p {
+  font-family: "Baloo", sans-serif;
+  font-size: 1.2rem;
+  color: #333333;
+}
+
+.navbar {
+  font-size: 1.5rem;
+  padding: 0% !important;
+}
+
+.dropdown-menu {
+  font-size: 2.5rem;
+  font-family: "Baloo", sans-serif;
+  color: #5c809a !important;
+}
+
+.dropdown-item.active {
+  color: #ffffff;
+  background-color: #5c809a !important;
+}
+
+.dropdown-item:hover {
+  color: #ffffff;
+  background-color: #f47f7b !important;
+}
+
+.nav-link {
+  color: #333333;
+  font-family: "Baloo", sans-serif;
+  font-weight: 500;
+  text-transform: uppercase;
+  text-align: center;
+  transition:
+    color 0.3s ease,
+    background-color 0.3s ease;
+  padding: 0.5rem 1rem;
+}
+
+.nav-link:hover {
+  color: #ffffff;
+  background-color: #f47f7b;
+}
+
+.nav-link.active {
+  color: #ffffff;
+  background-color: #5c809a;
+}
+
+.section-title {
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+  text-align: center;
+  color: #5c809a;
+}
+
+.custom-footer {
+  background-color: #5c809a;
+  color: #ffffff;
+  font-family: "Baloo", sans-serif;
+  text-align: center;
+  text-transform: uppercase;
+}
