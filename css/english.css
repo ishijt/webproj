@@ -1,0 +1,33 @@
+.gameImage {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+}
+
+#score {
+    font-size: 2.5rem;
+}
+
+#scrambledWord {
+    font-family: 'Baloo', sans-serif ;
+    font-size: 4rem;
+}
+
+#submit {
+    font-family: 'Baloo';
+    padding: 10px 20px;
+    font-size: 1rem;
+    background-color: #F7D371;
+    transition: background-color 0.5s ease;
+    border: none;
+}
+
+#submit:hover {
+    background-color: #F47F7B;
+    transition: background-color 0.5s ease;
+}
+
+#submit:disabled {
+    cursor: not-allowed;
+}
