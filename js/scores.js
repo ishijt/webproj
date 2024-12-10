@@ -28,9 +28,7 @@ function loadScores() {
     document.getElementById('music-game').textContent = getVarFromLocalStorage('musicGameScore');
   
     // populate data for English
-    document.getElementById('english-game1').textContent = getVarFromLocalStorage('englishGame1Scores');
-    document.getElementById('english-game2').textContent = getVarFromLocalStorage('englishGame2Scores');
-    document.getElementById('english-game3').textContent = getVarFromLocalStorage('englishGame3Scores');
+    document.getElementById('english-game1').textContent = getVarFromLocalStorage('englishGameScore');
   
     // populate data for Biology
     document.getElementById('biology-game1').textContent = getVarFromLocalStorage('biologyGame1Scores');
@@ -46,9 +44,7 @@ function loadScores() {
     +getScoresFromGame('geoFlagsQuizScores') + 
     +getScoresFromGame('geoCapitalsQuizScores') + 
     +getScoresFromGame('musicGameScore') + 
-    +getScoresFromGame('englishGame1Scores') + 
-    +getScoresFromGame('englishGame2Scores') + 
-    +getScoresFromGame('englishGame3Scores') + 
+    +getScoresFromGame('englishGameScore') + 
     +getScoresFromGame('biologyGame1Scores') + 
     +getScoresFromGame('biologyGame2Scores') + 
     +getScoresFromGame('biologyGame3Scores') + 
