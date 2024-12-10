@@ -29,8 +29,12 @@ const triviaQuestions = [
   { question: "The violin usually has five strings.", answer: false},
   { question: "Jazz music originated in Europe.", answer: false},
   { question: "Blues music often focuses on themes of happiness and celebration.", answer: false},
-  { question: "Folk music is often about telling stories.", answer: true},
-  { question: "One of the most popular bands of all time is called 'The Beetles'", answer: false},
+  { question: "Folk music is most often about telling stories.", answer: true},
+  { question: "One of the most popular bands of all time is called 'The Beetles'.", answer: false},
+  { question: "Jimi Hendrix is considered one of the all time guitarists.", answer: true},
+  { question: "Kantele is Finland's national instrument.", answer: true},
+  { question: "Jean Sibelius was a Swedish composer.", answer: false},
+  { question: "Madonna has been titled as 'Queen of Rock'", answer: false}
 ]
 
 class MusicGame {
@@ -53,8 +57,6 @@ class MusicGame {
     this.usedTriviaQuestions.clear()
     this.gameInterval = setInterval(() => this.updateGameTime(), 1000)
 
-    document.getElementById('view-scores').classList.add('hidden')
-
     this.availableClips = shuffleArray(instruments).slice(0, 10)
 
     this.displayBestScore()
@@ -74,7 +76,6 @@ class MusicGame {
 
     document.getElementById('m-start-screen').classList.remove('d-none')
     document.getElementById('music-play').classList.add('d-none')
-    document.getElementById('view-scores').classList.remove('hidden')
 
     this.displayBestScore()
     this.saveScore(this.score)
@@ -97,6 +98,7 @@ class MusicGame {
   handleAnswer = (answer) => {
     if (this.feedbackActive) return
     this.feedbackActive = true
+
     let isCorrect
 
     if (this.currentMode === 'trivia') {
@@ -109,19 +111,20 @@ class MusicGame {
 
     const feedbackElement = document.getElementById('feedback')
     feedbackElement.textContent = isCorrect ? 'Correct!' : 'Incorrect!'
-    feedbackElement.className = isCorrect ? 'text-success' : 'text-danger'
+    feedbackElement.className = `feedback-box ${isCorrect ? 'show text-success' : 'show text-danger'}`
 
     if (isCorrect) this.score++
     this.currentStep++
 
     setTimeout(() => {
+      feedbackElement.className = 'feedback-box';
       this.feedbackActive = false
       if (this.currentStep < 10) {
         this.nextStep()
       } else {
         this.stopGame()
       }
-    }, 2000)
+    }, 2500)
   }
 
   nextStep = () => {
@@ -224,9 +227,9 @@ class MusicGame {
   }
 
   runTriviaGame = () => {
-    const availableQuestions = triviaQuestions.filter((_, index) => {
+    const availableQuestions = triviaQuestions.filter((_, index) =>
       !this.usedTriviaQuestions.has(index)
-    })
+    )
 
     // Uses another game mode if questions from one are out
     if (availableQuestions.length === 0) {
@@ -246,7 +249,7 @@ class MusicGame {
 
     const questionElement = document.createElement('div')
     questionElement.textContent = currentQuestion.question
-    questionElement.className = 'mb-3'
+    questionElement.className = 'mb-3 trivia-question'
     answerButtons.appendChild(questionElement)
 
     const triviaChoices = [

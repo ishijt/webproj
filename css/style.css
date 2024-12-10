@@ -11,14 +11,15 @@
 body {
   background-color: #f2f9fc;
   color: #333333;
-  font-family: 'Baloo', sans-serif;
+  font-family: "Baloo", sans-serif;
 }
 
 /* Header */
 .header-image {
-  background: url('../images/banner.jpeg') no-repeat top center,
-  #5C809A;
-  background-size: contain; 
+  background:
+    url("../images/banner.jpeg") no-repeat top center,
+    #5c809a;
+  background-size: contain;
   background-position: center;
   height: 175px;
   margin-bottom: 0;
@@ -44,7 +45,7 @@ h3 {
 
 h4 {
   font-family: "Baloo", sans-serif;
-  color: #333333 !important;
+  color: #f47f7b !important;
   text-align: center;
 }
 
@@ -52,6 +53,7 @@ p {
   font-family: "Baloo", sans-serif;
   font-size: 1.2rem;
   color: #333333;
+  text-align: center;
 }
 
 /* Navigation */
@@ -62,10 +64,12 @@ p {
 
 .nav-link {
   color: #333333;
-  font-family: 'Baloo', sans-serif;
+  font-family: "Baloo", sans-serif;
   text-transform: uppercase;
   text-align: center;
-  transition: color 0.3s ease, background-color 0.3s ease;
+  transition:
+    color 0.3s ease,
+    background-color 0.3s ease;
   padding: 0.5rem 1rem;
 }
 
@@ -76,16 +80,16 @@ p {
 
 .nav-link.active {
   color: #ffffff;
-  background-color: #5C809A;
+  background-color: #5c809a;
 }
 
 .dropdown-menu {
-  font-family: 'Baloo', sans-serif;
+  font-family: "Baloo", sans-serif;
 }
 
 .dropdown-item.active {
   color: #ffffff;
-  background-color: #5C809A !important;
+  background-color: #5c809a !important;
 }
 
 .dropdown-item:hover {
