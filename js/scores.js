@@ -33,9 +33,8 @@ function loadScores() {
     document.getElementById('english-game3').textContent = getVarFromLocalStorage('englishGame3Scores');
   
     // populate data for Biology
-    document.getElementById('biology-game1').textContent = getVarFromLocalStorage('biologyGame1Scores');
-    document.getElementById('biology-game2').textContent = getVarFromLocalStorage('biologyGame2Scores');
-    document.getElementById('biology-game3').textContent = getVarFromLocalStorage('biologyGame3Scores');
+    document.getElementById('biology-game').textContent = getVarFromLocalStorage('biologyGameScores');
+
   
     // populate data for Mathematics
     document.getElementById('math-game1').textContent = getVarFromLocalStorage('mathGame1Scores');

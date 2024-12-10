@@ -1,16 +1,9 @@
-///function that strat the quiz, pisteinen nollaaminen?
-
-///localStorage.setItem('biologyNameanimalScores', scoreValue)
 
 
-
-
-
-
-///start game button///
 let startButton = document.getElementById('startGameButton')
 let game = document.getElementById('game')
 let welcome = document.getElementById('welcomeCont')
+let numberText = document.getElementById('numberOfPictures')
 
 startButton.addEventListener('click', startGame)
 
@@ -23,6 +16,8 @@ function startGame() {
 
     numberText.textContent = `Photo ${numberOfPictures}/10`
     scores.textContent = `Scores: ${scoreValue}`
+
+    localStorage.setItem('biologyGameScores', scoreValue)
 }
 
 
@@ -32,11 +27,10 @@ const animalNames = [
     'bear', 'wolf', 'fox', 'giraffe', 'zebra', 'kangaroo', 'penguin', 'dolphin', 'whale',
     'monkey', 'panda', 'koala', 'leopard', 'cheetah', 'crocodile', 'alligator', 'hippopotamus',
     'rhinoceros', 'bat', 'owl', 'eagle', 'hawk', 'parrot', 'flamingo', 'peacock', 'swan',
-    'otter', 'seal', 'walrus', 'shark', 'octopus', 'jellyfish', 'crab', 'lobster', 'turtle',
-    'frog', 'snake', 'lizard', 'hamster', 'mouse', 'rat', 'squirrel', 'hedgehog', 'raccoon',
-    'badger', 'beaver', 'weasel', 'ferret', 'meerkat', 'lemur', 'sloth', 'armadillo',
-    'buffalo', 'camel', 'llama', 'goat', 'sheep', 'cow', 'pig', 'donkey', 'chicken', 'duck',
-    'goose', 'turkey', 'pigeon', 'finch', 'budgerigar', 'macaw', 'toucan',
+    'otter', 'seal', 'walrus', 'shark', 'octopus', 'jellyfish', 'crab', 'lobster',
+    'frog', 'snake', 'lizard', 'hamster', 'rat', 'squirrel', 'hedgehog', 'raccoon',
+    'badger', 'beaver', 'weasel', 'ferret', 'meerkat', 'lemur', 'sloth', 'armadillo', 'camel', 'llama', 'goat', 'sheep', 'cow', 'pig', 'donkey', 'chicken', 'duck',
+    'goose', 'pigeon', 'finch', 'budgerigar', 'macaw', 'toucan',
     'woodpecker', 'hummingbird', 'kingfisher', 'cow', 'lynx']
 
 
@@ -71,14 +65,11 @@ function fetchAnimalImage() {
 
 
 
-// Lataa ensimmäinen kuva, kun sivu avataan
 window.onload = () => {
     animalName = getRandomAnimal()
     fetchAnimalImage()
 }
 
-//määrityksiä
-let numberText = document.getElementById('numberOfPictures')
 
 function restartGame() {
     getRandomAnimal()
@@ -101,11 +92,12 @@ function restartGame() {
     toDoNext.style.display = "none"
     guessInput.style.border = "none"
     afterGame.style.display = "none"
+
+    localStorage.setItem('biologyGameScores', scoreValue)
 }
 
-
-
-//Nappi oikein
+//check answer button
+let checkAnswerButton = document.getElementById('checkAnswerButton')
 checkAnswerButton.addEventListener('click', checkAnswer)
 let scoreValue = 0
 let numberOfPictures = 1
@@ -114,7 +106,7 @@ function checkAnswer() {
     
 
     let scores = document.getElementById('scores')
-    let checkAnswerButton = document.getElementById('checkAnswerButton')
+
     let answer = document.getElementById('guessInput').value
     let userAnswer = answer.toLowerCase()
     let correctAnswer = animalName.toLowerCase()
@@ -139,6 +131,8 @@ function checkAnswer() {
         scoreValue += 1
         scores.textContent = `Scores: ${scoreValue}`
 
+        localStorage.setItem('biologyGameScores', scoreValue)
+
 
         if (numberOfPictures === 10) {
             let afterGame = document.getElementById('afterGame')
@@ -155,9 +149,11 @@ function checkAnswer() {
 
             document.getElementById('viewScores').addEventListener('click', () => {
                 window.location.href = "./scores.html"})  
+
+                localStorage.setItem('biologyGameScores', scoreValue)
             }
 
-        ///localStorage.setItem('biologyNameanimalScores', scoreValue)
+
 
         
     } else {
@@ -186,7 +182,7 @@ function checkAnswer() {
                 window.location.href = "./scores.html"})  
         }
 
-        ///localStorage.setItem('biologyNameanimalScores', scoreValue)
+
     }
 
     document.getElementById('guessInput').value = ''
