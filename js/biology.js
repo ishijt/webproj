@@ -29,9 +29,9 @@ const animalNames = [
     'rhinoceros', 'bat', 'owl', 'eagle', 'hawk', 'parrot', 'flamingo', 'peacock', 'swan',
     'otter', 'seal', 'walrus', 'shark', 'octopus', 'jellyfish', 'crab', 'lobster',
     'frog', 'snake', 'lizard', 'hamster', 'rat', 'squirrel', 'hedgehog', 'raccoon',
-    'badger', 'beaver', 'weasel', 'ferret', 'meerkat', 'lemur', 'sloth', 'armadillo', 'camel', 'llama', 'goat', 'sheep', 'cow', 'pig', 'donkey', 'chicken', 'duck',
+    'badger', 'beaver', 'weasel', 'meerkat', 'lemur', 'sloth', 'armadillo', 'camel', 'llama', 'goat', 'sheep', 'cow', 'pig', 'donkey', 'chicken', 'duck',
     'goose', 'pigeon', 'finch', 'budgerigar', 'macaw', 'toucan',
-    'woodpecker', 'hummingbird', 'kingfisher', 'cow', 'lynx']
+    'woodpecker', 'hummingbird', 'cow', 'lynx']
 
 
 const APIkey = 'S6glRYH0Gxv2xoZ1XkEYzV8nErIwcJd1niGGsyaon0g'
@@ -44,7 +44,7 @@ function getRandomAnimal() {
 }
 
 function fetchAnimalImage() {
-    const url = `https://api.unsplash.com/photos/random?query=${animalName}&topics=pets&client_id=${APIkey}`
+    const url = `https://api.unsplash.com/photos/random?query=${animalName}+animal&topics=pets&client_id=${APIkey}`
     
 
     fetch(url)
@@ -187,11 +187,6 @@ function checkAnswer() {
 
     document.getElementById('guessInput').value = ''
 }
-
-///restart
-
-
-
 
 
 
