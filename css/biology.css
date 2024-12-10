@@ -13,9 +13,9 @@
   
 body {
     background-color: #f2f9fc;
-    color: #333333;
+    color: #333333 ;
     font-size: 2.5rem;
-    font-family: 'Baloo', sans-serif;
+    font-family: 'Baloo', sans-serif !important;
 }
   
 .header-image {
@@ -131,12 +131,17 @@ p {
 }
   
 
+#nameTheAnimal {
+    margin-top: 40px;
+}
+
 
 #welcomeCont {
+    color: #333333;
     display: flex;
     justify-content: center;
-    align-items: center;
-    height: 60vh;
+    align-items: flex-start;
+    height: 50vh;
     font-family: "Baloo", sans-serif;
 }
 
@@ -188,3 +193,42 @@ p {
     margin-top: 60px;
     display: none;
 }
+
+#afterGame {
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 60vh;
+    display: none;
+    margin-top: 100px;
+}
+
+#afterGameBox {
+    padding: 30px;
+    border: 2px solid #5C809A;
+    border-radius: 20px;
+    box-shadow: 0 0 10px #5C809A;
+}
+
+#restartButton {
+    background-color: #f7d371;
+    border: none;
+}
+
+#restartButton:hover {
+    background-color: #f47f7b;
+}
+
+#viewScores {
+    background-color: #f7d371;
+    border: none;
+}
+
+#viewScores:hover {
+    background-color: #f47f7b;
+}
+
+#totalScore {
+    padding-top: 10px;
+    
+}
+

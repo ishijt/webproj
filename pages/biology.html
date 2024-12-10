@@ -51,16 +51,18 @@
 
         <!--content-->
 
+        <!--title-->
+        <div id="nameTheAnimal" class="container">
+            <div class="row justify-content-center">
+                <h1>Biology</h1>
+                <h1>Name the animal</h1>
+            </div>
+        </div>
+
         <!--welcome to the game-->
         <div id="welcomeCont" class="container">
             <div class="row justify-content-center">
-                <div class="col-12 text-center welcome">
-                    <h1>Biology</h1>
-                </div>
-                <div class="col-12 text-center welcome">
-                    <h2>Name the animal</h2>
-                </div>
-                <div class="col-md-4 text-center welcome">
+                <div class="col-md-5 text-center welcome">
                     <p>In this game you need to guess the name of the animal from the picture.</p>
                     <p>You will see total of ten images. Try to get as many points out of ten.</p>
                     <p>Good luck!</p>
@@ -75,9 +77,6 @@
         <!--game-->
         <div id="game" class="container">
             <div class="row justify-content-center">
-                <div class="col-12 text-center game-item">
-                    <h1>Name the animal</h1>
-                </div>
                 <div class="col-md-2 game-item">
                 </div>
                 <!--image + hint-->
@@ -96,6 +95,24 @@
                 </div>
             </div>
         </div>
+
+        <!--After game-->
+        <div id="afterGame" class="container">
+            <div id="afterGameBox" class = "row justify-content-center">
+                <div class="col-12 text-center afterGameItem">
+                    <h1>Game completed!</h1>
+                    <p id="totalScore">Your total score is 0.</p>
+                </div>
+                <div class="col-md-4 afterGameItem">
+                    <button class="btn btn-primary mt-3 w-100" id="restartButton">Restart game</button>
+                </div>
+                <div class="col-md-4 afterGameItem">
+                    <button class="btn btn-primary mt-3 w-100" id="viewScores">View Scores</button>
+                </div>
+            </div>
+        </div>
+
+
 
 
         <!--footer-->

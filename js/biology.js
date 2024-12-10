@@ -1,3 +1,12 @@
+///function that strat the quiz, pisteinen nollaaminen?
+
+///localStorage.setItem('biologyNameanimalScores', scoreValue)
+
+
+
+
+
+
 ///start game button///
 let startButton = document.getElementById('startGameButton')
 let game = document.getElementById('game')
@@ -8,6 +17,12 @@ startButton.addEventListener('click', startGame)
 function startGame() {
     game.style.display = 'block'
     welcome.style.display = 'none'
+
+    scoreValue = 0
+    numberOfPictures = 1
+
+    numberText.textContent = `Photo ${numberOfPictures}/10`
+    scores.textContent = `Scores: ${scoreValue}`
 }
 
 
@@ -62,6 +77,33 @@ window.onload = () => {
     fetchAnimalImage()
 }
 
+//määrityksiä
+let numberText = document.getElementById('numberOfPictures')
+
+function restartGame() {
+    getRandomAnimal()
+    fetchAnimalImage()
+
+    game.style.display = "block"
+
+    scoreValue = 0
+    numberOfPictures = 1
+
+    numberText.textContent = `Photo ${numberOfPictures}/10`
+    scores.textContent = `Scores: ${scoreValue}`
+
+    let afterGame = document.getElementById('afterGame')
+    let nextButton = document.getElementById('nextPicture')
+    let guessInput = document.getElementById('guessInput')
+
+    nextButton.style.display = "none"
+    correctWrong.style.display = "none"
+    toDoNext.style.display = "none"
+    guessInput.style.border = "none"
+    afterGame.style.display = "none"
+}
+
+
 
 //Nappi oikein
 checkAnswerButton.addEventListener('click', checkAnswer)
@@ -74,7 +116,6 @@ function checkAnswer() {
     let scores = document.getElementById('scores')
     let checkAnswerButton = document.getElementById('checkAnswerButton')
     let answer = document.getElementById('guessInput').value
-    let inputArea = document.getElementById('guessInput')
     let userAnswer = answer.toLowerCase()
     let correctAnswer = animalName.toLowerCase()
     let correctWrong = document.getElementById('correctWrong')
@@ -97,12 +138,26 @@ function checkAnswer() {
         nextButton.style.display = "block"
         scoreValue += 1
         scores.textContent = `Scores: ${scoreValue}`
-        
+
 
         if (numberOfPictures === 10) {
-            alert("Gamae is over!")
+            let afterGame = document.getElementById('afterGame')
+            let game = document.getElementById('game')
+            let totalScore = document.getElementById('totalScore')
+                
+
+            afterGame.style.display = "flex"
             game.style.display = "none"
-        }
+
+            totalScore.textContent = `Your total score is ${scoreValue}.`
+                
+            document.getElementById('restartButton').addEventListener('click', restartGame)
+
+            document.getElementById('viewScores').addEventListener('click', () => {
+                window.location.href = "./scores.html"})  
+            }
+
+        ///localStorage.setItem('biologyNameanimalScores', scoreValue)
 
         
     } else {
@@ -115,12 +170,31 @@ function checkAnswer() {
         nextButton.style.display = "block"
 
         if (numberOfPictures === 10) {
-            alert("Game is over!")
+            let afterGame = document.getElementById('afterGame')
+            let game = document.getElementById('game')
+            let totalScore = document.getElementById('totalScore')
+                
+
+            afterGame.style.display = "flex"
+            game.style.display = "none"
+
+            totalScore.textContent = `Your total score is ${scoreValue}.`
+                
+            document.getElementById('restartButton').addEventListener('click', restartGame)
+
+            document.getElementById('viewScores').addEventListener('click', () => {
+                window.location.href = "./scores.html"})  
         }
+
+        ///localStorage.setItem('biologyNameanimalScores', scoreValue)
     }
 
     document.getElementById('guessInput').value = ''
 }
+
+///restart
+
+
 
 
 
@@ -134,7 +208,7 @@ nextButton.addEventListener('click', nextPicture)
 
 function nextPicture() {
     let nextButton = document.getElementById('nextPicture')
-    let numberText = document.getElementById('numberOfPictures')
+    
 
     animalName = getRandomAnimal()
     fetchAnimalImage()
@@ -149,6 +223,8 @@ function nextPicture() {
     numberText.textContent = `Photo ${numberOfPictures}/10`
 
 }
+
+
 
 
 
