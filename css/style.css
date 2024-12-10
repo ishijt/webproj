@@ -111,3 +111,8 @@ p {
   text-align: center;
   text-transform: uppercase;
 }
+
+#ghlink {
+  text-decoration: none;
+  color: #7aa2f7;
+}
