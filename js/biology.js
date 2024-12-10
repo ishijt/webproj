@@ -13,29 +13,16 @@ function startGame() {
 
 ///API
 const animalNames = [
-    'Lion', 'Tiger', 'Elephant', 'Giraffe', 'Zebra', 'Kangaroo', 'Koala', 'Panda', 
-    'Bear', 'Wolf', 'Fox', 'Rabbit', 'Squirrel', 'Mouse', 'Rat', 'Leopard', 'Jaguar', 
-    'Gorilla', 'Chimpanzee', 'Orangutan', 'Rhinoceros', 'Hippopotamus', 'Alligator', 
-    'Crocodile', 'Penguin', 'Albatross', 'Eagle', 'Hawk', 'Owl', 'Parrot', 'Flamingo', 
-    'Peacock', 'Ostrich', 'Pigeon', 'Crow', 'Magpie', 'Seagull', 'Camel', 'Llama', 
-    'Alpaca', 'Goat', 'Sheep', 'Cow', 'Pig', 'Chicken', 'Rooster', 'Duck', 'Goose', 
-    'Swan', 'Sparrow', 'Starling', 'Swallow', 'Cuckoo', 'Stork', 'Heron', 'Pelican', 
-    'Crane', 'Ibis', 'Toucan', 'Woodpecker', 'Kingfisher', 'Hummingbird', 'Bat', 
-    'Dolphin', 'Whale', 'Shark', 'Octopus', 'Squid', 'Jellyfish', 'Starfish', 'Sea Urchin', 
-    'Crab', 'Lobster', 'Shrimp', 'Clam', 'Oyster', 'Snail', 'Slug', 'Frog', 'Toad', 
-    'Salamander', 'Newt', 'Lizard', 'Gecko', 'Chameleon', 'Iguana', 'Snake', 'Turtle', 
-    'Tortoise', 'Butterfly', 'Moth', 'Bee', 'Wasp', 'Ant', 'Termite', 'Beetle', 'Ladybug', 
-    'Dragonfly', 'Grasshopper', 'Cricket', 'Cockroach', 'Spider', 'Scorpion', 'Centipede', 
-    'Millipede', 'Earthworm', 'Leech', 'Coral', 'Sea Anemone', 'Sea Cucumber', 'Sea Horse', 
-    'Sea Lion', 'Walrus', 'Seal', 'Otter', 'Beaver', 'Platypus', 'Armadillo', 'Sloth', 
-    'Anteater', 'Aardvark', 'Hedgehog', 'Porcupine', 'Mole', 'Shrew', 'Weasel', 'Ferret', 
-    'Mink', 'Badger', 'Skunk', 'Raccoon', 'Opossum', 'Hamster', 'Gerbil', 'Guinea Pig', 
-    'Chinchilla', 'Capybara', 'Nutria', 'Agouti', 'Paca', 'Tapir', 'Okapi', 'Bison', 
-    'Buffalo', 'Yak', 'Water Buffalo', 'Gaur', 'Banteng', 'Eland', 'Kudu', 'Nyala', 
-    'Sable Antelope', 'Oryx', 'Gemsbok', 'Springbok', 'Gazelle', 'Impala', 'Dik-dik', 
-    'Duiker', 'Klipspringer', 'Steenbok', 'Reedbuck', 'Waterbuck', 'Bushbuck', 'Hartebeest', 
-    'Wildebeest', 'Topi', 'Tsessebe', 'Bontebok', 'Blesbok', 'Sitatunga', 'Bongo', 
-    'Gerenuk', 'Hirola', 'Saiga', 'Chiru', 'Takin', 'Musk Ox', 'Pronghorn', 'Mountain Goat']
+    'dog', 'cat', 'bird', 'lion', 'tiger', 'elephant', 'horse', 'fish', 'rabbit', 'deer',
+    'bear', 'wolf', 'fox', 'giraffe', 'zebra', 'kangaroo', 'penguin', 'dolphin', 'whale',
+    'monkey', 'panda', 'koala', 'leopard', 'cheetah', 'crocodile', 'alligator', 'hippopotamus',
+    'rhinoceros', 'bat', 'owl', 'eagle', 'hawk', 'parrot', 'flamingo', 'peacock', 'swan',
+    'otter', 'seal', 'walrus', 'shark', 'octopus', 'jellyfish', 'crab', 'lobster', 'turtle',
+    'frog', 'snake', 'lizard', 'hamster', 'mouse', 'rat', 'squirrel', 'hedgehog', 'raccoon',
+    'badger', 'beaver', 'weasel', 'ferret', 'meerkat', 'lemur', 'sloth', 'armadillo',
+    'buffalo', 'camel', 'llama', 'goat', 'sheep', 'cow', 'pig', 'donkey', 'chicken', 'duck',
+    'goose', 'turkey', 'pigeon', 'finch', 'budgerigar', 'macaw', 'toucan',
+    'woodpecker', 'hummingbird', 'kingfisher', 'cow', 'lynx']
 
 
 const APIkey = 'S6glRYH0Gxv2xoZ1XkEYzV8nErIwcJd1niGGsyaon0g'
@@ -48,7 +35,7 @@ function getRandomAnimal() {
 }
 
 function fetchAnimalImage() {
-    const url = `https://api.unsplash.com/photos/random?query=${animalName}&client_id=${APIkey}`
+    const url = `https://api.unsplash.com/photos/random?query=${animalName}&topics=pets&client_id=${APIkey}`
     
 
     fetch(url)
@@ -78,15 +65,20 @@ window.onload = () => {
 
 //Nappi oikein
 checkAnswerButton.addEventListener('click', checkAnswer)
+let scoreValue = 0
+let numberOfPictures = 1
 
 function checkAnswer() {
+    
 
+    let scores = document.getElementById('scores')
     let checkAnswerButton = document.getElementById('checkAnswerButton')
     let answer = document.getElementById('guessInput').value
     let inputArea = document.getElementById('guessInput')
     let userAnswer = answer.toLowerCase()
     let correctAnswer = animalName.toLowerCase()
-    let infoText = document.getElementById('infoText')
+    let correctWrong = document.getElementById('correctWrong')
+    let toDoNext = document.getElementById('toDoNext')
     let nextButton = document.getElementById('nextPicture')
 
     if (answer.trim() === "") {
@@ -97,15 +89,34 @@ function checkAnswer() {
 
     else if (userAnswer === correctAnswer) {
         guessInput.style.border = "2px solid green"
-        infoText.style.display = "block"
-        infoText.textContent = "Correct answer!"
+        correctWrong.style.display = "block"
+        toDoNext.style.display = "block"
+        correctWrong.style.color = "green"
+        correctWrong.textContent = "Correct answer!"
+        toDoNext.textContent = "Click 'Next picture' to continue."
         nextButton.style.display = "block"
+        scoreValue += 1
+        scores.textContent = `Scores: ${scoreValue}`
+        
+
+        if (numberOfPictures === 10) {
+            alert("Gamae is over!")
+            game.style.display = "none"
+        }
+
         
     } else {
         guessInput.style.border = "2px solid red"
-        infoText.style.display = "block"
-        infoText.textContent = `Your answer is wrong, correct answer is ${correctAnswer}.`
+        correctWrong.style.display = "block"
+        toDoNext.style.display = "block"
+        correctWrong.style.color = "red"
+        correctWrong.textContent = `Wrong answer! Correct answer is ${correctAnswer}.`
+        toDoNext.textContent = `Click 'Next picture' to continue`
         nextButton.style.display = "block"
+
+        if (numberOfPictures === 10) {
+            alert("Game is over!")
+        }
     }
 
     document.getElementById('guessInput').value = ''
@@ -119,9 +130,24 @@ function checkAnswer() {
 let nextButton = document.getElementById('nextPicture')
 nextButton.addEventListener('click', nextPicture)
 
+
+
 function nextPicture() {
+    let nextButton = document.getElementById('nextPicture')
+    let numberText = document.getElementById('numberOfPictures')
+
     animalName = getRandomAnimal()
     fetchAnimalImage()
+
+
+    nextButton.style.display = "none"
+    correctWrong.style.display = "none"
+    toDoNext.style.display = "none"
+    guessInput.style.border = "none"
+
+    numberOfPictures += 1
+    numberText.textContent = `Photo ${numberOfPictures}/10`
+
 }
 
 
