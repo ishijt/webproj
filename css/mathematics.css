@@ -1,4 +1,34 @@
 /* Math game styles */
+
+@keyframes flashRed {
+  0% {
+    background-color: transparent;
+  }
+  50% {
+    background-color: #ff007c;
+  }
+  100% {
+    background-color: transparent;
+  }
+}
+
+.wrong-answer {
+  animation: flashRed 300ms ease-out;
+}
+
+@keyframes flashGreen {
+  0% {
+    background-color: transparent;
+  }
+  100% {
+    background-color: rgba(140, 224, 112, 0.8);
+  }
+}
+
+.correct-answer {
+  animation: flashGreen 300ms ease-out;
+}
+
 #game-container {
   width: 100%;
   max-width: 900px;
