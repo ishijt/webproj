@@ -121,7 +121,7 @@ SchoolQuizZone is a collection of interactive educational games designed to help
 - Each game tracks individual scores using browser's Local Storage
 - Scores are preserved between sessions
 - Maximum possible score for each game is 10 points (20 for Mathematics)
-- Total possible score across all games is 100 points
+- Total possible score across all games is 70 points
 
 ### Scores Page Features
 

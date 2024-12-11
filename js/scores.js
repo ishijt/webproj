@@ -42,13 +42,9 @@ function loadScores() {
     +getScoresFromGame('geoCapitalsQuizScores') + 
     +getScoresFromGame('musicGameScore') + 
     +getScoresFromGame('englishGameScore') + 
-    +getScoresFromGame('biologyGame1Scores') + 
-    +getScoresFromGame('biologyGame2Scores') + 
-    +getScoresFromGame('biologyGame3Scores') + 
-    +getScoresFromGame('mathGame1Scores') + 
-    +getScoresFromGame('mathGame2Scores') + 
-    +getScoresFromGame('mathGame3Scores');
-    document.getElementById('total-scores').textContent = `Total scores: ${totalScores}/100`;
+    +getScoresFromGame('biologyGameScores') + 
+    +getScoresFromGame('mathGame1Scores');
+    document.getElementById('total-scores').textContent = `Total scores: ${totalScores}/70`;
   }
   
   // call the function when the page loads
