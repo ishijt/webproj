@@ -5,7 +5,6 @@
 }
 
 #music-container {
-    background-color: #ffffff;
     border-radius: 10px;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
     padding: 15px;
@@ -37,7 +36,7 @@
 
 #music-header div {
     font-size: 1.5em;
-    color: #333;
+    color: #333333;
 }
 
 #music-screen {
@@ -60,6 +59,7 @@
 }
 
 #m-start-screen h2 {
+    color: #333333;
     margin-top: 6vh;
 }
 
@@ -78,6 +78,17 @@
     font-size: 1.25em;
     padding: 10px 20px;
     margin: 15px;
+}
+
+button.btn.btn-primary, button.btn.btn-secondary {
+    background-color: #F7D371;
+    color: #333333;
+    border: none;
+    font-size: 1.4em;
+}
+
+button.btn.btn-primary:hover, button.btn.btn-secondary:hover {
+    background-color: #F47F7B;
 }
 
 .hidden {
@@ -159,6 +170,10 @@
     }
 
     #music-header div {
+        font-size: 1.1em;
+    }
+
+    button.btn.btn-primary, button.btn.btn-secondary {
         font-size: 1.1em;
     }
 }
