@@ -1,14 +1,19 @@
 /* Music game styles */
 
+* {
+    font-family: 'Baloo';
+}
+
 #music-container {
-    background: #ffffff;
+    background-color: #ffffff;
     border-radius: 10px;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.4);
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
     padding: 15px;
     max-width: 1400px;
     min-height: 45vh;
     margin-left: auto;
     margin-right: auto;
+    margin-top: 2.5vh;
 }
 
 #active-game-area {
@@ -31,8 +36,8 @@
 }
 
 #music-header div {
-    font-size: 1.3em;
-    font-weight: bold;
+    font-size: 1.5em;
+    color: #333;
 }
 
 #music-screen {
@@ -40,6 +45,7 @@
 }
 
 #music-screen h2 {
+    font-size: 3em;
     margin-bottom: 20px;
 }
 
@@ -48,24 +54,27 @@
 }
 
 #music-screen img {
-    max-width: 320px;
+    max-width: 300px;
     border-radius: 10px;
     margin-bottom: 10px;
 }
 
 #m-start-screen h2 {
-    margin-top: 7.5vh;
+    margin-top: 6vh;
+}
+
+#m-start-screen p {
+    margin: 12px;
 }
 
 .trivia-question {
-    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     font-size: 24px;
 }
 
 /* Buttons and inputs */
 
 .btn {
-    border-radius: 8px;
+    border-radius: 10px;
     font-size: 1.25em;
     padding: 10px 20px;
     margin: 15px;
@@ -110,7 +119,7 @@
 #answer-input {
     width: 50vh;
     box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.5);
-    border-radius: 10px;
+    border-radius: 12px;
     position: relative;
     align-items: center;
     text-align: center;
@@ -152,6 +161,4 @@
     #music-header div {
         font-size: 1.1em;
     }
-
-
 }
