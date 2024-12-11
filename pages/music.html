@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Music Game</title>
+    <title>SchoolQuizZone | Music</title>
     <link href="../css/style.css" rel="stylesheet" />
     <link href="../css/music.css" rel="stylesheet" />
     <link
@@ -15,12 +15,11 @@
   </head>
   <body class="d-flex flex-column h-100">
     <div class="container-fluid flex-shrink-0">
-
       <!-- Header -->
-      <header 
-        class="d-flex justify-content-center align-items-center header-image">
-      </header>
-      
+      <header
+        class="d-flex justify-content-center align-items-center header-image"
+      ></header>
+
       <!-- Navigation -->
       <nav class="navbar navbar-expand-lg bg-body-tertiary">
         <div class="container-fluid">
@@ -47,15 +46,38 @@
                 <a class="nav-link" href="./scores.html">Scores</a>
               </li>
               <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle active" href="../games.html" role="button" data-bs-toggle="dropdown" aria-expanded="true">
+                <a
+                  class="nav-link dropdown-toggle active"
+                  href="../games.html"
+                  role="button"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="true"
+                >
                   Games
                 </a>
                 <ul class="dropdown-menu">
-                  <li><a class="dropdown-item active" href="./geography.html" aria-current="page">Geography</a></li>
-                  <li><a class="dropdown-item" href="./music.html">Music</a></li>
-                  <li><a class="dropdown-item" href="./biology.html">Biology</a></li>
-                  <li><a class="dropdown-item" href="./english.html">English</a></li>
-                  <li><a class="dropdown-item" href="./mathematics.html">Mathematics</a></li>
+                  <li>
+                    <a
+                      class="dropdown-item active"
+                      href="./geography.html"
+                      aria-current="page"
+                      >Geography</a
+                    >
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="./music.html">Music</a>
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="./biology.html">Biology</a>
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="./english.html">English</a>
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="./mathematics.html"
+                      >Mathematics</a
+                    >
+                  </li>
                 </ul>
               </li>
             </ul>
@@ -74,10 +96,14 @@
             <div id="music-screen">
               <div id="m-start-screen">
                 <h2>Music Game</h2>
-                <p>Identify instruments from  sound clips or images, 
-                  and answer trivia questions correctly!</p>
+                <p>
+                  Identify instruments from sound clips or images, and answer
+                  trivia questions correctly!
+                </p>
                 <p>Click "Start Game" to begin.</p>
-                <button id="m-start-game" class="btn btn-primary">Start Game</button>
+                <button id="m-start-game" class="btn btn-primary">
+                  Start Game
+                </button>
               </div>
               <div id="active-game-area">
                 <div id="music-play" class="d-none">
@@ -85,8 +111,16 @@
                   <audio id="sound-clip" controls class="d-none"></audio>
                   <div id="answer-buttons" class="mt-4 d-grid gap-3"></div>
                   <!-- Image Game -->
-                  <img id="instrument-image" class="d-none img-fluid mt-3" alt="Instrument" />
-                  <input id="answer-input" class="form-control mt-3 d-none" placeholder="Type your answer here, then press Enter" />
+                  <img
+                    id="instrument-image"
+                    class="d-none img-fluid mt-3"
+                    alt="Instrument"
+                  />
+                  <input
+                    id="answer-input"
+                    class="form-control mt-3 d-none"
+                    placeholder="Type your answer here, then press Enter"
+                  />
                   <!-- Trivia Game-->
                   <div id="choice-buttons">
                     <div class="question"></div>
