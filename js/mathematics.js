@@ -118,6 +118,10 @@ const checkAnswer = (answer) => {
     (c) => c.num1 * c.num2 === answer && !c.answered && !c.missed,
   );
 
+  // Get the input element
+  const input = document.getElementById("answer-input");
+  const gameScreen = document.getElementById("game-screen");
+
   if (correctCalculation) {
     score += 1;
     document.getElementById("score").textContent = `Score: ${score}`;
@@ -125,8 +129,27 @@ const checkAnswer = (answer) => {
     correctCalculation.answered = true;
     answeredOrMissedCalculations++;
     calculations = calculations.filter((c) => c !== correctCalculation);
+
+    // Add correct answer feedback
+    gameScreen.classList.add("correct-answer");
+    setTimeout(() => {
+      gameScreen.classList.remove("correct-answer");
+    }, 300);
+
+    input.value = ""; // Clear input on correct answer
     checkGameEnd();
     return true;
+  } else {
+    // Add wrong answer feedback
+    gameScreen.classList.add("wrong-answer");
+
+    // Remove the class after animation completes
+    setTimeout(() => {
+      gameScreen.classList.remove("wrong-answer");
+    }, 300);
+
+    // Clear input on wrong answer
+    input.value = "";
   }
   return false;
 };
@@ -158,9 +181,7 @@ const startGame = () => {
     e.preventDefault();
     const input = document.getElementById("answer-input");
     const answer = parseInt(input.value);
-    if (checkAnswer(answer)) {
-      input.value = "";
-    }
+    checkAnswer(answer);
     input.focus();
   };
 
