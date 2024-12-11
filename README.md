@@ -1,4 +1,27 @@
-﻿# Web-project
+﻿![banner](./images/banner.jpeg)
+
+# SchoolQuizZone
+
+SchoolQuizZone is a collection of interactive educational games designed to help users learn and test their knowledge in various subjects. The website features six engaging games focusing on biology, geography, English language skills, mathematics, and music education.
+
+<!-- vim-markdown-toc GFM -->
+
+* [Team members](#team-members)
+* [Games Available](#games-available)
+    * [1. Animal Recognition Game (Biology)](#1-animal-recognition-game-biology)
+    * [2. World Capitals Quiz (Geography)](#2-world-capitals-quiz-geography)
+    * [3. World Flags Quiz (Geography)](#3-world-flags-quiz-geography)
+    * [4. Word Scramble Game (English)](#4-word-scramble-game-english)
+    * [5. Mathematics Game](#5-mathematics-game)
+    * [6. Music Education Game](#6-music-education-game)
+* [Technical Features](#technical-features)
+* [Technologies Used](#technologies-used)
+* [Scoring System](#scoring-system)
+    * [Score Tracking](#score-tracking)
+    * [Scores Page Features](#scores-page-features)
+* [License](#license)
+
+<!-- vim-markdown-toc -->
 
 ## Team members
 
@@ -10,50 +33,103 @@
 | Heini Paananen  | heinipaananen  |
 | Ilari Tuimala   | ishijt         |
 
-## UI design plan:
+## Games Available
 
-### Colors:
+### 1. Animal Recognition Game (Biology)
 
-#### Primary Colors:
+- Test your knowledge of animals through image recognition
+- Features random animal images from the Unsplash API
+- 10 questions per game session
+- Score tracking functionality
+- Immediate feedback on answers
 
-Light Blue (#5C809A) – used for backgrounds (e.g., header and footer).
+### 2. World Capitals Quiz (Geography)
 
-White (#FFFFFF) – main color for backgrounds and to ensure text clarity.
+- Challenge yourself to match countries with their capitals
+- Uses the REST Countries API for up-to-date information
+- Multiple choice format with 6 options per question
+- 10 questions per quiz
+- Real-time score tracking
+- Final score summary
 
-#### Accent Colors:
+### 3. World Flags Quiz (Geography)
 
-Yellow (#F7D371) – used in buttons and highlighted elements.
+- Test your knowledge of country flags
+- Uses REST Countries API for current flag data
+- Visual multiple-choice format with flag images
+- 10 questions per quiz
+- Immediate feedback with correct flag shown
+- Score tracking and history
 
-Light Pink (#F47F7B) – used for hover effects, buttons, and selected elements.
+### 4. Word Scramble Game (English)
 
-#### Text Colors:
+- Improve your English vocabulary through word unscrambling
+- Features various common English words with corresponding images
+- 10 questions per game
+- Score tracking with points added for correct answers and deducted for incorrect ones
+- Immediate feedback with correct answer display
 
-Dark Gray (#333333) – main color for text.
+### 5. Mathematics Game
 
-White (#FFFFFF) – used on dark backgrounds, such as in the footer and buttons.
+- Dynamic multiplication practice
+- Falling calculations format for engaging gameplay
+- Real-time answer input
+- Score tracking out of 20 calculations
+- Game over modal with final score display
+- Local storage for high scores
 
-### Fonts:
+### 6. Music Education Game
 
-Main Font: Baloo – chosen for its modern appearance. It works well for both headings and body text.
+- Three different game modes:
+  - Sound recognition
+  - Instrument image identification
+  - Music trivia questions
+- Features 13 different musical instruments
+- Audio clips and visual elements
+- Timer functionality
+- Score tracking and best score storage
+- Multiple choice and text input answers
 
-#### Font Usage:
+## Technical Features
 
-Headings: Centered.
+- **Dynamic Content Loading**: All games utilize JavaScript for dynamic content generation
+- **API Integration**:
+  - Unsplash API for animal images
+  - REST Countries API for geographical data
+- **Local Storage**: Implements score tracking across sessions
+- **Responsive Design**: Games are playable across different device sizes
+- **Interactive UI**: Immediate feedback and smooth transitions between questions
+- **Multiple Input Methods**: Supports both multiple choice and text input
+- **Audio Integration**: Sound clips for music education
+- **Animation Features**: Falling calculations in math game
 
-Headings (h1, h2, h3): Use color #5C809A on all pages to ensure a consistent look.
+## Technologies Used
 
-Body Text: Medium-sized, balanced, and simple style (1.2rem).
+- HTML
+- CSS (Bootstrap for responsive design)
+- JavaScript
+- External APIs:
+  - Unsplash API
+  - REST Countries API v3.1
+- Web Audio API
+- Local Storage API
 
-### Style Guide:
+## Scoring System
 
-Consistency: Every page uses consistent colors and fonts to create a clear and logical layout.
+### Score Tracking
 
-Responsiveness: The site adapts to different devices using the Bootstrap grid system.
+- Each game tracks individual scores using browser's Local Storage
+- Scores are preserved between sessions
+- Maximum possible score for each game is 10 points (20 for Mathematics)
+- Total possible score across all games is 70 points
 
-Clear Navigation: Each page includes links in the top bar to sections (Homepage, Info, Scores, Games) for easy navigation.
+### Scores Page Features
 
-### User Feedback:
+- Dashboard for viewing all game scores
+- Individual score display for each game
+- Total score calculation across all games
+- Real-time score updates after each game completion
 
-Hover Effect: Buttons change color to light pink (#F47F7B) to indicate interactivity.
+## License
 
-Rounded corners and centered text ensure a user-friendly design.
+This project is open source and available under the [MIT License](https://mit-license.org/).

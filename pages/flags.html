@@ -1,10 +1,13 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en" class="h-100">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Flags Quiz - Geography</title>
-    <link href="https://fonts.googleapis.com/css2?family=Baloo&display=swap" rel="stylesheet">
+    <title>SchoolQuizZone | Flags</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Baloo&display=swap"
+      rel="stylesheet"
+    />
     <link href="../css/geography.css" rel="stylesheet" />
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
@@ -16,11 +19,10 @@
 
   <body class="d-flex flex-column h-100">
     <div class="container-fluid flex-shrink-0">
-      
       <!-- Header -->
-      <header 
-        class="d-flex justify-content-center align-items-center header-image">
-      </header>
+      <header
+        class="d-flex justify-content-center align-items-center header-image"
+      ></header>
 
       <!-- Navigation -->
       <nav class="navbar navbar-expand-lg bg-body-tertiary">
@@ -48,15 +50,35 @@
                 <a class="nav-link" href="./scores.html">Scores</a>
               </li>
               <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle active" href="./games.html" role="button" data-bs-toggle="dropdown" aria-expanded="true">
+                <a
+                  class="nav-link dropdown-toggle active"
+                  href="#"
+                  role="button"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
                   Games
                 </a>
                 <ul class="dropdown-menu">
-                  <li><a class="dropdown-item active" href="./geography.html" aria-current="page">Geography</a></li>
-                  <li><a class="dropdown-item" href="./peli2.html">Music</a></li>
-                  <li><a class="dropdown-item" href="./peli3.html">Biology</a></li>
-                  <li><a class="dropdown-item" href="./peli4.html">English</a></li>
-                  <li><a class="dropdown-item" href="./peli5.html">Mathematics</a></li>
+                  <li>
+                    <a class="dropdown-item" href="./geography.html"
+                      >Geography</a
+                    >
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="./music.html">Music</a>
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="./biology.html">Biology</a>
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="./english.html">English</a>
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="./mathematics.html"
+                      >Mathematics</a
+                    >
+                  </li>
                 </ul>
               </li>
             </ul>
@@ -65,23 +87,26 @@
       </nav>
 
       <!-- Quiz Section -->
-      <main class="container my-4"> 
-        <section class="container text-center my-5">
-          <h1>Geography</h1>
-          <h1>Flags</h1>
-        </section>
+      <section class="container text-center my-5">
+        <h1>Geography</h1>
+        <h1>Flags</h1>
+      </section>
+      <main class="container my-4">
         <section id="quiz-container" class="text-center">
           <h2 id="question" class="fs-4 mb-4">
-            Question <span id="question-number"></span>: Which flag belongs to <span id="country-name" class="fw-bold"></span>?
+            Question <span id="question-number">1</span> of
+            <span id="total-questions">10</span>: Which flag belongs to
+            <span id="country-name" class="fw-bold"></span>?
           </h2>
-          <div id="flags-container" class="row row-cols-3 row-cols-md-4">
-          </div>            
         </section>
+        <div id="flags-container" class="row row-cols-3 row-cols-md-4"></div>
 
         <!-- Result Section -->
         <section id="result-container" class="text-center mt-4">
           <h4 id="result-message"></h4>
-          <button id="next-question" class="btn btn-primary mt-3">Next Question</button>
+          <button id="next-question" class="btn btn-primary mt-3">
+            Next Question
+          </button>
         </section>
       </main>
     </div>
@@ -101,3 +126,4 @@
     <script src="../js/geography.js" defer></script>
   </body>
 </html>
+

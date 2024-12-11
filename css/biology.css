@@ -1,0 +1,250 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: inherit;
+    font-size: 100%;
+    line-height: 1.5;
+}
+  
+.container.fluid {
+    font-size: 2.5rem;
+}
+
+html, body {
+    height: 100%;
+    margin: 0;
+}
+body {
+    background-color: #f2f9fc;
+    color: #333333 ;
+    font-size: 2.5rem;
+    font-family: 'Baloo', sans-serif !important;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+  
+.header-image {
+    background: url('../images/banner.jpeg') no-repeat top center,
+    #5C809A;
+    background-size: contain; background-position: center;
+    height: 175px;
+    margin-bottom: 0;
+}
+  
+h1 {
+    font-family: "Baloo", sans-serif;
+    color: #5C809A !important;
+    text-align: center;
+}
+
+  
+h2 {
+    font-family: 'Baloo', sans-serif;
+    color: #5C809A !important;
+    text-align: center;
+}
+  
+h3 {
+    font-family: 'Baloo', sans-serif;
+    color: #5C809A !important;
+    text-align: center;
+}
+  
+h4 {
+    font-family: 'Baloo', sans-serif;
+    color: #333333 !important;
+    text-align: center;
+}
+  
+p {
+    font-family: 'Baloo', sans-serif;
+    font-size: 1.2rem;
+    color: #333333;
+}
+  
+.navbar {
+    font-size: 1.5rem;
+    padding: 0% !important;
+}
+  
+.dropdown-menu {
+    font-size: 2.5rem;
+    font-family: 'Baloo', sans-serif;
+    color: #5C809A !important;
+}
+  
+.dropdown-item.active {
+    color: #ffffff;
+    background-color: #5C809A !important;
+}
+  
+.dropdown-item:hover {
+    color: #ffffff;
+    background-color: #f47f7b !important;
+}
+  
+.nav-link {
+    color: #333333;
+    font-family: 'Baloo', sans-serif;
+    font-weight: 500;
+    text-transform: uppercase;
+    text-align: center;
+    transition: color 0.3s ease, background-color 0.3s ease;
+    padding: 0.5rem 1rem;
+}
+  
+.nav-link:hover {
+    color: #ffffff;
+    background-color: #f47f7b;
+}
+  
+.nav-link.active {
+    color: #ffffff;
+    background-color: #5C809A;
+}
+  
+.section-title {
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+    text-align: center;
+    color: #5C809A;
+}
+  
+  /* For list items scores.html */
+.list-group-item {
+    font-family: 'Baloo', sans-serif;
+    font-size: 1.2rem;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #ffffff;
+    color: #333333;
+    padding: 10px 15px;
+}
+  
+.list-group-item div {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+  
+.custom-footer {
+    background-color: #5C809A;
+    color: #ffffff;
+    font-family: 'Baloo', sans-serif;
+    text-align: center;
+    text-transform: uppercase;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+  
+
+.content {
+    flex: 1;
+}
+
+#nameTheAnimal {
+    margin-top: 40px;
+}
+
+
+#welcomeCont {
+    color: #333333;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    height: 50vh;
+    font-family: "Baloo", sans-serif;
+}
+
+.welcome {
+    padding: 20px;
+}
+
+#startGameButton {
+    font-size: 1.5rem;
+    color: #ffffff;
+    background-color:#f7d371;
+    border: none;
+    height: 70px;
+    width: 200px;
+
+}
+#startGameButton:hover {
+    color: #ffffff;
+    background-color: #f47f7b;
+}
+
+#game {
+    display: none;
+}
+
+.game-item {
+    padding: 30px;
+}
+
+#inputArea {
+    margin-top: 70px;
+    display: block;
+}
+
+#guessInput {
+    box-shadow: 0 0 10px #5C809A;
+}
+
+#correctWrong {
+    padding-top: 20px;
+    display: none;
+}
+
+#toDoNext {
+    display: none;
+}
+
+#nextPicture {
+    margin-top: 60px;
+    display: none;
+}
+
+#afterGame {
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 60vh;
+    display: none;
+    margin-top: 100px;
+}
+
+#afterGameBox {
+    padding: 30px;
+    border: 2px solid #5C809A;
+    border-radius: 20px;
+    box-shadow: 0 0 10px #5C809A;
+}
+
+#restartButton {
+    background-color: #f7d371;
+    border: none;
+}
+
+#restartButton:hover {
+    background-color: #f47f7b;
+}
+
+#viewScores {
+    background-color: #f7d371;
+    border: none;
+}
+
+#viewScores:hover {
+    background-color: #f47f7b;
+}
+
+#totalScore {
+    padding-top: 10px;
+    
+}
+
+
+

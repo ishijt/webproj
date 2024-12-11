@@ -17,49 +17,34 @@ function getScoresFromGame(gameName){
     }
 }
 
-
 function loadScores() {
     // retrieve data from localStorage
   
-    // populate data for Geography - Flags, Capitals, Landmarks
+    // populate data for Geography - Flags, Capitals
     document.getElementById('geo-flags').textContent = getVarFromLocalStorage('geoFlagsQuizScores');
     document.getElementById('geo-capitals').textContent = getVarFromLocalStorage('geoCapitalsQuizScores');
-    document.getElementById('geo-landmarks').textContent = getVarFromLocalStorage('geoLandmarksQuizScores');
   
-    // // populate data for Music
+    // populate data for Music
     document.getElementById('music-game').textContent = getVarFromLocalStorage('musicGameScore');
   
     // populate data for English
-    document.getElementById('english-game1').textContent = getVarFromLocalStorage('englishGame1Scores');
-    document.getElementById('english-game2').textContent = getVarFromLocalStorage('englishGame2Scores');
-    document.getElementById('english-game3').textContent = getVarFromLocalStorage('englishGame3Scores');
+    document.getElementById('english-game1').textContent = getVarFromLocalStorage('englishGameScore');
   
     // populate data for Biology
-    document.getElementById('biology-game1').textContent = getVarFromLocalStorage('biologyGame1Scores');
-    document.getElementById('biology-game2').textContent = getVarFromLocalStorage('biologyGame2Scores');
-    document.getElementById('biology-game3').textContent = getVarFromLocalStorage('biologyGame3Scores');
+    document.getElementById('biology-game').textContent = getVarFromLocalStorage('biologyGameScores');
+
   
     // populate data for Mathematics
     document.getElementById('math-game1').textContent = getVarFromLocalStorage('mathGame1Scores');
-    document.getElementById('math-game2').textContent = getVarFromLocalStorage('mathGame2Scores');
-    document.getElementById('math-game3').textContent = getVarFromLocalStorage('mathGame3Scores');
 
     let totalScores = 
     +getScoresFromGame('geoFlagsQuizScores') + 
     +getScoresFromGame('geoCapitalsQuizScores') + 
-    +getScoresFromGame('geoLandmarksQuizScores') + 
     +getScoresFromGame('musicGameScore') + 
-    +getScoresFromGame('englishGame1Scores') + 
-    +getScoresFromGame('englishGame2Scores') + 
-    +getScoresFromGame('englishGame3Scores') + 
-    +getScoresFromGame('biologyGame1Scores') + 
-    +getScoresFromGame('biologyGame2Scores') + 
-    +getScoresFromGame('biologyGame3Scores') + 
-    +getScoresFromGame('mathGame1Scores') + 
-    +getScoresFromGame('mathGame2Scores') + 
-    +getScoresFromGame('mathGame3Scores');
-    document.getElementById('total-scores').textContent = `Total scores: ${totalScores}/100`;
-
+    +getScoresFromGame('englishGameScore') + 
+    +getScoresFromGame('biologyGameScores') + 
+    +getScoresFromGame('mathGame1Scores');
+    document.getElementById('total-scores').textContent = `Total scores: ${totalScores}/70`;
   }
   
   // call the function when the page loads

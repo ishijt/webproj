@@ -1,89 +1,221 @@
-// Muuttujat
 let calculations = [];
 let score = 0;
 let gameRunning = false;
+let animationId;
+let lastTime = 0;
+let totalCalculations = 0;
+let answeredOrMissedCalculations = 0;
+const CALCULATION_LIMIT = 20;
+
+document.getElementById("reload-button").addEventListener("click", () => {
+  location.reload();
+});
+
+const saveScore = (score) => {
+  localStorage.setItem("mathGame1Scores", score);
+};
+
+const getHighScores = () => {
+  const score = localStorage.getItem("mathGame1Scores");
+  return score === null ? "No Data" : score;
+};
 
 const createCalculation = () => {
+  if (totalCalculations >= CALCULATION_LIMIT) {
+    return;
+  }
+
   const num1 = Math.floor(Math.random() * 10) + 1;
   const num2 = Math.floor(Math.random() * 10) + 1;
-
-  // Arvo x-koordinaatti ruudulla (reunoille marginaalia)
   const x = Math.random() * (gameScreen.offsetWidth - 100);
 
-  // Luo laskuobjekti
+  totalCalculations++;
+
   const calculation = {
     id: Date.now(),
-    num1: num1,
-    num2: num2,
-    x: x,
+    num1,
+    num2,
+    x,
     y: 0,
     element: document.createElement("div"),
+    missed: false,
+    answered: false,
   };
-
-  // Aseta laskuelementin ominaisuudet
   calculation.element.className = "calculation";
   calculation.element.textContent = `${num1} × ${num2}`;
   calculation.element.style.left = `${x}px`;
   calculation.element.style.top = "0px";
-
-  // Lisää lasku näytölle ja taulukkoon
   gameScreen.appendChild(calculation.element);
   calculations.push(calculation);
 };
 
+const handleModalKeydown = (event) => {
+  if (event.key === "Enter") {
+    location.reload();
+  }
+};
+
+const showGameOverModal = () => {
+  const modal = document.getElementById("game-over-modal");
+  const finalScore = modal.querySelector(".modal-score-value");
+  finalScore.textContent = `${score}/20`;
+  modal.style.display = "flex";
+
+  document.addEventListener("keydown", handleModalKeydown);
+};
+
+const checkGameEnd = () => {
+  if (answeredOrMissedCalculations >= CALCULATION_LIMIT) {
+    endGame();
+  }
+};
+
+const endGame = () => {
+  gameRunning = false;
+  cancelAnimationFrame(animationId);
+
+  const answerForm = document.getElementById("answer-form");
+  if (answerForm) answerForm.remove();
+
+  calculations.forEach((c) => c.element.remove());
+  calculations = [];
+
+  saveScore(score);
+  showGameOverModal();
+};
+
+const updateGame = (timestamp) => {
+  if (!lastTime) lastTime = timestamp;
+  const deltaTime = timestamp - lastTime;
+
+  if (deltaTime >= 20) {
+    calculations.forEach((calculation, index) => {
+      if (calculation.answered) return;
+
+      calculation.y += 0.9;
+      calculation.element.style.top = `${calculation.y}px`;
+
+      if (calculation.y > gameScreen.offsetHeight - 135) {
+        if (!calculation.missed && !calculation.answered) {
+          calculation.missed = true;
+          answeredOrMissedCalculations++;
+          checkGameEnd();
+        }
+        calculation.element.remove();
+        calculations.splice(index, 1);
+      }
+    });
+    lastTime = timestamp;
+  }
+
+  if (gameRunning) {
+    animationId = requestAnimationFrame(updateGame);
+  }
+};
+
 const checkAnswer = (answer) => {
   const correctCalculation = calculations.find(
-    (p) => p.num1 * p.num2 === answer,
+    (c) => c.num1 * c.num2 === answer && !c.answered && !c.missed,
   );
 
+  // Get the input element
+  const input = document.getElementById("answer-input");
+  const gameScreen = document.getElementById("game-screen");
+
   if (correctCalculation) {
-    score += 10;
+    score += 1;
     document.getElementById("score").textContent = `Score: ${score}`;
     correctCalculation.element.remove();
-    calculations = calculations.filter((p) => p !== correctCalculation);
+    correctCalculation.answered = true;
+    answeredOrMissedCalculations++;
+    calculations = calculations.filter((c) => c !== correctCalculation);
+
+    // Add correct answer feedback
+    gameScreen.classList.add("correct-answer");
+    setTimeout(() => {
+      gameScreen.classList.remove("correct-answer");
+    }, 300);
+
+    input.value = ""; // Clear input on correct answer
+    checkGameEnd();
     return true;
+  } else {
+    // Add wrong answer feedback
+    gameScreen.classList.add("wrong-answer");
+
+    // Remove the class after animation completes
+    setTimeout(() => {
+      gameScreen.classList.remove("wrong-answer");
+    }, 300);
+
+    // Clear input on wrong answer
+    input.value = "";
   }
   return false;
 };
 
 const startGame = () => {
-  calculations.forEach((p) => p.element.remove());
+  calculations.forEach((c) => c.element.remove());
   calculations = [];
   score = 0;
+  totalCalculations = 0;
+  answeredOrMissedCalculations = 0;
   gameRunning = true;
+
   document.getElementById("score").textContent = "Score: 0";
 
   const startScreen = document.getElementById("start-screen");
   if (startScreen) startScreen.remove();
 
-  // Vastauslomake
+  const modal = document.getElementById("game-over-modal");
+  if (modal) modal.style.display = "none";
+
   const answerForm = document.createElement("form");
   answerForm.id = "answer-form";
   answerForm.innerHTML = `
-        <input type="number" id="answer-input" placeholder="???" autofocus>
-        <button type="submit">Vastaa</button>
-    `;
+    <input type="number" id="answer-input" autofocus>
+    <button type="submit" id="answer-button">Answer</button>
+  `;
 
-  // Vastauksen lähettäminen
   answerForm.onsubmit = (e) => {
     e.preventDefault();
     const input = document.getElementById("answer-input");
     const answer = parseInt(input.value);
-    if (checkAnswer(answer)) {
-      input.value = ""; // Tyhjennä kenttä oikean vastauksen jälkeen
-    }
+    checkAnswer(answer);
     input.focus();
   };
 
-  // Lisää lomake pelialueelle
   gameScreen.appendChild(answerForm);
+  lastTime = 0;
+  animationId = requestAnimationFrame(updateGame);
 
-  // Luo ensimmäinen lasku
-  createCalculation();
+  const calculationInterval = setInterval(() => {
+    if (!gameRunning) {
+      clearInterval(calculationInterval);
+      return;
+    }
+    if (calculations.length < 4) {
+      createCalculation();
+    }
+  }, 3000);
+
+  document.removeEventListener("keydown", handleModalKeydown);
 };
 
-const startButton = document.querySelector("#start-screen button");
-startButton.addEventListener("click", startGame);
-
-// Hae pelialue HTML:stä
 const gameScreen = document.getElementById("game-screen");
+
+document.addEventListener("DOMContentLoaded", () => {
+  const modalHTML = `
+    <div id="game-over-modal" class="modal">
+      <div class="modal-content">
+        <h2 class="modal-title">Game Over!</h2>
+        <p class="modal-score">Final Score: <span class="modal-score-value">0/20</span></p>
+        <button onclick="location.reload()" class="modal-button">Return</button>
+      </div>
+    </div>
+  `;
+  document.body.insertAdjacentHTML("beforeend", modalHTML);
+
+  const startButton = document.querySelector("#start-screen button");
+  startButton.addEventListener("click", startGame);
+});
