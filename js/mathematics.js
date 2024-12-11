@@ -7,6 +7,10 @@ let totalCalculations = 0;
 let answeredOrMissedCalculations = 0;
 const CALCULATION_LIMIT = 20;
 
+document.getElementById("reload-button").addEventListener("click", () => {
+  location.reload();
+});
+
 const saveScore = (score) => {
   localStorage.setItem("mathGame1Scores", score);
 };
