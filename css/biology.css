@@ -201,7 +201,8 @@ p {
 
 #animalFact {
     display: none;
-    color: #f47f7b;
+    color: green;
+    font-style: italic;
 }
 
 #toDoNext {
