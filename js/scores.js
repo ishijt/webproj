@@ -25,13 +25,11 @@ function clearAllScores() {
   localStorage.removeItem("biologyGameScores");
   localStorage.removeItem("mathGame1Scores");
 
-  // Reload the scores display
   loadScores();
 }
 
 function loadScores() {
   // retrieve data from localStorage
-
   // populate data for Geography - Flags, Capitals
   document.getElementById("geo-flags").textContent =
     getVarFromLocalStorage("geoFlagsQuizScores");
@@ -62,17 +60,21 @@ function loadScores() {
     +getScoresFromGame("englishGameScore") +
     +getScoresFromGame("biologyGameScores") +
     +getScoresFromGame("mathGame1Scores");
+
   document.getElementById("total-scores").textContent =
     `Total scores: ${totalScores}/70`;
 }
 
-// Show modal instead of using confirm()
-document.getElementById("clear-scores").addEventListener("click", function () {
-  document.getElementById("clearScoresModal").style.display = "flex";
-});
+function showModal() {
+  const modal = document.getElementById("clearScoresModal");
+  modal.style.display = "flex";
+  modal.style.visibility = "visible";
+}
 
 function closeModal() {
-  document.getElementById("clearScoresModal").style.display = "none";
+  const modal = document.getElementById("clearScoresModal");
+  modal.style.display = "none";
+  modal.style.visibility = "hidden";
 }
 
 function confirmClear() {
@@ -80,16 +82,22 @@ function confirmClear() {
   closeModal();
 }
 
-// Close modal if clicking outside of it
-window.onclick = function (event) {
-  const modal = document.getElementById("clearScoresModal");
-  if (event.target === modal) {
-    closeModal();
+document.addEventListener("DOMContentLoaded", function () {
+  loadScores();
+
+  const clearButton = document.getElementById("clear-scores");
+  if (clearButton) {
+    clearButton.addEventListener("click", showModal);
   }
-};
 
-window.onload = function () {
-  document.getElementById("clearScoresModal").style.display = "none";
-  loadScores(); // Keep your existing loadScores call
-};
+  const modal = document.getElementById("clearScoresModal");
+  if (modal) {
+    modal.addEventListener("click", function (event) {
+      if (event.target === modal) {
+        closeModal();
+      }
+    });
+  }
 
+  closeModal();
+});
