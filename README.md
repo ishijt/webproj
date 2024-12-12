@@ -25,13 +25,13 @@ SchoolQuizZone is a collection of interactive educational games designed to help
 
 ## Team members
 
-| Name            | Username       |
-| --------------- | -------------- |
-| Erkka Leppänen  | merkksgit      |
-| Daniel Lyytinen | DanielLyytinen |
-| Irina Gerasina  | irina-ge       |
-| Heini Paananen  | heinipaananen  |
-| Ilari Tuimala   | ishijt         |
+| Name            | GitHub Username | Game        |
+| --------------- | --------------- | ----------- |
+| Erkka Leppänen  | merkksgit       | Mathematics |
+| Daniel Lyytinen | DanielLyytinen  | English     |
+| Irina Gerasina  | irina-ge        | Geography   |
+| Heini Paananen  | heinipaananen   | Biology     |
+| Ilari Tuimala   | ishijt          | Music       |
 
 ## Games Available
 
