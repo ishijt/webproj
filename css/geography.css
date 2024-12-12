@@ -149,8 +149,7 @@ button {
 #next-question {
   font-size: 1.5rem !important;
   font-family: "Baloo", sans-serif !important;
-  height: 50px;
-  line-height: 50px;
+  line-height: 30px;
   border-radius: 20px !important;
   border: none !important;
   height: 70px;
@@ -175,8 +174,7 @@ button {
 #view-scores {
   font-size: 1.5rem !important;
   font-family: "Baloo", sans-serif !important;
-  height: 50px;
-  line-height: 50px;
+  line-height: 30px;
   border-radius: 20px !important;
   border: none !important;
   height: 70px;
