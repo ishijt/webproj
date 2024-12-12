@@ -1,5 +1,3 @@
-
-
 let startButton = document.getElementById('startGameButton')
 let game = document.getElementById('game')
 let welcome = document.getElementById('welcomeCont')
@@ -7,6 +5,7 @@ let numberText = document.getElementById('numberOfPictures')
 
 startButton.addEventListener('click', startGame)
 
+//start game -button function
 function startGame() {
     game.style.display = 'block'
     welcome.style.display = 'none'
@@ -20,60 +19,34 @@ function startGame() {
     localStorage.setItem('biologyGameScores', scoreValue)
 }
 
+const animalNames = ['dog', 'cat', 'lion', 'elephant', 'horse', 'wolf', 'fox', 'giraffe', 'kangaroo', 'dolphin', 'koala', 'alligator', 'parrot', 'flamingo', 'swan',
+    'otter', 'walrus', 'shark', 'jellyfish', 'snake', 'hamster', 'squirrel', 'hedgehog', 'raccoon', 'sloth', 'pig', 'donkey','pigeon', 'cow']
 
-///API
-const animalNames = [
-    'dog', 'cat', 'bird', 'lion', 'tiger', 'elephant', 'horse', 'fish', 'rabbit', 'deer',
-    'bear', 'wolf', 'fox', 'giraffe', 'zebra', 'kangaroo', 'penguin', 'dolphin', 'whale',
-    'monkey', 'panda', 'koala', 'leopard', 'cheetah', 'crocodile', 'alligator', 'hippopotamus',
-    'rhinoceros', 'bat', 'owl', 'eagle', 'hawk', 'parrot', 'flamingo', 'peacock', 'swan',
-    'otter', 'seal', 'walrus', 'shark', 'octopus', 'jellyfish', 'crab', 'lobster',
-    'frog', 'snake', 'lizard', 'hamster', 'rat', 'squirrel', 'hedgehog', 'raccoon',
-    'badger', 'beaver', 'weasel', 'meerkat', 'lemur', 'sloth', 'armadillo', 'camel', 'llama', 'goat', 'sheep', 'cow', 'pig', 'donkey', 'chicken', 'duck',
-    'goose', 'pigeon', 'finch', 'budgerigar', 'macaw', 'toucan',
-    'woodpecker', 'hummingbird', 'cow', 'lynx']
-
-
-const APIkey = 'S6glRYH0Gxv2xoZ1XkEYzV8nErIwcJd1niGGsyaon0g'
 let animalName = ''
-
+let usedAnimals = []
 
 function getRandomAnimal() {
-    let randomAnimal = Math.floor(Math.random() * animalNames.length)
+    let randomAnimal
+    do {
+        randomAnimal = Math.floor(Math.random() * animalNames.length)
+    } while (usedAnimals.includes(animalNames[randomAnimal])) 
+
+    usedAnimals.push(animalNames[randomAnimal])
     return animalNames[randomAnimal]
 }
 
-function fetchAnimalImage() {
-    const url = `https://api.unsplash.com/photos/random?query=${animalName}+animal&topics=pets&client_id=${APIkey}`
-    
-
-    fetch(url)
-        .then(response => {
-            if (!response.ok) {
-                throw new Error('Network error')
-            }
-            return response.json()
-        })
-        .then(data => {
-            document.getElementById('animalImage').src = data.urls.regular
-            currentAnimalName = animalName
-        })
-        .catch(error => {
-            console.error('Error', error)
-        })
+function getRandomAnimalPicture() {
+    animalName = getRandomAnimal()
+    document.getElementById('animalImage').src = `../img/biology/${animalName}.jpg`
 }
 
-
-
 window.onload = () => {
-    animalName = getRandomAnimal()
-    fetchAnimalImage()
+    getRandomAnimalPicture()
 }
 
 
 function restartGame() {
-    getRandomAnimal()
-    fetchAnimalImage()
+    getRandomAnimalPicture()
 
     game.style.display = "block"
 
@@ -200,9 +173,7 @@ nextButton.addEventListener('click', nextPicture)
 function nextPicture() {
     let nextButton = document.getElementById('nextPicture')
     
-
-    animalName = getRandomAnimal()
-    fetchAnimalImage()
+    getRandomAnimalPicture()
 
 
     nextButton.style.display = "none"
