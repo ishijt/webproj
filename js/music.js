@@ -98,33 +98,67 @@ class MusicGame {
   handleAnswer = (answer) => {
     if (this.feedbackActive) return
     this.feedbackActive = true
-
+  
     let isCorrect
-
+    let correctAnswer
+  
     if (this.currentMode === 'trivia') {
       const currentQuestion = triviaQuestions[this.currentTriviaIndex]
       isCorrect = answer === currentQuestion.answer
+      correctAnswer = currentQuestion.answer
     } else {
       const currentClip = this.availableClips[this.currentStep]
       isCorrect = answer.trim().toLowerCase() === currentClip.name.toLowerCase()
+      correctAnswer = currentClip.name
     }
-
+  
     const feedbackElement = document.getElementById('feedback')
+    const activeGameArea = document.getElementById('active-game-area')
+  
+    // Remove any existing correct answer feedback first
+    const existingCorrectAnswerFeedback = document.getElementById('correct-answer-feedback')
+    if (existingCorrectAnswerFeedback) {
+      existingCorrectAnswerFeedback.remove()
+    }
+  
+    // Main feedback
     feedbackElement.textContent = isCorrect ? 'Correct!' : 'Incorrect!'
     feedbackElement.className = `feedback-box ${isCorrect ? 'show text-success' : 'show text-danger'}`
-
+  
+    // Correct answer feedback
+    if (!isCorrect) {
+      const correctAnswerElement = document.createElement('div')
+      correctAnswerElement.id = 'correct-answer-feedback'
+      correctAnswerElement.className = 'feedback-box show text-info'
+      
+      if (this.currentMode === 'trivia') {
+        correctAnswerElement.textContent = `Correct Answer: ${correctAnswer}`
+      } else if (this.currentMode === 'sound' || this.currentMode === 'image') {
+        correctAnswerElement.textContent = `Correct Answer: ${correctAnswer}`
+      }
+      
+      // Explicitly add to the active game area and ensure visibility
+      activeGameArea.appendChild(correctAnswerElement)
+      correctAnswerElement.style.display = 'block'
+      correctAnswerElement.style.opacity = '1'
+    }
+  
     if (isCorrect) this.score++
     this.currentStep++
-
+  
     setTimeout(() => {
-      feedbackElement.className = 'feedback-box';
+      feedbackElement.className = 'feedback-box'
+      const correctAnswerFeedback = document.getElementById('correct-answer-feedback')
+      if (correctAnswerFeedback) {
+        correctAnswerFeedback.remove()
+      }
       this.feedbackActive = false
       if (this.currentStep < 10) {
         this.nextStep()
       } else {
         this.stopGame()
       }
-    }, 2500)
+    }, 3500)
   }
 
   nextStep = () => {
