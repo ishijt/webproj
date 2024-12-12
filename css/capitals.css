@@ -98,7 +98,7 @@ h2, h3 {
     font-family: 'Baloo', sans-serif !important;
     height: 80px;
     line-height: 30px;
-    border-radius: 15px !important;
+    border-radius: 20px !important;
     border: none !important;
     max-width: 300px;
     width: 100%;
@@ -128,8 +128,9 @@ h2, h3 {
     font-family: 'Baloo', sans-serif !important;
     height: 50px;
     line-height: 50px;
-    border-radius: 15px !important;
-    border: none;
+    border-radius: 20px !important;
+    border: none !important;
+    height: 70px;
     width: 100%;
     max-width: 200px;
     display: flex !important;
@@ -154,8 +155,9 @@ h2, h3 {
     font-family: 'Baloo', sans-serif !important;
     height: 50px;
     line-height: 50px;
-    border-radius: 15px !important;
+    border-radius: 20px !important;
     border: none !important;
+    height: 70px;
     width: 100%;
     max-width: 200px;
     display: flex !important;

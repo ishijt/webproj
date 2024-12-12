@@ -151,8 +151,9 @@ button {
   font-family: "Baloo", sans-serif !important;
   height: 50px;
   line-height: 50px;
-  border-radius: 15px !important;
+  border-radius: 20px !important;
   border: none !important;
+  height: 70px;
   width: 100%;
   max-width: 200px;
   display: flex !important;
@@ -176,8 +177,9 @@ button {
   font-family: "Baloo", sans-serif !important;
   height: 50px;
   line-height: 50px;
-  border-radius: 15px !important;
+  border-radius: 20px !important;
   border: none !important;
+  height: 70px;
   width: 100%;
   max-width: 200px;
   display: flex !important;

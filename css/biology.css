@@ -199,6 +199,12 @@ p {
     display: none;
 }
 
+#animalFact {
+    display: none;
+    color: green;
+    font-style: italic;
+}
+
 #toDoNext {
     display: none;
 }
@@ -206,6 +212,12 @@ p {
 #nextPicture {
     margin-top: 60px;
     display: none;
+    background-color: #f7d371;
+    border: none;
+}
+
+#nextPicture:hover {
+    background-color: #f47f7b;
 }
 
 #afterGame {
@@ -245,6 +257,18 @@ p {
     padding-top: 10px;
     
 }
+
+#checkAnswerButton {
+    background-color: #f7d371;
+    border: none;
+}
+
+#checkAnswerButton:hover {
+    background-color: #f47f7b;
+}
+
+
+
 
 
 
