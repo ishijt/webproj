@@ -77,6 +77,7 @@ SchoolQuizZone is a collection of interactive educational games designed to help
 - Score tracking out of 20 calculations
 - Game over modal with final score display
 - Local storage for high scores
+- Instant feedback for correct/incorrect answers
 
 ### 6. Music Education Game
 
@@ -129,6 +130,7 @@ SchoolQuizZone is a collection of interactive educational games designed to help
 - Individual score display for each game
 - Total score calculation across all games
 - Real-time score updates after each game completion
+- Option to clear all scores
 
 ## License
 
