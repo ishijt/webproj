@@ -118,6 +118,21 @@
   color: #ffffff;
 }
 
+#scores-link:link,
+#scores-link:visited {
+  font-size: 1.5rem !important;
+  font-family: Baloo !important;
+  color: #f47f7b !important;
+  text-decoration: none;
+  text-align: center;
+}
+
+#scores-link:link:hover,
+#scores-link:visited:hover {
+  color: #5c809a !important;
+  background: none !important;
+}
+
 #answer-button {
   padding: 8px 20px;
   font-size: 1.4rem !important;
@@ -160,6 +175,11 @@
 #score {
   font-size: 18px;
   color: #333333;
+}
+
+a:hover,
+a:active {
+  background-color: red;
 }
 
 /* Game Over modal */
