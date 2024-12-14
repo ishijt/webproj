@@ -115,7 +115,7 @@ function checkAnswer() {
         setTimeout(loadQuestions, 2500)
         
     } else {
-        feedback.innerText += " Game over!"
+        feedback.innerText += ` Game over. Your final score is ${score}`
         document.getElementById("submit").disabled = true
         document.getElementById("answer").disabled = true
         addRestartButton()

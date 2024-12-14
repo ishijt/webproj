@@ -53,3 +53,8 @@
 #restart:disabled {
     cursor: not-allowed;
 }
+
+#answer {
+    box-shadow: 0 0 10px #5C809A;
+    font-family: 'Baloo', sans-serif;
+}
