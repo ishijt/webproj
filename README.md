@@ -38,7 +38,6 @@ SchoolQuizZone is a collection of interactive educational games designed to help
 ### 1. Animal Recognition Game (Biology)
 
 - Test your knowledge of animals through image recognition
-- Features random animal images from the Unsplash API
 - 10 questions per game session
 - Score tracking functionality
 - Immediate feedback on answers
@@ -49,8 +48,9 @@ SchoolQuizZone is a collection of interactive educational games designed to help
 - Uses the REST Countries API for up-to-date information
 - Multiple choice format with 6 options per question
 - 10 questions per quiz
-- Real-time score tracking
-- Final score summary
+- Immediate feedback with correct answer display
+- Real-time score updates after each answered question
+- Final score summary at the end of the quiz
 
 ### 3. World Flags Quiz (Geography)
 
@@ -59,7 +59,8 @@ SchoolQuizZone is a collection of interactive educational games designed to help
 - Visual multiple-choice format with flag images
 - 10 questions per quiz
 - Immediate feedback with correct flag shown
-- Score tracking and history
+- Real-time score updates after each answered question
+- Final score summary at the end of the quiz
 
 ### 4. Word Scramble Game (English)
 
@@ -95,7 +96,6 @@ SchoolQuizZone is a collection of interactive educational games designed to help
 
 - **Dynamic Content Loading**: All games utilize JavaScript for dynamic content generation
 - **API Integration**:
-  - Unsplash API for animal images
   - REST Countries API for geographical data
 - **Local Storage**: Implements score tracking across sessions
 - **Responsive Design**: Games are playable across different device sizes
@@ -110,7 +110,6 @@ SchoolQuizZone is a collection of interactive educational games designed to help
 - CSS (Bootstrap for responsive design)
 - JavaScript
 - External APIs:
-  - Unsplash API
   - REST Countries API v3.1
 - Web Audio API
 - Local Storage API
@@ -130,6 +129,7 @@ SchoolQuizZone is a collection of interactive educational games designed to help
 - Individual score display for each game
 - Total score calculation across all games
 - Real-time score updates after each game completion
+- Real-time score updates after each answered question in all Geography games
 - Option to clear all scores
 
 ## License
