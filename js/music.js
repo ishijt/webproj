@@ -69,13 +69,31 @@ class MusicGame {
     
     document.getElementById('m-score').textContent = `Score: ${this.score}`
 
-    alert(`Game over! Your final score is ${this.score} out of ${this.currentStep}.`)
+    document.getElementById('m-start-screen').innerHTML = `
+      <h2>Game Over</h2>
+      <p>Your final score is ${this.score} out of ${this.currentStep}.</p>
+      <button id="m-restart-game" class="btn btn-primary">
+        Play Again
+      </button>
+      <button id="m-view-scores" class="btn btn-primary">
+        View Scores
+      </button>
+    `
+    document.getElementById('m-start-screen').classList.remove('d-none')
+    document.getElementById('music-play').classList.add('d-none')
+
+    document.getElementById('m-restart-game').addEventListener('click', () => {
+      document.getElementById('m-start-screen').classList.add('d-none')
+      document.getElementById('music-play').classList.remove('d-none')
+      this.startGame()
+    })
+
+    document.getElementById('m-view-scores').addEventListener('click', () => {
+      window.location.href = 'scores.html'
+    })
 
     const feedbackElement = document.getElementById('feedback')
     feedbackElement.textContent = ''
-
-    document.getElementById('m-start-screen').classList.remove('d-none')
-    document.getElementById('music-play').classList.add('d-none')
 
     this.displayBestScore()
     this.saveScore(this.score)

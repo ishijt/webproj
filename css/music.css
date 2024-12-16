@@ -173,6 +173,10 @@ button.btn.btn-primary:hover, button.btn.btn-secondary:hover {
 
 @media screen and (max-width: 768px) {
 
+    #sound-clip {
+        margin-top: 35px;
+    }
+
     .feedback-box {
         bottom: 60%;
     }
