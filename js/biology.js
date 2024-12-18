@@ -91,12 +91,15 @@ function restartGame() {
     let afterGame = document.getElementById('afterGame')
     let nextButton = document.getElementById('nextPicture')
     let guessInput = document.getElementById('guessInput')
+    let animalFact = document.getElementById('animalFact')
 
     nextButton.style.display = "none"
     correctWrong.style.display = "none"
     toDoNext.style.display = "none"
     guessInput.style.border = "none"
     afterGame.style.display = "none"
+    animalFact.style.display = "none"
+    
 
     localStorage.setItem('biologyGameScores', scoreValue)
 }
