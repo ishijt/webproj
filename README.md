@@ -1,29 +1,29 @@
 ﻿![banner](./images/banner.jpeg)
 
-# SchoolQuizZone
+# SchoolQuizZone 🎓
 
 SchoolQuizZone is a collection of interactive educational games designed to help users learn and test their knowledge in various subjects. The website features six engaging games focusing on biology, geography, English language skills, mathematics, and music education.
 
 <!-- vim-markdown-toc GFM -->
 
-* [Team members](#team-members)
-* [Games Available](#games-available)
+* [Team members 👥](#team-members-)
+* [Games Available 🎮](#games-available-)
     * [1. Animal Recognition Game (Biology)](#1-animal-recognition-game-biology)
     * [2. World Capitals Quiz (Geography)](#2-world-capitals-quiz-geography)
     * [3. World Flags Quiz (Geography)](#3-world-flags-quiz-geography)
     * [4. Word Scramble Game (English)](#4-word-scramble-game-english)
     * [5. Mathematics Game](#5-mathematics-game)
     * [6. Music Education Game](#6-music-education-game)
-* [Technical Features](#technical-features)
-* [Technologies Used](#technologies-used)
-* [Scoring System](#scoring-system)
+* [Technical Features ⚙️](#technical-features-)
+* [Technologies Used 💻](#technologies-used-)
+* [Scoring System 🏆](#scoring-system-)
     * [Score Tracking](#score-tracking)
     * [Scores Page Features](#scores-page-features)
-* [License](#license)
+* [License 📄](#license-)
 
 <!-- vim-markdown-toc -->
 
-## Team members
+## Team members 👥
 
 | Name            | GitHub Username | Game        |
 | --------------- | --------------- | ----------- |
@@ -33,7 +33,7 @@ SchoolQuizZone is a collection of interactive educational games designed to help
 | Heini Paananen  | heinipaananen   | Biology     |
 | Ilari Tuimala   | ishijt          | Music       |
 
-## Games Available
+## Games Available 🎮
 
 ### 1. Animal Recognition Game (Biology)
 
@@ -92,19 +92,18 @@ SchoolQuizZone is a collection of interactive educational games designed to help
 - Score tracking and best score storage
 - Multiple choice and text input answers
 
-## Technical Features
+## Technical Features ⚙️
 
-- **Dynamic Content Loading**: All games utilize JavaScript for dynamic content generation
-- **API Integration**:
-  - REST Countries API for geographical data
-- **Local Storage**: Implements score tracking across sessions
-- **Responsive Design**: Games are playable across different device sizes
-- **Interactive UI**: Immediate feedback and smooth transitions between questions
-- **Multiple Input Methods**: Supports both multiple choice and text input
-- **Audio Integration**: Sound clips for music education
-- **Animation Features**: Falling calculations in math game
+- Dynamic Content Loading: All games utilize JavaScript for dynamic content generation
+- API Integration: REST Countries API for geographical data
+- Local Storage: Implements score tracking across sessions
+- Responsive Design: Games are playable across different device sizes
+- Interactive UI: Immediate feedback and smooth transitions between questions
+- Multiple Input Methods: Supports both multiple choice and text input
+- Audio Integration: Sound clips for music education
+- Animation Features: Falling calculations in math game
 
-## Technologies Used
+## Technologies Used 💻
 
 - HTML
 - CSS (Bootstrap for responsive design)
@@ -114,7 +113,7 @@ SchoolQuizZone is a collection of interactive educational games designed to help
 - Web Audio API
 - Local Storage API
 
-## Scoring System
+## Scoring System 🏆
 
 ### Score Tracking
 
@@ -132,6 +131,6 @@ SchoolQuizZone is a collection of interactive educational games designed to help
 - Real-time score updates after each answered question in all Geography games
 - Option to clear all scores
 
-## License
+## License 📄
 
 This project is open source and available under the [MIT License](https://mit-license.org/).
